@@ -1,0 +1,187 @@
+/* baru */
+
+.shadow-1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.shadow-1:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.shadow-2 {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.shadow-3 {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.shadow-4 {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.shadow-5 {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+/* lol */
+
+.nav-link .active {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+        0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.chat-container {
+    /* border: 1px rgb(229, 231, 233) solid; */
+    border-radius: 5px;
+    box-shadow: 0px 0px 18px -4px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 18px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 18px -4px rgba(0, 0, 0, 0.75);
+}
+
+.chat-user-list {
+    width: 250px;
+    border-right: 2px rgb(229, 231, 233) solid;
+    height: calc(100vh - 36px);
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.chat-user-list .user-list {
+    border-top: 2px rgb(229, 231, 233) solid;
+    overflow: auto;
+    overflow-x: hidden;
+    height: calc(100% - 51px);
+}
+
+.chat-user-list .user-item {
+    max-height: 60px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.chat-user-list .user-item:hover {
+    background-color: rgb(241, 241, 241);
+}
+
+.chat-user-list .user-item img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+.user-item.active {
+    background-color: rgb(241, 241, 241);
+}
+
+.chat-user-list .user-profile {
+    max-height: 60px;
+    overflow: hidden;
+}
+
+
+.chat-user-list .user-profile img {
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+}
+
+.chat-content .user-target {
+    max-height: 60px;
+    height: 51px;
+    overflow: hidden;
+}
+
+.chat-content .user-target img {
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+}
+
+.chat-content {
+    width: calc(100% - 200px);
+    height: calc(100vh - 36px);
+}
+
+.chat-content .messages {
+    border-top: 2px rgb(229, 231, 233) solid;
+    height: calc(100% - 51px - 39px - 16px);
+    overflow: auto;
+    /* background-color: #666; */
+    overflow-x: hidden;
+}
+
+/* .chat-content .messages .message-in{
+    background-color: #777;
+    max-width: 80%;
+    float:left;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    clear: both;
+    display: block;
+    position: relative;
+}
+
+.chat-content .messages .message-out{
+    background-color: #777;
+    max-width: 80%;
+    float:right;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    clear: both;
+    display: block;
+    position: relative;
+} */
+
+.chat-content .messages .message-in {
+    /* background-color: #777; */
+    border-top: 2px rgb(229, 231, 233) solid;
+}
+
+.chat-content .messages .message-in:first-child {
+    /* background-color: #777; */
+    border-top: 0;
+}
+
+.chat-content .messages .message-out {
+    /* background-color: #777; */
+    border-top: 2px rgb(229, 231, 233) solid;
+}
+.chat-content .messages .message-out:first-child {
+    /* background-color: #777; */
+    border-top: 0;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c0bfbf;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c0bfbf;
+}

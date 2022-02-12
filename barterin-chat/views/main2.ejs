@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <title>Chat - Barterin</title>
+    <style>
+        .messageBox {
+            height: calc(100vh - (32px));
+        }
+
+        .messageContent {
+            height: 100%;
+            width: 100%;
+        }
+
+        .messageUsers {
+            height: 100%;
+            width: 300px;
+        }
+
+        .messageUsers button {
+            text-align: left;
+        }
+
+        .nav button .active {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+    </style>
+</head>
+
+<body class="p-3">
+    <!-- <div class="d-flex align-items-start">
+        <div class="flex-column shadow p-3 rounded me-3 mb-3 text-left messageUsers">
+            Username Sendiri
+        </div>
+        <div class="tab-content shadow p-3 rounded messageContent">
+            Nama Orang
+        </div>
+    </div> -->
+    <div class="d-flex align-items-start messageBox">
+        <div class="nav flex-column nav-pills me-3 shadow-2 p-3 rounded text-left messageUsers" id="v-pills-tab"
+            role="tablist" aria-orientation="vertical">
+            <div class="mb-3 pb-3 border-bottom radius-3">
+                Ibnu Rizqia Ramadan
+            </div>
+            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
+                type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">User1</button>
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile"
+                type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">User2</button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages"
+                type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">User3</button>
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings"
+                type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">User4</button>
+        </div>
+        <div class="tab-content shadow-2 p-3 rounded messageContent" id="v-pills-tabContent">
+            <div class="pb-3 mb-2 border-bottom radius-3">
+                Qobly tolol
+            </div>
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate cupiditate dolore dolores. Ratione,
+                nesciunt illum modi facilis deserunt cum ab minima inventore eligendi nam dignissimos eius, ullam ea
+                earum velit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, veniam distinctio.
+                Laboriosam esse quo ullam, quisquam numquam nihil aperiam, deleniti qui assumenda voluptatem dolor id
+                officia voluptatibus impedit, corporis molestiae.</div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit dignissimos sapiente error facere
+                eveniet aliquam dolorum provident accusantium ab odio esse architecto sequi, libero veniam commodi
+                exercitationem soluta possimus alias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas modi
+                sapiente sed nam quam, hic est vero, odit ipsum autem odio ab impedit voluptatum atque quaerat placeat
+                repellat reprehenderit alias! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex error
+                reiciendis impedit placeat fuga ad aut. Quisquam corrupti ullam, nemo eligendi illum tempore veritatis
+                doloremque, asperiores error facere repudiandae eius?
+            </div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...
+            </div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

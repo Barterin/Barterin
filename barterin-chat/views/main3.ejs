@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/plugins/jquery/jquery.min.js" defer></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/script.js" defer></script>
+    <title>Chat - Barterin</title>
+</head>
+
+<body>
+    <div class="chat-container d-flex m-3">
+        <div class="chat-user-list ml-0 ">
+            <div class="user-profile px-2 py-2">
+                <img src="/dist/img/AdminLTELogo.png" class="img-responsive rounded-circle me-1" alt="User Image">
+                <span>Ibnu Rizqia Ramadan</span>
+            </div>
+            <div class="user-list py-2">
+
+                <div class="user-item rounded px-3 py-2 mx-2 active">
+                    <img src="/img/user2.jpg" class="img-responsive rounded-circle me-2" alt="User Image">
+                    <span>User 1</span>
+                </div>
+
+                <div class="user-item rounded px-3 py-2 mx-2">
+                    <img src="/img/user1.jpg" class="img-responsive rounded-circle me-2" alt="User Image">
+                    <span>User 2</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="flex-column chat-content">
+            <div class="user-target px-2 py-2">
+                <img src="/img/user1.jpg" class="img-responsive rounded-circle me-1" alt="User Image">
+                <span>User Target</span>
+            </div>
+            <div class="messages pt-1" id="chatContent">
+
+                <!-- <div class="message-out mx-3 my-2 p-2">
+                    <img src="/img/user1.jpg" class="img-responsive rounded-circle"
+                        style="height: 30px; width: 30px; object-fit: cover"> <b>Qolby</b>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, error, provident quidem
+                        sequi
+                        beatae
+                        nostrum corrupti architecto earum magnam minus minima temporibus quo rerum expedita perferendis
+                        veniam
+                        similique? Repudiandae, necessitatibus.Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Recusandae, error, provident quidem sequi beatae
+                        nostrum corrupti architecto earum magnam minus minima temporibus quo rerum expedita perferendis
+                        veniam
+                        similique? Repudiandae, necessitatibus.
+                    </p>
+                </div>
+
+                <div class="message-in mx-3 my-2 p-2">
+                    <img src="/img/user2.jpg" class="img-responsive rounded-circle"
+                        style="height: 30px; width: 30px; object-fit: cover"> <b>Ibnu Rizqia Ramadan</b>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, error, provident quidem
+                        sequi
+                        beatae
+                        nostrum corrupti architecto earum magnam minus minima temporibus quo rerum expedita perferendis
+                        veniam
+                        similique? Repudiandae, necessitatibus.Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Recusandae, error, provident quidem sequi beatae
+                        nostrum corrupti architecto earum magnam minus minima temporibus quo rerum expedita perferendis
+                        veniam
+                        similique? Repudiandae, necessitatibus.
+                    </p>
+                </div>
+
+                <div class="message-in mx-3 my-2 p-2">
+                    <img src="/img/user2.jpg" class="img-responsive rounded-circle"
+                        style="height: 30px; width: 30px; object-fit: cover"> <b>Ibnu Rizqia Ramadan</b>
+                    <p>
+                        Hello
+                    </p>
+                </div> -->
+
+            </div>
+            <form action="#" id="formStoreMessage" method="post">
+                <div class="input-group message-input p-2">
+                    <input type="text" class="form-control" placeholder="Pesan" name="message" id="message">
+                    <!-- <button class="btn btn-outline-secondary" type="button">Button</button> -->
+                    <button class="btn btn-outline-secondary" type="submit"> <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

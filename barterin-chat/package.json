@@ -1,0 +1,31 @@
+{
+  "name": "barterinchat",
+  "version": "1.0.0",
+  "description": "chat app for barterin",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Barterin/Barterin.git"
+  },
+  "author": "Ibnu Rizqia Ramadan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Barterin/Barterin/issues"
+  },
+  "homepage": "https://github.com/Barterin/Barterin#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "env": "^0.0.2",
+    "express": "^4.17.2",
+    "moment": "^2.29.1",
+    "socket.io": "^4.4.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
