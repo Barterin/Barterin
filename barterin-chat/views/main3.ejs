@@ -20,16 +20,16 @@
         <div class="chat-user-list ml-0 ">
             <div class="user-profile px-2 py-2">
                 <img src="/dist/img/AdminLTELogo.png" class="img-responsive rounded-circle me-1" alt="User Image">
-                <span>Ibnu Rizqia Ramadan</span>
+                <span id="userId"></span>
             </div>
             <div class="user-list py-2">
 
-                <div class="user-item rounded px-3 py-2 mx-2 active">
+                <div class="user-item rounded px-3 py-2 mx-2 ">
                     <img src="/img/user2.jpg" class="img-responsive rounded-circle me-2" alt="User Image">
                     <span>User 1</span>
                 </div>
 
-                <div class="user-item rounded px-3 py-2 mx-2">
+                <div class="user-item rounded px-3 py-2 mx-2 active">
                     <img src="/img/user1.jpg" class="img-responsive rounded-circle me-2" alt="User Image">
                     <span>User 2</span>
                 </div>
@@ -39,58 +39,16 @@
         <div class="flex-column chat-content">
             <div class="user-target px-2 py-2">
                 <img src="/img/user1.jpg" class="img-responsive rounded-circle me-1" alt="User Image">
-                <span>User Target</span>
+                <span id="userIdTarget"></span>
             </div>
             <div class="messages pt-1" id="chatContent">
-
-                <!-- <div class="message-out mx-3 my-2 p-2">
-                    <img src="/img/user1.jpg" class="img-responsive rounded-circle"
-                        style="height: 30px; width: 30px; object-fit: cover"> <b>Qolby</b>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, error, provident quidem
-                        sequi
-                        beatae
-                        nostrum corrupti architecto earum magnam minus minima temporibus quo rerum expedita perferendis
-                        veniam
-                        similique? Repudiandae, necessitatibus.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Recusandae, error, provident quidem sequi beatae
-                        nostrum corrupti architecto earum magnam minus minima temporibus quo rerum expedita perferendis
-                        veniam
-                        similique? Repudiandae, necessitatibus.
-                    </p>
-                </div>
-
-                <div class="message-in mx-3 my-2 p-2">
-                    <img src="/img/user2.jpg" class="img-responsive rounded-circle"
-                        style="height: 30px; width: 30px; object-fit: cover"> <b>Ibnu Rizqia Ramadan</b>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, error, provident quidem
-                        sequi
-                        beatae
-                        nostrum corrupti architecto earum magnam minus minima temporibus quo rerum expedita perferendis
-                        veniam
-                        similique? Repudiandae, necessitatibus.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Recusandae, error, provident quidem sequi beatae
-                        nostrum corrupti architecto earum magnam minus minima temporibus quo rerum expedita perferendis
-                        veniam
-                        similique? Repudiandae, necessitatibus.
-                    </p>
-                </div>
-
-                <div class="message-in mx-3 my-2 p-2">
-                    <img src="/img/user2.jpg" class="img-responsive rounded-circle"
-                        style="height: 30px; width: 30px; object-fit: cover"> <b>Ibnu Rizqia Ramadan</b>
-                    <p>
-                        Hello
-                    </p>
-                </div> -->
-
+                <!-- message content -->
             </div>
             <form action="#" id="formStoreMessage" method="post">
                 <div class="input-group message-input p-2">
                     <input type="text" class="form-control" placeholder="Pesan" name="message" id="message">
                     <!-- <button class="btn btn-outline-secondary" type="button">Button</button> -->
-                    <button class="btn btn-outline-secondary" type="submit"> <i class="fas fa-paper-plane"></i>
+                    <button class="btn btn-primary" type="submit"> <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
             </form>
