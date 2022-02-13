@@ -21,12 +21,7 @@ let users = []
 
 io.on('connection', socket => {
     socket.on('connected', (userId) => {
-        // socket.join(roomId)
-        // socket.to(roomId).emit('user-connected', userId)
-
         socket.join(userId[0])
-        socket.join(userId[1])
-
         console.log("user-connected", userId);
         users.push(userId)
 
@@ -38,13 +33,18 @@ io.on('connection', socket => {
             users.splice(userId, 1);
         })
 
-        socket.on('sendMessage', (users, message) => {
-            let date = new Date()
-            io.to(users[0]).to(users[1]).emit('receiveMessage', users[0], message, date.toLocaleString('en'))
-            console.log("send message", users, message);
+        socket.on('sendMessage', (data) => {
+            io.to(data.receiver).emit('receiveMessage', { 
+                sender: data.sender, 
+                messageId: data.messageId,
+                message: data.message, 
+                date: data.date
+            })
+            io.to(data.sender).emit('messageSend', data.messageId)
+            console.log("send message", data);
         })
     })
 })
 
 
-server.listen(6901)
+server.listen(6910)
