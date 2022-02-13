@@ -27,11 +27,6 @@
 
 /* lol */
 
-.nav-link .active {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-        0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
 .chat-container {
     /* border: 1px rgb(229, 231, 233) solid; */
     border-radius: 5px;
@@ -42,7 +37,7 @@
 
 .chat-user-list {
     width: 250px;
-    border-right: 2px rgb(229, 231, 233) solid;
+    
     height: calc(100vh - 36px);
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -74,6 +69,10 @@
     background-color: rgb(241, 241, 241);
 }
 
+.chat-user-list .user-item.active:hover {
+    background-color: rgb(241, 241, 241);
+}
+
 .chat-user-list .user-item img {
     height: 40px;
     width: 40px;
@@ -83,6 +82,7 @@
     -moz-user-drag: none;
     -o-user-drag: none;
     user-drag: none;
+    border: 2px solid white;
 }
 
 .user-item.active {
@@ -90,6 +90,11 @@
 }
 
 .chat-user-list .user-profile {
+    /* background-color: rgb(1, 179, 215); */
+    background-color: rgb(0, 120, 181);
+    color: #fff;
+    font-weight:bold;
+    border-top-left-radius: 5px;
     max-height: 60px;
     overflow: hidden;
 }
@@ -99,9 +104,15 @@
     height: 35px;
     width: 35px;
     object-fit: cover;
+    border: 2px solid white;
 }
 
 .chat-content .user-target {
+    /* background-color: rgb(1, 179, 215); */
+    background-color: rgb(0, 120, 181);
+    color: #fff;
+    font-weight:bold;
+    border-top-right-radius: 5px;
     max-height: 60px;
     height: 51px;
     overflow: hidden;
@@ -111,6 +122,7 @@
     height: 35px;
     width: 35px;
     object-fit: cover;
+    border: 2px solid white;
 }
 
 .chat-content {
@@ -122,7 +134,7 @@
     border-top: 2px rgb(229, 231, 233) solid;
     height: calc(100% - 51px - 39px - 16px);
     overflow: auto;
-    /* background-color: #666; */
+    background-color: rgb(241, 241, 241);
     overflow-x: hidden;
 }
 
@@ -169,12 +181,20 @@
     border-top: 0;
 }
 
+.chat-content .message-input {
+    background-color: rgb(241, 241, 241);
+}
+
+.chat-content .message-input .btn-primary {
+    background-color: rgb(0, 120, 181);
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: rgb(241, 241, 241, 0)
 }
 
 ::-webkit-scrollbar-thumb {
