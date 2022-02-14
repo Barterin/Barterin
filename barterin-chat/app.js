@@ -45,6 +45,14 @@ io.on('connection', socket => {
             io.to(data.sender).emit('messageSend', data.messageId)
             console.log("send message", data);
         })
+
+        socket.on('userTyping', (data) => {
+            io.to(data.receiver).emit('targetTyping', data)
+        })
+
+        socket.on('userStopTyping', (data) => {
+            io.to(data.receiver).emit('targetStopTyping', data)
+        })
     })
 })
 

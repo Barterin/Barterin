@@ -1,14 +1,14 @@
 const sc = io('/')
-$(document).ready(function() {
-    let segment = document.URL.split('/').slice(3);
-    console.log(segment)
-    let userId = segment[0]
-    let userIdTarget = segment[1]
+$(document).ready(function () {
+    const segment = document.URL.split('/').slice(3);
+    const userId = segment[0]
+    const userIdTarget = segment[1]
+    let isTyping = false;
+    let isNotTyping
     $("#userId").html(userId);
     $("#userIdTarget").html(userIdTarget);
     sc.emit('connected', segment)
-
-    $("#formStoreMessage").on('submit', function(e) {
+    $("#formStoreMessage").on('submit', function (e) {
         e.preventDefault()
         let message = $("#message").val()
         const messageId = Date.now()
@@ -25,7 +25,7 @@ $(document).ready(function() {
             </div>
         `
         $("#chatContent").append(html)
-        document.getElementById('chatContent').scrollTo(0,document.getElementById('chatContent').scrollHeight);
+        document.getElementById('chatContent').scrollTo(0, document.getElementById('chatContent').scrollHeight);
         sc.emit('sendMessage', {
             sender: userId,
             receiver: userIdTarget,
@@ -35,6 +35,29 @@ $(document).ready(function() {
         })
         $("#message").val('')
     })
+
+    $("#message").on('keypress', (e) => {
+        if (isNotTyping != undefined) clearTimeout(isNotTyping);
+        isNotTyping = setTimeout(sendIsNotTyping, 5000);
+        if (e.keyCode == 13) {
+            sendIsNotTyping()
+            clearTimeout(isNotTyping)
+            return
+        }
+        sendIsTypingToUser()
+    })
+
+    function sendIsTypingToUser() {
+        if (!isTyping) {
+            sc.emit('userTyping', {sender: userId, receiver: userIdTarget})
+            isTyping = true
+        }
+    }
+
+    function sendIsNotTyping() {
+        sc.emit('userStopTyping', {sender: userId, receiver: userIdTarget})
+        isTyping = false
+    }
 
     sc.on('receiveMessage', (data) => {
         let html = `
@@ -47,12 +70,24 @@ $(document).ready(function() {
             </div>
         `
         $("#chatContent").append(html)
-        document.getElementById('chatContent').scrollTo(0,document.getElementById('chatContent').scrollHeight);
+        document.getElementById('chatContent').scrollTo(0, document.getElementById('chatContent').scrollHeight);
     })
 
     sc.on('messageSend', (messageId) => {
         const message = $(`#${messageId}`)
         message.attr('class', 'fas fa-check')
+    })
+
+    sc.on('targetTyping', (data) => {
+        if (data.sender != userIdTarget) return
+        $("#typingIndicator").text(`${data.sender} mengetik . . .`)
+        $("#typingIndicator").removeClass('d-none')
+    })
+
+    sc.on('targetStopTyping', (data) => {
+        if (data.sender != userIdTarget) return
+        $("#typingIndicator").text(``)
+        $("#typingIndicator").addClass('d-none')
     })
 })
 
