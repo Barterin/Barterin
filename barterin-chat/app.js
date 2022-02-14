@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
+const dotenv = require('dotenv');
+dotenv.config();
 const {
     v4: uuidV4
 } = require('uuid')
@@ -47,4 +49,4 @@ io.on('connection', socket => {
 })
 
 
-server.listen(6910)
+server.listen(process.env.APP_PORT)
