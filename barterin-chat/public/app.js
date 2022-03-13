@@ -17,7 +17,9 @@ const loadJs = function (arrayJs) {
     })
 };
 let sc;
+
 const segment = document.URL.split('/').slice(3);
+const socketUrl = document.querySelector(`meta[name="socket-url"]`).getAttribute('content')
 const userId = segment[0]
 let userIdTarget = segment[1]
 let isTyping = false;
@@ -101,10 +103,10 @@ async function addUserToList(data) {
 loadJs([
     'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
     '/plugins/jquery/jquery.min.js',
-    '/socket.io/socket.io.js',
+    `${socketUrl}/socket.io/socket.io.js`,
     '/autosize.min.js',
 ]).then(function () {
-    sc = io('/')
+    sc = io(socketUrl)
     loadJs(['/hello.js'])
     $(document).ready(function () {
         addUserToList({
