@@ -26,6 +26,7 @@ io.on('connection', socket => {
         socket.join(userId[0])
         console.log("user-connected", userId);
         users.push(userId)
+        let date = new Date()
 
         io.emit('user-connected', userId)
 
@@ -40,7 +41,7 @@ io.on('connection', socket => {
                 sender: data.sender, 
                 messageId: data.messageId,
                 message: data.message, 
-                date: data.date
+                date: date.toLocaleString('en')
             })
             io.to(data.sender).emit('messageSend', data.messageId)
             console.log("send message", data);
