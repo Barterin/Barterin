@@ -65,6 +65,32 @@
     cursor: pointer;
 }
 
+.chat-user-list .user-item .message-count {
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    /* padding: 4px; */
+    color: white;
+    display: inline-block;
+    text-align: center;
+    float: right;
+    /* margin-top: 7px; */
+}
+
+.chat-user-list .user-item .user-name {
+    display: inline-block;
+    color: blue;
+    /* width: 50px;
+    height: 60px;
+    text-overflow: ellipsis; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    /* margin-top: 7px; */
+}
+
 .chat-user-list .user-item:hover {
     background-color: rgb(241, 241, 241);
 }
@@ -83,6 +109,7 @@
     -o-user-drag: none;
     user-drag: none;
     border: 2px solid white;
+
 }
 
 .user-item.active {
@@ -216,4 +243,19 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: #c0bfbf;
+}
+
+textarea.autoExpand {
+    /* display: block;
+    box-sizing: padding-box;
+    overflow: hidden; */
+    max-height: 110px;
+    /* padding: 10px; */
+    /* width: 250px; */
+    /* font-size: 14px; */
+    /* margin: 50px auto; */
+    /* border-radius: 6px; */
+    /* box-shadow: 2px 2px 8px rgba(black, .3); */
+    /* border: 0; */
+    overflow: auto;
 }
