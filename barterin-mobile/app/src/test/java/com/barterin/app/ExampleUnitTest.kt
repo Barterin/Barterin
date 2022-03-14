@@ -1,4 +1,4 @@
-package com.barterin.apps
+package com.barterin.app
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.barterin.apps
+package com.barterin.app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
