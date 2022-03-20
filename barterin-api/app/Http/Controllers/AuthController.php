@@ -43,12 +43,12 @@ class AuthController extends Controller
             ]);
 
             $response = [
-                'status_code' => 200,
+                'statusCode' => 200,
                 'message' => 'Create data success'
             ];
         } catch (\Exception $error) {
             $response = [
-                'status_code' => GetStatusCode($error),
+                'statusCode' => GetStatusCode($error),
                 'message' => $error->getMessage()
             ];
         } finally {
@@ -57,7 +57,7 @@ class AuthController extends Controller
                     "message" => $response['message'],
                     "input" => $validator->errors()
                 ],
-                $response['status_code']
+                $response['statusCode']
             );
         }
     }
@@ -91,19 +91,19 @@ class AuthController extends Controller
             $token = $this->createNewToken($tokenEmail != true ? $tokenUsername : $tokenEmail);
 
             $response = [
-                'status_code' => 200,
+                'statusCode' => 200,
                 'message' => 'Berhasil masuk',
                 'access' => $token
             ];
         } catch (\Exception $error) {
             $response = [
-                'status_code' => GetStatusCode($error),
+                'statusCode' => GetStatusCode($error),
                 'message' => $error->getMessage()
             ];
         } finally {
             return response()->json(
                 array_merge($response, ['input' => $validator->errors()]),
-                $response['status_code']
+                $response['statusCode']
             );
         }
     }
