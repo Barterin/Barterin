@@ -110,18 +110,51 @@ class AuthController extends Controller
 
     public function refresh()
     {
-        return $this->createNewToken(auth()->refresh());
+        try {
+            $response = [
+                'statusCode' => 200,
+                'access' => $this->createNewToken(auth()->refresh())
+            ];
+        } catch (\Exception $error) {
+            $response = [
+                'statusCode' => GetStatusCode($error),
+                'message' => "fail : $error->getMessage()"
+            ];
+        } finally {
+            return response()->json(
+                $response,
+                $response['statusCode']
+            );
+        }
     }
 
     public function userProfile()
     {
-        return response()->json(auth()->user());
+        $userData = json_decode(auth()->user());
+        // print_r($userData);
+        $userData->id = md5(sha1($userData->id));
+        return response()->json($userData);
     }
 
     public function logout()
     {
-        auth()->logout();
-        return response()->json(['message' => 'User successfully signed out']);
+        try {
+            auth()->logout();
+            $response = [
+                'statusCode' => 200,
+                'message' => "Berhasil logout"
+            ];
+        } catch (\Exception $error) {
+            $response = [
+                'statusCode' => GetStatusCode($error),
+                'message' => "fail : $error->getMessage()"
+            ];
+        } finally {
+            return response()->json(
+                $response,
+                $response['statusCode']
+            );
+        }
     }
 
     protected function createNewToken($token)
