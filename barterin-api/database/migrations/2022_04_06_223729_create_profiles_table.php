@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressTable extends Migration
+class CreateProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,18 @@ class CreateAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('penerima', 50);
-            $table->string('nohp', 20);
-            $table->string('label', 60);
-            $table->string('kota');
-            $table->string('kecamatan');
-            $table->string('alamat_lengkap');
-            $table->string('kode_pos', 5);
+            $table->string('phone', 20);
+            $table->date('born');
+            $table->string('profile_picture');
+            $table->enum('gender', ['male', 'female', 'other'])->default('other');
             $table->timestamps();
         });
 
-        Schema::table('address', function (Blueprint $table) {
+
+        Schema::table('profiles', function (Blueprint $table) {
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
@@ -42,6 +40,6 @@ class CreateAddressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address');
+        Schema::dropIfExists('profiles');
     }
 }
