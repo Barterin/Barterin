@@ -1,41 +1,66 @@
-const loadFile = function (url) {
+const loadFile = function (url, keep = false) {
     return new Promise((resolve, reject) => {
-        if (__loadedFiles.includes(url)) return;
         const format = url.split(".").pop();
         if ("js" == format) {
             const script = document.createElement("script");
-            return script.setAttribute("defer", ""), script.src = url, script.addEventListener("load", (function () {
-                const js = url.split("/").pop()
-                console.log(js);
-                // import { init } from `page/${js}`
-                // init()
+            return script.setAttribute("defer", ""), keep == false && script.setAttribute("temp", ""), script.src = `${url}${keep == false ? `?${+ new Date()}` : ''}`, script.addEventListener("load", (function () {
                 resolve(!0)
-            })), document.head.appendChild(script), __loadedFiles.push(url)
+            })), document.head.appendChild(script)
         }
         if ("css" == format) {
             const link = document.createElement("link");
             link.rel = "stylesheet", link.type = "text/css", link.href = url, link.addEventListener("load", (function () {
                 return resolve(!0)
-            })), document.head.appendChild(link), __loadedFiles.push(url)
+            })), document.head.appendChild(link)
         }
     })
 };
-let __loadedFiles = [],
-    sc;
-const loadFiles = function (arrayJs) {
+let sc;
+const loadFiles = function (arrayJs, keep = false) {
     return new Promise((resolve, reject) => {
         let total = arrayJs.length,
             current = 0;
         arrayJs.forEach((async function (url) {
-            await loadFile(url), current++, total == current && resolve(!0)
+            await loadFile(url, keep), current++, total == current && resolve(!0)
         }))
     })
 };
-
+const redirect = function(url) {
+	window.location.replace(url)
+}
 let currentPage = location.href
+ 
+const socketUrl = document.querySelector(`meta[name="socket-url"]`).getAttribute('content')
+const apiUrl = document.querySelector(`meta[name="api-url"]`).getAttribute('content')
+const baseUrl = document.querySelector(`meta[name="base-url"]`).getAttribute('content')
+const detectLoadJs = function (source = document) {
+    const tempScript = document.querySelectorAll('script[temp]')
+    tempScript.forEach((element, index) => {
+        element.remove()
+    })
+    const result = source.evaluate("//*[starts-with(name(),'loadjs-')]", source, null, XPathResult.ANY_TYPE, null);
+    let nodes = [],
+        anode = null;
+    for (; anode = result.iterateNext();) nodes.push(anode);
+    nodes.forEach((value, index) => {
+        // console.log(value)
+        loadFile(`/assets/js/page/${value.localName.split("-")[1]}.js`)
+        value.remove()
+    })
+};
+const detectLoadCSS = function (source = document) {
+    const result = source.evaluate("//*[starts-with(name(),'loadcss-')]", source, null, XPathResult.ANY_TYPE, null);
+    let nodes = [],
+        anode = null;
+    for (; anode = result.iterateNext();) nodes.push(anode);
+    nodes.forEach((value, index) => {
+        // console.log(value)
+        loadFile(`/assets/css/page/${value.localName.split("-")[1]}.css`)
+        value.remove()
+    })
+};
 
-function loadPage(url, change = false) {
-	// if (url == currentPage && change == false) return typeof refreshData === 'function' && refreshData()
+const loadPage = function(url, change = false) {
 	if (url == currentPage && change == false) return 
 	if (url == "#") return
 	// nanobar.go(80)
@@ -47,15 +72,8 @@ function loadPage(url, change = false) {
 		url: url,
 		headers: { "Load-From-Ajax": true },
 		success: function (data) {
-			// try {
-			// 	const dataJson = JSON.parse(data)
-			// 	if (dataJson.status == '401') return msgSweetWarning("Sesi Anda berakhir !").then(msg => {
-			// 		doLogoutAjax()
-			// 	})
-			// } catch (e) {
-			// 	// return false;
-			// }
-			$("#contentId").html($(data).find('#contentId').html())
+			$("#contentId").html($(data).filter('section#contentId').html())
+            detectLoadJs()
 			$(".webTitle").html($(data).filter('title').text())
 			// $("#rotiId").html($(data).find('#rotiId')).html()
 			// $("#customJsNa").html($(data).filter('#customJsNa').html())
@@ -63,36 +81,123 @@ function loadPage(url, change = false) {
 	}).fail(function (err) {
 		$("#contentId").html(`<div class="container">${err.statusText}</div>`)
 		// nanobar.go(100)
-		errorCode(err)
+		// errorCode(err)
 	}).done(function () {
 		// nanobar.go(100)
 	})
 }
 
-const socketUrl = document.querySelector(`meta[name="socket-url"]`).getAttribute('content')
-const apiUrl = document.querySelector(`meta[name="api-url"]`).getAttribute('content')
-const baseUrl = document.querySelector(`meta[name="base-url"]`).getAttribute('content')
-const detectLoadJs=function(){const result=document.evaluate("//*[starts-with(name(),'loadjs-')]",document,null,XPathResult.ANY_TYPE,null);let nodes=[],anode=null;for(;anode=result.iterateNext();)nodes.push(anode);nodes.forEach((value,index)=>{loadFile(`/assets/js/page/${value.localName.split("-")[1]}.js`)})};
+const disableButton = function() {
+	$(":submit").append(' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'), $(":submit").attr("disabled", !0)
+	// $(":submit").attr("disabled", !0)
+}
 
-function testHello() {
-    loadFiles([`${baseUrl}/assets/js/page/login.js`]).then(function() {
-        init()
-    })
+const enableButton = function() {
+	$(":submit").find("span").remove(), $(":submit").removeAttr("disabled")
+}
+
+const msgSweetError = function(pesan, options = {
+	title: "Error",
+	timer: 3000
+}) {
+	return Swal.fire({
+		icon: "error",
+		html: pesan,
+		title: options.title,
+		timer: options.timer,
+		timerProgressBar: !0
+	})
+}
+
+const msgSweetSuccess = function(pesan, options = {
+	title: "Sukses",
+	timer: 3000
+}) {
+	return Swal.fire({
+		icon: "success",
+		html: pesan,
+		title: options.title,
+		timer: options.timer,
+		timerProgressBar: !0
+	})
+}
+
+const msgSweetWarning = function(pesan, options = {
+	title: "Peringatan",
+	timer: 3000
+}) {
+	return Swal.fire({
+		icon: "warning",
+		html: pesan,
+		title: options.title,
+		timer: options.timer,
+		timerProgressBar: !0
+	})
+}
+
+const msgSweetInfo = function(pesan, options = {
+	title: "Informasi",
+	timer: 3000
+}) {
+	return Swal.fire({
+		icon: "info",
+		html: pesan,
+		title: options.title,
+		timer: options.timer,
+		timerProgressBar: !0
+	})
+}
+
+const confirmSweet = function(pesan, options = {
+	title: "Konfirmasi",
+	confirmBtn: "Ya",
+	cancelBtn: "Tidak"
+}) {
+	return Swal.fire({
+		icon: "warning",
+		title: options.title,
+		html: pesan,
+		showCancelButton: !0,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: options.confirmBtn,
+		cancelButtonText: options.cancelBtn
+	})
+}
+
+const isConfirmed = function(sweetResult) {
+	return sweetResult.isConfirmed == true ? true : false
+}
+
+const validate = function(data) {
+    $(`input[class*='validate']`).removeClass('is-invalid validate')
+    Object.keys(data).forEach(element => {
+        $(`input[name="${element}"]`).addClass('is-invalid validate')
+        $(`[id='validate_${element}']`).addClass("invalid-feedback")
+        $(`[id='validate_${element}']`).html(data[element][0])
+    });
+    $(`[name="${Object.keys(data)[0]}"].is-invalid`).select()
 }
 
 loadFiles([
     `${baseUrl}/assets/bootstrap/css/bootstrap.css`,
     `${baseUrl}/assets/bootstrap/js/bootstrap.bundle.min.js`,
     `${baseUrl}/assets/plugins/jquery/jquery.min.js`,
+    `${baseUrl}/assets/plugins/sweetalert2/sweetalert2.css`,
+    `${baseUrl}/assets/plugins/sweetalert2/sweetalert2.min.js`,
     `${socketUrl}/socket.io/socket.io.js`,
     // `/autosize.min.js`,
-]).then(function () {
+], true).then(function () {
+    setInterval(function () { if (currentPage.replace(/#/g, '') != location.href.replace(/#/g, '')) (currentPage = location.href, loadPage(currentPage, true)) }, 200);
     sc = io(socketUrl)
-    detectLoadJs()
+	detectLoadJs()
     $(document).ready(function () {
         
     })
-
-    
-
+    $(`a`).click(function(e) {
+        e.preventDefault()
+        const url = $(this).attr('href')
+		loadPage(url)
+    })
 })
+detectLoadCSS()

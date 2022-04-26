@@ -1,12 +1,12 @@
 $(document).ready(function () {
     // alert('loaded') hello sas
-    $(`#formLogin`).submit(e => {
+    $(`#formRegister`).submit(e => {
         e.preventDefault()
         // testHello()
         // alert("hello")
-        const data = new FormData($(`#formLogin`).get(0))
+        const data = new FormData($(`#formRegister`).get(0))
         $.ajax({
-            url: `${apiUrl}/auth/login`,
+            url: `${apiUrl}/auth/register`,
             method: 'post',
             data: data,
             processData: !1,
@@ -21,7 +21,7 @@ $(document).ready(function () {
             },
             success: function (e) {
                 e.statusCode == 200 && msgSweetSuccess(e.message).then(() => {
-                    console.log(e.access.access_token);
+                    // console.log(e.access.access_token);
                 })
             },
             error: function (e) {
