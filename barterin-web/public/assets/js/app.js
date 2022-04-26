@@ -9,13 +9,13 @@ const loadFile = function (url, keep = false) {
         }
         if ("css" == format) {
             const link = document.createElement("link");
-            link.rel = "stylesheet", link.type = "text/css", link.href = url, link.addEventListener("load", (function () {
+            link.rel = "stylesheet", keep == false && link.setAttribute("temp", ""), link.type = "text/css", link.href = url, link.addEventListener("load", (function () {
                 return resolve(!0)
             })), document.head.appendChild(link)
         }
     })
 };
-let sc;
+let sc, nanobar
 const loadFiles = function (arrayJs, keep = false) {
     return new Promise((resolve, reject) => {
         let total = arrayJs.length,
@@ -33,6 +33,7 @@ let currentPage = location.href
 const socketUrl = document.querySelector(`meta[name="socket-url"]`).getAttribute('content')
 const apiUrl = document.querySelector(`meta[name="api-url"]`).getAttribute('content')
 const baseUrl = document.querySelector(`meta[name="base-url"]`).getAttribute('content')
+
 const detectLoadJs = function (source = document) {
     const tempScript = document.querySelectorAll('script[temp]')
     tempScript.forEach((element, index) => {
@@ -49,6 +50,10 @@ const detectLoadJs = function (source = document) {
     })
 };
 const detectLoadCSS = function (source = document) {
+	const tempScript = document.querySelectorAll('link[temp]')
+    tempScript.forEach((element, index) => {
+        element.remove()
+    })
     const result = source.evaluate("//*[starts-with(name(),'loadcss-')]", source, null, XPathResult.ANY_TYPE, null);
     let nodes = [],
         anode = null;
@@ -63,7 +68,7 @@ const detectLoadCSS = function (source = document) {
 const loadPage = function(url, change = false) {
 	if (url == currentPage && change == false) return 
 	if (url == "#") return
-	// nanobar.go(80)
+	nanobar.go(80)
 	currentPage = url
 	const e = $(`a.menu-item[href='${url.trim()}']`)
 	change == false && window.history.pushState("", window.title, url)
@@ -74,16 +79,18 @@ const loadPage = function(url, change = false) {
 		success: function (data) {
 			$("#contentId").html($(data).filter('section#contentId').html())
             detectLoadJs()
+			detectLoadCSS()
 			$(".webTitle").html($(data).filter('title').text())
 			// $("#rotiId").html($(data).find('#rotiId')).html()
 			// $("#customJsNa").html($(data).filter('#customJsNa').html())
 		}
 	}).fail(function (err) {
 		$("#contentId").html(`<div class="container">${err.statusText}</div>`)
-		// nanobar.go(100)
+		nanobar.go(100)
 		// errorCode(err)
 	}).done(function () {
-		// nanobar.go(100)
+		initahref()
+		nanobar.go(100)
 	})
 }
 
@@ -179,25 +186,34 @@ const validate = function(data) {
     $(`[name="${Object.keys(data)[0]}"].is-invalid`).select()
 }
 
+const initahref = function() {
+	$(`a`).click(function(e) {
+        e.preventDefault()
+        const url = $(this).attr('href')
+		loadPage(url)
+    })
+}
+
 loadFiles([
     `${baseUrl}/assets/bootstrap/css/bootstrap.css`,
     `${baseUrl}/assets/bootstrap/js/bootstrap.bundle.min.js`,
     `${baseUrl}/assets/plugins/jquery/jquery.min.js`,
     `${baseUrl}/assets/plugins/sweetalert2/sweetalert2.css`,
+    `${baseUrl}/assets/css/style.css`,
     `${baseUrl}/assets/plugins/sweetalert2/sweetalert2.min.js`,
+    `${baseUrl}/assets/plugins/nanobar/nanobar.min.js`,
     `${socketUrl}/socket.io/socket.io.js`,
     // `/autosize.min.js`,
 ], true).then(function () {
+	nanobar = new Nanobar({
+		classname: "loadingGan",
+	})
     setInterval(function () { if (currentPage.replace(/#/g, '') != location.href.replace(/#/g, '')) (currentPage = location.href, loadPage(currentPage, true)) }, 200);
     sc = io(socketUrl)
 	detectLoadJs()
+	initahref()
     $(document).ready(function () {
         
-    })
-    $(`a`).click(function(e) {
-        e.preventDefault()
-        const url = $(this).attr('href')
-		loadPage(url)
     })
 })
 detectLoadCSS()
