@@ -21,15 +21,16 @@ class AuthController extends Controller
         try {
 
             $validator = Validator::make($request->all(), [
-                "username" => "required|string|unique:users",
-                "fullname" => "required|string",
+                "username" => "required|string|unique:users|regex:/^[a-zA-Z0-9]+$/u",
+                "fullname" => "required|string|regex:/^[a-zA-Z' ]+$/u",
                 "email" => "required|email:rfc,dns|unique:users",
                 "password" => "required",
             ], [
                 'required' => 'kolom ini harus diisi',
                 'username.unique' => 'nama pengguna sudah digunakan',
                 'email.unique' => 'email sudah digunakan',
-                'email' => 'format email harus benar'
+                'email' => 'format email harus benar',
+                'regex' => "format inputan tidak benar"
             ]);
 
             if ($validator->fails())
@@ -49,14 +50,12 @@ class AuthController extends Controller
         } catch (\Exception $error) {
             $response = [
                 'statusCode' => GetStatusCode($error),
-                'message' => $error->getMessage()
+                'message' => $error->getMessage(),
+                'input' => $validator->errors()
             ];
         } finally {
             return response()->json(
-                [
-                    "message" => $response['message'],
-                    "input" => $validator->errors()
-                ],
+                $response,
                 $response['statusCode']
             );
         }
@@ -98,11 +97,12 @@ class AuthController extends Controller
         } catch (\Exception $error) {
             $response = [
                 'statusCode' => GetStatusCode($error),
-                'message' => $error->getMessage()
+                'message' => $error->getMessage(),
+                'input' => $validator->errors()
             ];
         } finally {
             return response()->json(
-                array_merge($response, ['input' => $validator->errors()]),
+                $response,
                 $response['statusCode']
             );
         }
@@ -130,9 +130,8 @@ class AuthController extends Controller
 
     public function userProfile()
     {
-        $userData = json_decode(auth()->user());
-        // print_r($userData);
-        $userData->id = md5(sha1($userData->id));
+        $userData = json_decode(strval(auth()->user()));
+        $userData->id = Encrypt($userData->id);
         return response()->json($userData);
     }
 

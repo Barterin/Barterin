@@ -27,6 +27,12 @@ $router->group(['prefix' => 'auth'], function ($router) {
     $router->post('/verify-email', 'MailController@verifyEmail');
 });
 
+$router->group(['middleware' => 'auth', 'prefix' => 'address'], function ($router) {
+    $router->post('store', 'AddressController@store');
+    $router->post('delete', 'AddressController@delete');
+    $router->post('update/{addressId}', 'AddressController@update');
+});
+
 $router->group(['middleware' => 'auth', 'prefix' => 'user'], function ($router) {
     $router->get('/test', 'UsersController@test');
 });

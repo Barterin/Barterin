@@ -18,10 +18,9 @@ class MailController extends Controller
     public function sendEmailVerification(Request $request)
     {
         try {
+            $userData = json_decode(strval(auth()->user()));
 
-            if (!$request->has('email') || trim($request->get('email')) == '') throw new \Exception("Bad request", 400);
-
-            $getData = User::select('email', 'fullname', 'verify_code', 'verified_email')->where(['email' => trim($request->get('email'))])->get()->first();
+            $getData = User::select('email', 'fullname', 'verify_code', 'verified_email')->where(['email' => trim($userData->email)])->get()->first();
 
             if (empty($getData)) throw new \Exception('Email tidak ditemukan', 400);
 
@@ -34,8 +33,6 @@ class MailController extends Controller
             ];
 
             $this->userData = array_merge($getData->toarray(), $verify);
-
-            // print_r($this->userData);
 
             User::where('email', $this->userData['email'])
                 ->update([
@@ -52,7 +49,7 @@ class MailController extends Controller
 
             $response = [
                 'statusCode' => 200,
-                'message' => "Kode verifikasi telah dikirim ke email Anda",
+                'message' => "Kode verifikasi telah dikirim ke email Anda " . $userData->email,
             ];
         } catch (\Exception $error) {
             $response = [
@@ -74,9 +71,16 @@ class MailController extends Controller
     {
         try {
 
-            if (!$request->has(['verify_code', 'email'])) throw new \Exception("Bad request", 400);
+            if (!$request->has(['verify_code'])) throw new \Exception("Bad request", 400);
 
-            $getData = User::select('email', 'verify_code', 'verified_email')->where($request->all())->get()->first();
+            $userData = json_decode(strval(auth()->user()));
+
+            $where = [
+                "email" => $userData->email,
+                "verify_code" => $request->input('verify_code')
+            ];
+
+            $getData = User::select('email', 'verify_code', 'verified_email')->where($where)->get()->first();
 
             if (empty($getData)) throw new \Exception('Kode verifikasi salah !', 400);
 
