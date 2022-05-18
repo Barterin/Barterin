@@ -28,6 +28,8 @@ $router->group(['prefix' => 'auth'], function ($router) {
 });
 
 $router->group(['middleware' => 'auth', 'prefix' => 'address'], function ($router) {
+    $router->get('list', 'AddressController@list');
+    $router->get('id/{addressId}', 'AddressController@list');
     $router->post('store', 'AddressController@store');
     $router->post('delete', 'AddressController@delete');
     $router->post('update/{addressId}', 'AddressController@update');
