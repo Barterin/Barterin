@@ -37,4 +37,5 @@ $router->group(['middleware' => 'auth', 'prefix' => 'address'], function ($route
 
 $router->group(['middleware' => 'auth', 'prefix' => 'user'], function ($router) {
     $router->post('update', 'UserProfileController@update');
+    $router->post('upload-photo', 'UserProfileController@uploadPhotoProfile');
 });
