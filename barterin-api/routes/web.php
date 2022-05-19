@@ -38,19 +38,3 @@ $router->group(['middleware' => 'auth', 'prefix' => 'address'], function ($route
 $router->group(['middleware' => 'auth', 'prefix' => 'user'], function ($router) {
     $router->post('update', 'UserProfileController@update');
 });
-
-$router->group(['prefix' => 'test'], function ($router) {
-    $router->post('send-email', 'MailController@sendEmailVerification');
-    // $router->post('send-email', 'MailController@mail');
-});
-
-// Route::group([
-//     'middleware' => 'api',
-//     'prefix' => 'auth'
-// ], function ($router) {
-//     Route::post('/login', [AuthController::class, 'login']);
-//     Route::post('/register', [AuthController::class, 'register']);
-//     Route::post('/logout', [AuthController::class, 'logout']);
-//     Route::post('/refresh', [AuthController::class, 'refresh']);
-//     Route::get('/user-profile', [AuthController::class, 'userProfile']);
-// });
