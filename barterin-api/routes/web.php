@@ -36,7 +36,7 @@ $router->group(['middleware' => 'auth', 'prefix' => 'address'], function ($route
 });
 
 $router->group(['middleware' => 'auth', 'prefix' => 'user'], function ($router) {
-    $router->get('/test', 'UsersController@test');
+    $router->post('update', 'UserProfileController@update');
 });
 
 $router->group(['prefix' => 'test'], function ($router) {
