@@ -78,8 +78,6 @@ class AddressController extends Controller
     {
         try {
             $userData = $this->userData;
-            if ($userData->verified_email == 'false')
-                throw new \Exception('Email belum terverifikasi', 400);
 
             $validator = Validator::make(
                 $request->all(),
@@ -89,6 +87,9 @@ class AddressController extends Controller
 
             if ($validator->fails())
                 throw new \Exception('Kolom inputan tidak sesuai, periksa kembali kolom inputan anda', 400);
+
+            if ($userData->verified_email == 'false')
+                throw new \Exception('Email belum terverifikasi', 400);
 
             $addressData = array_merge(['user_id' => $userData->id], $request->all());
 
