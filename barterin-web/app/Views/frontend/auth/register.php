@@ -16,24 +16,26 @@
                     Sign Up to Barterin
                 </div>
                 <div class="form-body">
-                    <div class="form-group">
-                        <label class="mt-3 fw-bold">Name</label>
-                        <input class="form-control mt-1" type="text" name="name" autofocus>
-                        <div id="validate_name"></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="mt-3 fw-bold">Username</label>
-                        <input class="form-control mt-1" type="text" name="username" autofocus>
-                        <div id="validate_username"></div>
+                    <div class="group-name">
+                        <div class="form-group field-name">
+                            <label class="mt-3 fw-bold">Name</label>
+                            <input class="form-control mt-1 shadow-none" type="text" name="name" autofocus>
+                            <div id="validate_name"></div>
+                        </div>
+                        <div class="form-group field-username">
+                            <label class="mt-3 fw-bold">Username</label>
+                            <input class="form-control mt-1 shadow-none" type="text" name="username">
+                            <div id="validate_username"></div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="mt-3 fw-bold">Email</label>
-                        <input class="form-control mt-1" type="text" name="email" autofocus>
+                        <input class="form-control mt-1 shadow-none" type="text" name="email">
                         <div id="validate_email"></div>
                     </div>
                     <div class="form-group">
                         <label class="mt-3 fw-bold">Password</label>
-                        <input class="form-control mt-1" type="password" name="password">
+                        <input class="form-control mt-1 shadow-none" type="password" name="password">
                         <div id="validate_password"></div>
                     </div>
                     <input class="btn btn-submit" type="submit" value="Create Account">

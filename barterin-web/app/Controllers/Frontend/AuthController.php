@@ -31,4 +31,13 @@ class AuthController extends BaseController
 
         return View('frontend/auth/forgetPassword', $data);
     }
+
+    public function emailVerification()
+    {
+        $data = [
+            'title' => 'Barterin | Email Verification',
+        ];
+
+        return View('frontend/auth/emailVerification', $data);
+    }
 }
