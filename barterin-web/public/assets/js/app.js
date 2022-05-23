@@ -29,10 +29,11 @@ const redirect = function(url) {
 	window.location.replace(url)
 }
 let currentPage = location.href
- 
+
 const socketUrl = document.querySelector(`meta[name="socket-url"]`).getAttribute('content')
 const apiUrl = document.querySelector(`meta[name="api-url"]`).getAttribute('content')
 const baseUrl = document.querySelector(`meta[name="base-url"]`).getAttribute('content')
+const environmentStatus = document.querySelector(`meta[name="environment"]`).getAttribute('content')
 
 const detectLoadJs = function (source = document) {
     const tempScript = document.querySelectorAll('script[temp]')
@@ -45,7 +46,7 @@ const detectLoadJs = function (source = document) {
     for (; anode = result.iterateNext();) nodes.push(anode);
     nodes.forEach((value, index) => {
         // console.log(value)
-        loadFile(`/assets/js/page/${value.localName.split("-")[1]}.js`)
+        loadFile(`/assets/js/page/${value.localName.split("-")[1]}${environmentStatus == 'production' ? '.min' : ''}.js`)
         value.remove()
     })
 };
@@ -60,7 +61,7 @@ const detectLoadCSS = function (source = document) {
     for (; anode = result.iterateNext();) nodes.push(anode);
     nodes.forEach((value, index) => {
         // console.log(value)
-        loadFile(`/assets/css/page/${value.localName.split("-")[1]}.css`)
+        loadFile(`/assets/css/page/${value.localName.split("-")[1]}${environmentStatus == 'production' ? '.min' : ''}.css`)
         value.remove()
     })
 };
