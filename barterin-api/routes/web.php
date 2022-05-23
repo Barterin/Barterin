@@ -28,27 +28,14 @@ $router->group(['prefix' => 'auth'], function ($router) {
 });
 
 $router->group(['middleware' => 'auth', 'prefix' => 'address'], function ($router) {
+    $router->get('list', 'AddressController@list');
+    $router->get('id/{addressId}', 'AddressController@list');
     $router->post('store', 'AddressController@store');
     $router->post('delete', 'AddressController@delete');
     $router->post('update/{addressId}', 'AddressController@update');
 });
 
 $router->group(['middleware' => 'auth', 'prefix' => 'user'], function ($router) {
-    $router->get('/test', 'UsersController@test');
+    $router->post('update', 'UserProfileController@update');
+    $router->post('upload-photo', 'UserProfileController@uploadPhotoProfile');
 });
-
-$router->group(['prefix' => 'test'], function ($router) {
-    $router->post('send-email', 'MailController@sendEmailVerification');
-    // $router->post('send-email', 'MailController@mail');
-});
-
-// Route::group([
-//     'middleware' => 'api',
-//     'prefix' => 'auth'
-// ], function ($router) {
-//     Route::post('/login', [AuthController::class, 'login']);
-//     Route::post('/register', [AuthController::class, 'register']);
-//     Route::post('/logout', [AuthController::class, 'logout']);
-//     Route::post('/refresh', [AuthController::class, 'refresh']);
-//     Route::get('/user-profile', [AuthController::class, 'userProfile']);
-// });
