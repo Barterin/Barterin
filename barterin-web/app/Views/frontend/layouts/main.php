@@ -1,8 +1,7 @@
 <?= $this->include('frontend/layouts/head'); ?>
-<!-- <?= $this->include('frontend/layouts/nav'); ?> -->
 
-<body id="contentId">
+<main>
     <?= $this->renderSection('content'); ?>
-</body>
+</main>
 
 <?= $this->include('frontend/layouts/foot'); ?>

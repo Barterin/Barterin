@@ -78,12 +78,10 @@ const loadPage = function(url, change = false) {
 		url: url,
 		headers: { "Load-From-Ajax": true },
 		success: function (data) {
-			$("#contentId").html($(data).filter('section#contentId').html())
+			$("main").html($(data).filter('main').html())
             detectLoadJs()
 			detectLoadCSS()
 			$(".webTitle").html($(data).filter('title').text())
-			// $("#rotiId").html($(data).find('#rotiId')).html()
-			// $("#customJsNa").html($(data).filter('#customJsNa').html())
 		}
 	}).fail(function (err) {
 		$("#contentId").html(`<div class="container">${err.statusText}</div>`)
