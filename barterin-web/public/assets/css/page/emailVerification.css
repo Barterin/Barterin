@@ -56,26 +56,26 @@
     border: 0;
     height: 50px;
 }
-.form-control:focus{
-    background-color: #F3F3F4;
-    outline: none;
-}
+
 .group-name{
     overflow: hidden;
 } 
 
-.group-name .field-name,
-.group-name .field-username{
-    width: 49%;
-}
-
 .group-name .field-name{
     float: left;
+    width: 80px;
+    height: 100px;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
 }
 
-.group-name .field-username{
-    float: right;
+.form-control:focus{
+    background-color: #F3F3F4;
+    outline: none;
 }
+
 @media screen and (max-width:1100px){
     .containerLeft{
         display: none;

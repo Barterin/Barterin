@@ -9,7 +9,7 @@ class AuthController extends BaseController
     public function login()
     {
         $data = [
-            'title' => 'Barterin | Login',
+            'title' => 'Barterin | Sign in',
         ];
 
         return View('frontend/auth/login', $data);
@@ -17,6 +17,27 @@ class AuthController extends BaseController
 
     public function register()
     {
-        return "hello";
+        $data = [
+            'title' => 'Barterin | Sign up',
+        ];
+        return View('frontend/auth/register', $data);
+    }
+
+    public function forgetPassword()
+    {
+        $data = [
+            'title' => 'Barterin | Forgot Password',
+        ];
+
+        return View('frontend/auth/forgetPassword', $data);
+    }
+
+    public function emailVerification()
+    {
+        $data = [
+            'title' => 'Barterin | Email Verification',
+        ];
+
+        return View('frontend/auth/emailVerification', $data);
     }
 }

@@ -31,7 +31,7 @@
 .form{
     margin: auto;
     width: 600px;
-    margin-top:200px;
+    margin-top:300px;
 }
 .forgetPassword{
     float: right;    
@@ -59,22 +59,6 @@
 .form-control:focus{
     background-color: #F3F3F4;
     outline: none;
-}
-.group-name{
-    overflow: hidden;
-} 
-
-.group-name .field-name,
-.group-name .field-username{
-    width: 49%;
-}
-
-.group-name .field-name{
-    float: left;
-}
-
-.group-name .field-username{
-    float: right;
 }
 @media screen and (max-width:1100px){
     .containerLeft{
