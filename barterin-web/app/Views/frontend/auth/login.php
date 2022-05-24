@@ -8,7 +8,7 @@
     </div>
     <div class="containerRight">
         <div class="font signup">
-            Not a member? <a href="http://localhost:8001/auth/register">Sign Up</a>
+            Not a member? <a href="<?= base_url() ?>/auth/register">Sign Up</a>
         </div>
         <div class="form">
             <form id="formLogin">
@@ -23,7 +23,8 @@
                     </div>
                     <div class="form-group">
                         <label class="mt-3 fw-bold">Password</label>
-                        <a class="forgetPassword mt-3" href="http://localhost:8001/auth/forget-password">Forget Password?</a>
+                        <a class="forgetPassword mt-3" href="<?= base_url() ?>/auth/forget-password">Forget
+                            Password?</a>
                         <input class="form-control mt-1 shadow-none" type="password" name="password">
                         <div id="validate_password"></div>
                     </div>
@@ -34,6 +35,6 @@
     </div>
 </div>
 
-<loadjs-login></loadjs-login>
 <loadcss-login></loadcss-login>
+<loadjs-login></loadjs-login>
 <?= $this->endSection(); ?>

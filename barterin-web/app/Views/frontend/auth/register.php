@@ -8,10 +8,10 @@
     </div>
     <div class="containerRight">
         <div class="font signup">
-            Member already? <a href="#">Sign in</a>
+            Member already? <a href="<?= base_url() ?>/auth/login">Sign in</a>
         </div>
         <div class="form">
-            <form id="formLogin">
+            <form id="formRegister">
                 <div class="font title">
                     Sign Up to Barterin
                 </div>
@@ -19,8 +19,8 @@
                     <div class="group-name">
                         <div class="form-group field-name">
                             <label class="mt-3 fw-bold">Name</label>
-                            <input class="form-control mt-1 shadow-none" type="text" name="name" autofocus>
-                            <div id="validate_name"></div>
+                            <input class="form-control mt-1 shadow-none" type="text" name="fullname" autofocus>
+                            <div id="validate_fullname"></div>
                         </div>
                         <div class="form-group field-username">
                             <label class="mt-3 fw-bold">Username</label>
@@ -45,6 +45,6 @@
     </div>
 </div>
 
-<loadjs-register></loadjs-register>
 <loadcss-register></loadcss-register>
+<loadjs-register></loadjs-register>
 <?= $this->endSection(); ?>
