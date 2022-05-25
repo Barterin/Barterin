@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserProfile;
 
 class AuthController extends Controller
 {
@@ -130,9 +131,34 @@ class AuthController extends Controller
 
     public function userProfile()
     {
-        $userData = json_decode(strval(auth()->user()));
-        $userData->id = Encrypt($userData->id);
-        return response()->json($userData);
+        try {
+            $userData = json_decode(strval(auth()->user()));
+            $userProfile = UserProfile::where(["user_id" => $userData->id])->first();
+            $data = [
+                "id" => Encrypt($userData->id),
+                "username" => $userData->username,
+                "email" => $userData->email,
+                "fullname" => $userData->fullname,
+                "phone" => $userProfile->phone ?? "-",
+                "born" => $userProfile->born ?? "-",
+                "profile_picture" => $userProfile->profile_picture ?? "-",
+                "gender" => $userProfile->gender ?? "-",
+            ];
+            $response = [
+                "statusCode" => "200",
+                "data" => $data
+            ];
+        } catch (\Throwable | \Exception $error) {
+            $response = [
+                "statusCode" => GetStatusCode($error),
+                "message" => $error->getMessage(),
+            ];
+        } finally {
+            return response()->json(
+                $response,
+                $response["statusCode"]
+            );
+        }
     }
 
     public function logout()
