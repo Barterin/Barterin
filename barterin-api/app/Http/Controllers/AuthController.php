@@ -139,6 +139,8 @@ class AuthController extends Controller
                 "username" => $userData->username,
                 "email" => $userData->email,
                 "fullname" => $userData->fullname,
+                "verified_email" => $userData->verified_email,
+                "verified_account" => $userData->verified_account,
                 "phone" => $userProfile->phone ?? "-",
                 "born" => $userProfile->born ?? "-",
                 "profile_picture" => $userProfile->profile_picture ?? "-",
