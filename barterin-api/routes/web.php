@@ -35,6 +35,14 @@ $router->group(['middleware' => 'auth', 'prefix' => 'address'], function ($route
     $router->post('update/{addressId}', 'AddressController@update');
 });
 
+$router->group(['prefix' => 'category'], function ($router) {
+    $router->get('list', 'CategoryItemController@list');
+    $router->get('id/{categoryId}', 'CategoryItemController@list');
+    $router->post('store', 'CategoryItemController@store');
+    $router->post('delete', 'CategoryItemController@delete');
+    $router->post('update/{categoryId}', 'CategoryItemController@update');
+});
+
 $router->group(['middleware' => 'auth', 'prefix' => 'user'], function ($router) {
     $router->post('update', 'UserProfileController@update');
     $router->post('upload-photo', 'UserProfileController@uploadPhotoProfile');
