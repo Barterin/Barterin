@@ -76,6 +76,10 @@
     outline: none;
 }
 
+.verify_code{
+    pointer-events: none;
+}
+
 @media screen and (max-width:1100px){
     .containerLeft{
         display: none;
