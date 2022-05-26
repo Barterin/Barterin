@@ -11,13 +11,18 @@
     margin: auto;
 }
 .containerRight{
+    position: absolute;
     width: 80%;
+    height: 100%;
     float: right;
     right: 0;
     margin: auto;
 }
-.tagline{
+.barterin-logo{
     margin: 100px 0 0 25px;
+}
+.tagline{
+    margin: 20px 0 0 25px;
     font-weight: bold;
     color: #866118;
 }
@@ -29,12 +34,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .form{
-    margin: auto;
-    width: 600px;
-    margin-top:300px;
-}
-.forgetPassword{
-    float: right;    
+    width: 50%;
 }
 .btn-submit{
     background-color: #0034F0;
@@ -42,6 +42,10 @@
     width: 200px;
     margin-top: 15px;
     height: 50px;
+}
+.btn-submit:hover{
+    background-color: #002ac2;
+    color: white;
 }
 .signup{
     text-align: right;
@@ -66,5 +70,10 @@
     }
     .containerRight{
         width: 100%;
+    }
+}
+@media screen and (max-width:768px){
+    .form{
+        width: 80%;
     }
 }
