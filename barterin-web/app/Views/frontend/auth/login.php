@@ -1,4 +1,5 @@
-<?= $this->include('frontend/layouts/main'); ?>
+<?= $this->extend('frontend/layouts/main'); ?>
+<?= $this->section('content'); ?>
 
 <div class="main-container">
     <div class="containerLeft">

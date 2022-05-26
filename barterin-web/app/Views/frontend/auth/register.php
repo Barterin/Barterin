@@ -1,5 +1,5 @@
-<?= $this->include('frontend/layouts/main'); ?>
-
+<?= $this->extend('frontend/layouts/main'); ?>
+<?= $this->section('content'); ?>
 <div class="main-container">
     <div class="containerLeft">
         <div class="barterin-logo">
@@ -61,5 +61,8 @@
 </div>
 
 <loadcss-register></loadcss-register>
+<<<<<<< HEAD
+=======
 <loadjs-register></loadjs-register>
 <?= $this->endSection(); ?>
+>>>>>>> origin/master
