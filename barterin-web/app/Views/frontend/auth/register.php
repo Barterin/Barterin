@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group col">
                                 <label class="mt-3 fw-bold">Name</label>
-                                <input class="form-control mt-1 shadow-none" type="text" name="name">
+                                <input class="form-control mt-1 shadow-none" type="text" name="fullname">
                                 <div id="validate_name"></div>
                             </div>
                         </div>
