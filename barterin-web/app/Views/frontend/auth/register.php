@@ -60,5 +60,6 @@
     </div>
 </div>
 
-<loadjs-register></loadjs-register>
 <loadcss-register></loadcss-register>
+<loadjs-register></loadjs-register>
+<?= $this->endSection(); ?>

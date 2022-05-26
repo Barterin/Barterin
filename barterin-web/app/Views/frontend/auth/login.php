@@ -47,5 +47,6 @@
     </div>
 </div>
 
-<loadjs-login></loadjs-login>
 <loadcss-login></loadcss-login>
+<loadjs-login></loadjs-login>
+<?= $this->endSection(); ?>
