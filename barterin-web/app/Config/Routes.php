@@ -39,6 +39,7 @@ $routes->group('/auth', ['namespace' => 'App\Controllers\Frontend'], function ($
     $routes->get('register', 'AuthController::register');
     $routes->get('forget-password', 'AuthController::forgetPassword');
     $routes->get('email-verification', 'AuthController::emailVerification');
+    $routes->get('authenticating/(:any)/(:any)', 'AuthController::authenticating/$1/$2');
 });
 
 $routes->group('/test', ['namespace' => 'App\Controllers\Frontend'], function ($routes) {

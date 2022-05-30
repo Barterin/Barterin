@@ -20,9 +20,7 @@ $(document).ready(function () {
                 enableButton()
             },
             success: function (e) {
-                e.statusCode == 200 && msgSweetSuccess(e.message).then(() => {
-                    console.log(e.access.access_token);
-                })
+                e.statusCode == 200 && (window.location = `${baseUrl}/auth/authenticating/${btoa(e.access.access_token)}/${e.verified_email}`)
             },
             error: function (e) {
                 const response = e.responseJSON

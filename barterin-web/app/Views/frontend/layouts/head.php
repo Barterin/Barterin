@@ -9,6 +9,7 @@
     <meta name="api-url" content="<?= getenv('app.apiUrl') ?>">
     <meta name="socket-url" content="<?= getenv('app.socketUrl') ?>">
     <meta name="environment" content="<?= getenv('CI_ENVIRONMENT') ?>">
+    <meta name="access-token" content="<?= get_cookie("accessToken") ?>">
     <script defer
         src="<?= base_url() ?>/assets/js/app<?= getenv('CI_ENVIRONMENT') == "development" ? '' : '.min' ?>.js?<?= time() ?>">
     </script>
