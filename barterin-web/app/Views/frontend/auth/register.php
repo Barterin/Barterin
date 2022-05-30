@@ -61,8 +61,5 @@
 </div>
 
 <loadcss-register></loadcss-register>
-<<<<<<< HEAD
-=======
 <loadjs-register></loadjs-register>
 <?= $this->endSection(); ?>
->>>>>>> origin/master
