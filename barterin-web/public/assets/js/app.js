@@ -15,7 +15,7 @@ const loadFile = function (url, keep = false) {
         }
     })
 };
-let sc, nanobar
+let sc, nanobar, __access_token
 const loadFiles = function (arrayJs, keep = false) {
     return new Promise((resolve, reject) => {
         let total = arrayJs.length,
@@ -34,6 +34,7 @@ const socketUrl = document.querySelector(`meta[name="socket-url"]`).getAttribute
 const apiUrl = document.querySelector(`meta[name="api-url"]`).getAttribute('content')
 const baseUrl = document.querySelector(`meta[name="base-url"]`).getAttribute('content')
 const environmentStatus = document.querySelector(`meta[name="environment"]`).getAttribute('content')
+__access_token = document.querySelector(`meta[name="access-token"]`).getAttribute('content')
 
 const detectLoadJs = function (source = document) {
     const tempScript = document.querySelectorAll('script[temp]')
@@ -79,8 +80,6 @@ const loadPage = function(url, change = false) {
 		headers: { "Load-From-Ajax": true },
 		success: function (data) {
 			$("main").html($(data).filter('main').html())
-            detectLoadJs()
-			detectLoadCSS()
 			$(".webTitle").html($(data).filter('title').text())
 		}
 	}).fail(function (err) {
@@ -88,6 +87,8 @@ const loadPage = function(url, change = false) {
 		nanobar.go(100)
 		// errorCode(err)
 	}).done(function () {
+		detectLoadJs()
+		detectLoadCSS()
 		initahref()
 		nanobar.go(100)
 	})
@@ -186,9 +187,9 @@ const validate = function(data) {
 }
 
 const initahref = function() {
-	$(`a`).click(function(e) {
-        e.preventDefault()
-        const url = $(this).attr('href')
+	$(`a.internal`).unbind().click(function(e) {
+		e.preventDefault()
+		let url = $(this).attr('href')
 		loadPage(url)
     })
 }
@@ -207,12 +208,11 @@ loadFiles([
 	nanobar = new Nanobar({
 		classname: "loadingGan",
 	})
-    setInterval(function () { if (currentPage.replace(/#/g, '') != location.href.replace(/#/g, '')) (currentPage = location.href, loadPage(currentPage, true)) }, 200);
     sc = io(socketUrl)
 	detectLoadJs()
 	initahref()
-    $(document).ready(function () {
-        
-    })
+	$(window).on('popstate', function(e){
+		if (currentPage.replace(/#/g, '') != location.href.replace(/#/g, '')) (currentPage = location.href, loadPage(currentPage, true))
+	});
 })
 detectLoadCSS()
