@@ -90,9 +90,12 @@ class AuthController extends Controller
 
             $token = $this->createNewToken($tokenEmail != true ? $tokenUsername : $tokenEmail);
 
+            $userData = json_decode(strval(auth()->user()));
+
             $response = [
                 'statusCode' => 200,
                 'message' => 'Berhasil masuk',
+                'verified_email' => $userData->verified_email,
                 'access' => $token
             ];
         } catch (\Exception $error) {
