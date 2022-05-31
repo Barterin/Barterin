@@ -47,8 +47,6 @@ class AuthController extends BaseController
         $token = base64_decode($accessToken);
         setcookie("accessToken", $token, time() + (86400 * 30), "/");
         if ($verifiedEmail == "false") {
-            // echo base_url("auth/email-verification");
-            // exit;
             $curl = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_URL => getenv("app.apiUrl") . "/auth/send-email",
@@ -71,6 +69,8 @@ class AuthController extends BaseController
             $responseData = json_decode($response);
             session()->setFlashdata("message", $responseData->message);
             header("refresh:1;url=" . base_url("auth/email-verification"));
+        } else {
+            header("refresh:1;url=" . base_url());
         }
     }
 }
