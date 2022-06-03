@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
-use App\Models\UserProfile;
+use App\Models\UserProfile as TableProfile;
+use App\Models\User as TableUser;
 
 class UserProfileController extends Controller
 {
@@ -15,12 +16,14 @@ class UserProfileController extends Controller
     function __construct()
     {
         $this->validateRules = [
+            "fullname" => "required|string|regex:/^[a-zA-Z' ]+$/u",
             "phone" => "required|min:10|max:15|regex:/^[0-9]+$/u",
             "born" => "required|date_format:Y-m-d",
             "gender" => "required|in:male,female,other",
         ];
         $this->validateMessage = [
             'required' => 'kolom ini harus diisi',
+            'regex' => "format inputan tidak benar",
             'phone.min' => 'Nomor telpon setidaknya harus memiliki :min angka',
             'phone.regex' => 'Nomor telpon hanya bisa dimasukan oleh angka',
             'born.date_format' => "Format tanggal tidak valid",
@@ -42,7 +45,16 @@ class UserProfileController extends Controller
             if ($validator->fails())
                 throw new \Exception('Kolom inputan tidak sesuai, periksa kembali kolom inputan anda', 400);
 
-            UserProfile::updateOrInsert(["user_id" => $this->userData->id], $request->all());
+            TableUser::where(["id" => $this->userData->id])
+                ->update(["fullname" => $request->fullname]);
+
+            $profileData = [
+                "phone" => $request->input('phone'),
+                "born" => $request->input('born'),
+                "gender" => $request->input('gender'),
+            ];
+
+            TableProfile::updateOrInsert(["user_id" => $this->userData->id], $profileData);
 
             $response = [
                 "statusCode" => 200,
@@ -81,7 +93,7 @@ class UserProfileController extends Controller
                 throw new \Exception('Kolom inputan tidak sesuai, periksa kembali kolom inputan anda', 400);
 
             // get latest profile picture
-            $user = UserProfile::where(["user_id" => $this->userData->id])->first();
+            $user = TableProfile::where(["user_id" => $this->userData->id])->first();
             // if exists then delete
             if ($user && $user->profile_picture != null)
                 File::delete("uploads/images/profiles/" . $user->profile_picture);
@@ -92,7 +104,7 @@ class UserProfileController extends Controller
 
             $file->move("uploads/images/profiles", $fileName . "." . $extension);
 
-            UserProfile::updateOrInsert(["user_id" => $this->userData->id], ["profile_picture" => $fileName . "." . $extension]);
+            TableProfile::updateOrInsert(["user_id" => $this->userData->id], ["profile_picture" => $fileName . "." . $extension]);
 
             $response = [
                 "statusCode" => 200,
