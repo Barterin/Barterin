@@ -26,6 +26,9 @@
 .barterin-logo{
     margin: 100px 0 0 25px;
 }
+.mobile-logo{
+    display: none;
+}
 .title{
     font-size: 28px;
     font-weight: bold;
@@ -75,7 +78,19 @@
     .containerRight{
         width: 100%;
     }
+    .mobile-logo{
+        display: block;
+        width: 300px;
+        height: 150px;
+        margin: auto;
+    }
+    .form-button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
+
 @media screen and (max-width:768px){
     .form{
         width: 80%;
