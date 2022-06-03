@@ -36,6 +36,7 @@ $routes->get('/', 'Home::index');
 
 $routes->group('/auth', ['namespace' => 'App\Controllers\Frontend'], function ($routes) {
     $routes->get('login', 'AuthController::login');
+    $routes->get('logout', 'AuthController::logout');
     $routes->get('register', 'AuthController::register');
     $routes->get('forget-password', 'AuthController::forgetPassword');
     $routes->get('email-verification', 'AuthController::emailVerification');
