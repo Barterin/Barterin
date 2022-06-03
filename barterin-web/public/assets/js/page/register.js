@@ -21,7 +21,7 @@ $(document).ready(function () {
             },
             success: function (e) {
                 e.statusCode == 200 && msgSweetSuccess(e.message).then(() => {
-                    // console.log(e.access.access_token);
+                    window.location.href = `${baseUrl}/auth/login`
                 })
             },
             error: function (e) {
