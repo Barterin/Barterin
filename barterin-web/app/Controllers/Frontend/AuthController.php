@@ -6,6 +6,20 @@ use App\Controllers\BaseController;
 
 class AuthController extends BaseController
 {
+
+    function __construct()
+    {
+        helper(['cookie', 'request_api', 'url']);
+        $accessToken = get_cookie("accessToken");
+        if (!empty($accessToken)) {
+            $uri = service('uri');
+            $response = json_decode(ApiPost("/auth/user-profile"));
+            if ($response->statusCode == 200 && $uri->getSegment("2") != 'logout') {
+                header("refresh:0,url=" . base_url());
+            }
+        }
+    }
+
     public function login()
     {
         $data = [
