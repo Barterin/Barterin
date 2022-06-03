@@ -33,9 +33,6 @@
                 </svg>
             </div>
             <h1 class="tagline">Let's Exchange Your Stuff</h1>
-        </div>
-<<<<<<< HEAD
-        <h1 class="tagline">Let's Exchange Your Stuff</h1>
     </div>
     <div class="containerRight d-flex justify-content-center align-items-center flex-column">
         <div class="form">
@@ -58,27 +55,6 @@
                                 <label class="mt-3 fw-bold">Name</label>
                                 <input class="form-control mt-1 shadow-none" type="text" name="fullname">
                                 <div id="validate_name"></div>
-=======
-        <div class="containerRight d-flex justify-content-center align-items-center flex-column">
-            <div class="form">
-                <form id="formRegister">
-                    <div class="font title">
-                        Sign Up to Barterin
-                    </div>
-                    <div class="form-body">
-                        <div class="group-name">
-                            <div class="row align-items-start">
-                                <div class="form-group col">
-                                    <label class="mt-3 fw-bold">Username</label>
-                                    <input class="form-control mt-1 shadow-none" type="text" name="username" autofocus>
-                                    <div id="validate_username"></div>
-                                </div>
-                                <div class="form-group col">
-                                    <label class="mt-3 fw-bold">Name</label>
-                                    <input class="form-control mt-1 shadow-none" type="text" name="fullname">
-                                    <div id="validate_name"></div>
-                                </div>
->>>>>>> origin/master
                             </div>
                         </div>
                         <div class="form-group">
@@ -91,18 +67,6 @@
                             <input class="form-control mt-1 shadow-none" type="password" name="password">
                             <div id="validate_password"></div>
                         </div>
-                        <input class="btn btn-submit" type="submit" value="Create Account">
-                    </div>
-<<<<<<< HEAD
-                    <div class="form-group">
-                        <label class="mt-3 fw-bold">Email</label>
-                        <input class="form-control mt-1 shadow-none" type="text" name="email">
-                        <div id="validate_email"></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="mt-3 fw-bold">Password</label>
-                        <input class="form-control mt-1 shadow-none" type="password" name="password">
-                        <div id="validate_password"></div>
                     </div>
                 </div>
                 <div class="form-button">
@@ -112,24 +76,11 @@
         </div>
         <div class="fw-bold d-flex justify-content-center align-items-end mt-5">
             Member already? <a href="<?php $base_url ?>/auth/login" class="internal">Sign in</a>
-=======
-                </form>
-            </div>
-            <div class="fw-bold d-flex justify-content-center align-items-end mt-5">
-                Member already? <a href="<?php $base_url ?>/auth/login" class="internal">Sign in</a>
-            </div>
->>>>>>> origin/master
         </div>
     </div>
 
-<<<<<<< HEAD
-<loadcss-register></loadcss-register>
-<loadjs-register></loadjs-register>
-<?= $this->endSection(); ?>
-=======
     <loadcss-register></loadcss-register>
     <loadjs-register></loadjs-register>
 </main>
 
 <?= $this->include('frontend/layouts/foot'); ?>
->>>>>>> origin/master

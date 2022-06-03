@@ -33,9 +33,6 @@
             </div>
             <h1 class="tagline">Let's Exchange Your Stuff</h1>
         </div>
-<<<<<<< HEAD
-        <h1 class="tagline">Let's Exchange Your Stuff</h1>
-    </div>
     <div class="containerRight d-flex justify-content-center align-items-center flex-column">
         <div class="form">
             <div class="mobile-logo">
@@ -69,35 +66,6 @@
         </div>
         <div class="fw-bold d-flex justify-content-center align-items-end">
             <a class="mt-3 d-flex justify-content-end internal" href="<?php $base_url ?>/auth/forget-password">Forget Password?</a>
-=======
-        <div class="containerRight d-flex justify-content-center align-items-center flex-column">
-            <div class="form">
-                <form id="formLogin">
-                    <div class="font title">
-                        Sign in to Barterin
-                    </div>
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="mt-3 fw-bold">Username or Email Address</label>
-                            <input class="form-control mt-1 shadow-none" type="text" name="username" autofocus>
-                            <div id="validate_username"></div>
-                        </div>
-                        <div class="form-group">
-                            <label class="mt-3 fw-bold">Password</label>
-                            <input class="form-control mt-1 shadow-none" type="password" name="password">
-                            <a class="mt-3 d-flex justify-content-end internal"
-                                href="<?php $base_url ?>/auth/forget-password">Forget
-                                Password?</a>
-                            <div id="validate_password"></div>
-                        </div>
-                        <input class="btn btn-submit" type="submit" value="Signin">
-                    </div>
-                </form>
-            </div>
-            <div class="fw-bold d-flex justify-content-center align-items-end mt-5">
-                Member already? <a href="<?php $base_url ?>/auth/register" class="internal">Register</a>
-            </div>
->>>>>>> origin/master
         </div>
     </div>
 
