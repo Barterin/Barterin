@@ -83,6 +83,10 @@ $app->configure('mail');
 // ]);
 
 $app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
+]);
+
+$app->middleware([
     Fruitcake\Cors\HandleCors::class,
 ]);
 
