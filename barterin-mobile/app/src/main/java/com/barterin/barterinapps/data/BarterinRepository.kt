@@ -279,6 +279,36 @@ class BarterinRepository private constructor(
         }
     }
 
+    fun editProfile(
+        token: String,
+        fullname: String,
+        phone: String,
+        born: String,
+        gender: String
+    ): LiveData<Result<EditProfileResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.updateProfile(
+                "Bearer $token",
+                fullname,
+                phone,
+                born,
+                gender
+            )
+            if (response.statusCode == 200) {
+                Log.d("error response", "true: ${response.message} ")
+                emit(Result.Success(response))
+            } else {
+                Log.d("error response", "false: ${response.message} ")
+                emit(Result.Error(response.message))
+            }
+        } catch (e: Exception) {
+            Log.d("BarterinRepository", "error: ${e.message.toString()} ")
+            emit(Result.Error(e.message.toString()))
+        }
+
+    }
+
     companion object {
         @Volatile
         private var instance: BarterinRepository? = null

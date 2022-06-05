@@ -53,6 +53,12 @@ class ProfileFragment : Fragment() {
     private fun getData() {
 
         sharedpref = SharedPreferenceClass(requireContext())
+
+        Glide.with(this)
+            .load("https://api.barterin.tech/uploads/images/profiles/${sharedpref.getProfilePicture()}")
+            .placeholder(R.drawable.placeholder)
+            .into(binding.imgProfile)
+
         binding.txtName.text = sharedpref.getName()
         binding.txtUsername.text = sharedpref.getUsername()
         binding.txtEmail.text = sharedpref.getEmail()

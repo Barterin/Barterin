@@ -75,8 +75,7 @@ class CameraActivity : AppCompatActivity() {
                         "isBackCamera",
                         cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
                     )
-//                    setResult(UpdateProfileActivity.CAMERA_X_RESULT, intent)
-                    startActivity(intent)
+                    setResult(UpdateProfileActivity.CAMERA_X_RESULT, intent)
                     finish()
                 }
             }

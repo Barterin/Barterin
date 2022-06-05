@@ -118,3 +118,11 @@ data class UploadPhotoResponse(
     @field:SerializedName("message")
     val message: String,
 )
+
+data class EditProfileResponse(
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("message")
+    val message: String,
+)

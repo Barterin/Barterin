@@ -85,4 +85,14 @@ interface ApiService {
         @Part file: MultipartBody.Part
     ): UploadPhotoResponse
 
+    @FormUrlEncoded
+    @POST("user/update")
+    suspend fun updateProfile(
+        @Header("Authorization") token: String,
+        @Field("fullname") fullname: String,
+        @Field("phone") phone: String,
+        @Field("born") born: String,
+        @Field("gender") gender: String
+    ): EditProfileResponse
+
 }
