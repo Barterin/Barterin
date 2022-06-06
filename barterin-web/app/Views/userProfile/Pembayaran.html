@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Pembayaran </title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+    </style>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+</head>
+
+<body style="margin : 30px 0; font-family: 'Roboto' ">
+    <div class="container">
+        <div class="container px-4">
+            <div class="row gx-5">
+                <div class="col-1 d-flex align-items-center">
+                    <img src="Asset/yang ini.JPG" alt="" style="border-radius: 70% ; width: 58px ;">
+
+                </div>
+                <div class="col-10 d-flex align-items-center" style="padding-left: 2px;">
+                    <div class="row">
+                        <p style="font-family: 'Roboto', sans-serif; font-size: 23px; margin-bottom: 0;"> Mutiara
+                            Azzahra <span> / </span> <span>Pembayaran</span> </p>
+                        <p style="font-family: 'Roboto', sans-serif; font-size: 17px; margin-bottom: 0;"> Set up your
+                            account and start barter </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 5%; font-family: 'Roboto', sans-serif; font-size: 18px;">
+                <div class="col-3">
+                    <div class="row">
+                        <a href="Biodata_Diri.html" style="text-decoration: none; color : black; "> Biodata Diri </a>
+                        <a href="Daftar_Alamat.html" style="text-decoration: none; color: black;"> Daftar Alamat </a>
+                        <a href="Pembayaran.html" style="text-decoration: none; color: black; font-weight: bold;">
+                            Pembayaran </a>
+                        <a href="Rekening_bank.html" style="text-decoration: none; color: black;"> Rekening Bank</a>
+                        <a href="Notifikasi.html" style="text-decoration: none; color: black;"> Notifikasi</a>
+                        <a href="Keamanan.html" style="text-decoration: none; color: black;"> Keamanan </a>
+                        <hr style=" margin : 28px 10px; width: 80%;">
+                        <!-- Button trigger modal -->
+                        <a href="#" style="font-size: 16px; font-weight: bold; text-decoration: none; color: #FA5C7C;"
+                            data-bs-toggle="modal" data-bs-target="#ModalHapusAkun">
+                            Delete Account
+                        </a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalHapusAkun" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p
+                                            style=" margin: 0; padding-top: 50px; padding-left: 150px; padding-right: 150px; font-size: 33px; text-align: center;">
+                                            Kami sedih melihat Anda pergi </p>
+                                        <p
+                                            style="padding-top: 40px; padding-right:50px; padding-left: 50px; font-size: 16px;">
+                                            Jika Anda ingin mengurangi notifikasi
+                                            email, Anda dapat <span style="color: #0034F0 ;"> menonaktifkannya
+                                                disini</span>
+                                            <br> atau jika Anda hanya ingin mengubah nama pengguna, Anda dapat <span
+                                                style="color: #0034F0 ;">
+                                                melakukannya di sini.</span>
+                                            <br>
+                                            <br> Harap diperhatikan, penghapusan akun bersifat final. Tidak akan ada
+                                            cara untuk memulihkan akun Anda. </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary " data-bs-dismiss="modal"
+                                            style="background: #0034F0; "> Tidak Jadi </button>
+                                        <button type="button" class="btn btn-secondary"
+                                            style="background: #E3E3E3; color: black;"> Hapus Akun</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <p class="nama"> Hai Mutiara Azzahra,
+                        <br> Selamat datang di halaman <span style="font-weight: bold ;"> Pengaturan Pembayaran </span>
+                    </p>
+                    <div class="card " style=" border: none;">
+                        <div class="card-body" style="background: #F3F4F5;">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-1 d-flex justify-content-center">
+                                    <img src="Asset/yang ini.JPG " style="width: 20px;">
+                                </div>
+                                <div class="col-11 d-flex align-items-center">
+                                    <p class="card-subtitle "
+                                        style="color : #737686 ; margin-bottom: 0; font-size: 13px; ">Atur pembayaran
+                                        Anda untuk meningkatkan keamanan dan kemudahan bertransaksi Anda di Barterin.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 d-grid gap-2">
+                                <button type="button" class="btn" data-bs-toggle="modal" href="#exampleModalToggle"
+                                    role="button"
+                                    style="margin-top: 30px; border: 2.42341px solid rgba(0, 0, 0, 0.1); height: 55px; font-size: 18px;">
+                                    Kartu Kredit / Debit </button>
+                                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <p class="modal-title" style="padding-bottom: 42px;"
+                                                    id="exampleModalLabel">
+                                                    Kartu Kredit / Debit</p>
+                                                <div class="mb-3">
+                                                    <div class="col-12  d-grid gap-2">
+                                                        <button type="button"
+                                                            style="margin-bottom: 20px; height: 73px; border: 2.42341px solid rgba(0, 0, 0, 0.1);;"
+                                                            class="btn " id="examplecard" aria-describedby="cardHelp">
+                                                            <div class="row d-flex align-items-center">
+                                                                <div class="col-6 d-flex justify-content-start">
+                                                                    <p
+                                                                        style="margin: 0; padding-left: 22px; font-size: 18px; color: #000000;">
+                                                                        4616 99** **** 3577 </p>
+                                                                </div>
+                                                                <div class="col-6 d-flex justify-content-end">
+                                                                    <img src="Asset/visa.png"
+                                                                        style="width: 30%; padding-right: 22px;">
+                                                                </div>
+                                                            </div>
+                                                        </button>
+                                                        <button type="button"
+                                                            style="margin-bottom: 20px; height: 73px; border: 2.42341px solid rgba(0, 0, 0, 0.1);;"
+                                                            class="btn " id="examplecard" aria-describedby="cardHelp">
+                                                            <div class="row d-flex align-items-center">
+                                                                <div class="col-6 d-flex justify-content-start">
+                                                                    <p
+                                                                        style="margin: 0; padding-left: 22px; font-size: 18px; color: #000000;">
+                                                                        4616 99** **** 3577 </p>
+                                                                </div>
+                                                                <div class="col-6 d-flex justify-content-end">
+                                                                    <img src="Asset/visa.png"
+                                                                        style="width: 30%; padding-right: 22px;">
+                                                                </div>
+                                                            </div>
+                                                        </button>
+                                                        <button type="button"
+                                                            style="margin-bottom: 20px; height: 73px; border: 2.42341px solid rgba(0, 0, 0, 0.1);;"
+                                                            class="btn " id="examplecard" aria-describedby="cardHelp">
+                                                            <div class="row d-flex align-items-center">
+                                                                <div class="col-6 d-flex justify-content-start">
+                                                                    <p
+                                                                        style="margin: 0; padding-left: 22px; font-size: 18px; color: #000000;">
+                                                                        4616 99** **** 3577 </p>
+                                                                </div>
+                                                                <div class="col-6 d-flex justify-content-end">
+                                                                    <img src="Asset/visa.png"
+                                                                        style="width: 30%; padding-right: 22px;">
+                                                                </div>
+                                                            </div>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-12 d-flex justify-content-end">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal"
+                                                            style="margin-right: 28px ; height: 53px; margin-top: 50px;">
+                                                            Keluar </button>
+
+                                                        <button class="btn btn-primary"
+                                                            data-bs-target="#exampleModalToggle2"
+                                                            style="margin-top: 50px; background-color : #0034F0;"
+                                                            data-bs-toggle="modal">Tambah Kartu Kredit / Debit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+                                    aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <p class="modal-title" style="padding-bottom: 0;"
+                                                    id="exampleModalLabel">
+                                                    Registrasi Kartu Kredit / Debit</p>
+                                                <div class="mb-3">
+                                                    <div class="col-12  d-grid gap-2">
+                                                        <label for="Tambah Kartu"
+                                                            style="padding-top: 42px; font-family: 'Roboto', sans-serif; font-size: 18px;"
+                                                            class="form-label "> Nomor Kartu Kredit / Debit </label>
+                                                        <input type="number" placeholder="1234 5678 9012 3456"
+                                                            class="form-control" id="Tambah Kartu"
+                                                            aria-describedby="Tambah Kartu" style="height: 55px;">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label for="Masa Berlaku"
+                                                                    style="padding-top: 20px; font-family: 'Roboto', sans-serif; font-size: 18px;"
+                                                                    class="form-label "> Masa Berlaku </label>
+                                                                <input type="number" placeholder="123"
+                                                                    class="form-control" id="Masa Berlaku"
+                                                                    aria-describedby="Masa Berlaku"
+                                                                    style="height: 55px;">
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for="CVV"
+                                                                    style="padding-top: 20px; font-family: 'Roboto', sans-serif; font-size: 18px;"
+                                                                    class="form-label ">CVV </label>
+                                                                <input type="number" placeholder="mm / yy"
+                                                                    class="form-control" id="CVV" aria-describedby="CVV"
+                                                                    style="height: 55px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 d-flex justify-content-end">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-target="#exampleModalToggle"
+                                                                data-bs-toggle="modal"
+                                                                style="margin-right: 28px ; height: 53px; margin-top: 50px;">
+                                                                Kembali </button>
+                                                            <button type="button" class="btn btn-primary"
+                                                                data-bs-dismiss="modal"
+                                                                style="font-size: 16px ; background-color : #0034F0; height: 53px;  margin-top:50px;">
+                                                                Simpan </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-6 d-grid gap-2">
+                                <div class="modal fade" id="debitInstan" aria-hidden="true"
+                                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <p>Gimana Caranya?</p>
+                                                <div class="row">
+                                                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                                        <div class="col-6">
+                                                            <li class="nav-item d-grid gap-2" role="presentation">
+                                                                <button class="nav-link active" id="pills-home-tab"
+                                                                    data-bs-toggle="pill" data-bs-target="#pills-home"
+                                                                    type="button" role="tab" aria-controls="pills-home"
+                                                                    aria-selected="true">Home</button>
+                                                            </li>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <li class="nav-item d-grid gap-2" role="presentation">
+                                                                <button class="nav-link" id="pills-profile-tab"
+                                                                    data-bs-toggle="pill"
+                                                                    data-bs-target="#pills-profile" type="button"
+                                                                    role="tab" aria-controls="pills-profile"
+                                                                    aria-selected="false">Profile</button>
+                                                            </li>
+                                                        </div>
+                                                    </ul>
+                                                </div>
+                                                <div class="tab-content" id="pills-tabContent">
+                                                    <div class="tab-pane fade show active" id="pills-home"
+                                                        role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                                        <p>1. Masukkan 16 digit angka yang tertera di kartu debitmu.</p>    
+                                                        <p>2. Isi limit belanja / masa berlaku kartu / no. HP yang terdaftar di e-banking.</p>    
+                                                    </div>
+                                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                                        aria-labelledby="pills-profile-tab" tabindex="0">
+                                                        <p>1. Pilih metode pembayaran Debit Instan saat bertransaksi, lalu pilih kartu yang sudah kamu daftarkan.</p>
+                                                        <p>2. Tiap transaksi, masukkan kode verifikasi yang dikirim melalui SMS ke no. HP terdaftar di bank.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary" data-bs-dismiss="debitInstan"
+                                                    data-bs-toggle="modal">Keluar</button>
+                                                <button class="btn btn-primary" data-bs-target="#pilihKartu"
+                                                    data-bs-toggle="modal">Daftarkan Kartu</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="pilihKartu" aria-hidden="true"
+                                    aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <h1 style="font-weight: bold;">Pilih Debit Instan</h1>
+                                                <p>Kamu hanya bisa simpan 1 kartu debit per bank</p>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault1">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Default radio
+                                                    </label>
+                                                </div>
+                                                <hr>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault2" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        Default checked radio
+                                                    </label>
+                                                </div>
+                                                <hr>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault2" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        Default checked radio
+                                                    </label>
+                                                </div>
+                                                <hr>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault2" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        Default checked radio
+                                                    </label>
+                                                </div>
+                                                <hr>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault2" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        Default checked radio
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary" data-bs-target="#debitInstan"
+                                                    data-bs-toggle="modal">Kembali</button>
+                                                <button class="btn btn-primary" data-bs-target="#direct"
+                                                    data-bs-toggle="modal">Pilih Kartu</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="direct" aria-hidden="true"
+                                    aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <h1 style="font-weight: bold;">Direct Debit</h1>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Nomor Kartu
+                                                        Kredit / Debit</label>
+                                                    <input type="number" class="form-control" id="exampleInputEmail1"
+                                                        aria-describedby="emailHelp" placeholder="1234 5678 9012 3456">
+                                                    <div id="emailHelp" class="form-text">16 digit angka yang tertera di
+                                                        kartu debit</div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Masa
+                                                        Berlaku</label>
+                                                    <input type="number" class="form-control" id="exampleInputEmail1"
+                                                        aria-describedby="emailHelp" placeholder="mm / yy">
+                                                    <div id="emailHelp" class="form-text">Masukkan masa berlaku kartu
+                                                        debit</div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary" data-bs-target="#pilihKartu"
+                                                    data-bs-toggle="modal">Kembali</button>
+                                                <button class="btn btn-primary" data-bs-dismiss="direct"
+                                                    data-bs-toggle="modal">Simpan</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-primary" data-bs-toggle="modal" href="#debitInstan" role="button">Open
+                                    first modal</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

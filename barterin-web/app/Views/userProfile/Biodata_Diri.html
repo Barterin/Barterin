@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Daftar Alamat </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+    </style>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+</head>
+
+<body style="margin : 30px 0; font-family: 'Roboto' ">
+    <div class="container">
+        <div class="container px-4">
+            <div class="row gx-5">
+                <div class="col-1 d-flex align-items-center">
+                    <img src="Asset/yang ini.JPG" alt="" style="border-radius: 70% ; width: 58px ;">
+
+                </div>
+                <div class="col-10 d-flex align-items-center" style="padding-left: 2px;">
+                    <div class="row">
+                        <p style="font-family: 'Roboto', sans-serif; font-size: 23px; margin-bottom: 0;"> Mutiara
+                            Azzahra <span> / </span> <span>Pembayaran</span> </p>
+                        <p style="font-family: 'Roboto', sans-serif; font-size: 17px; margin-bottom: 0;"> Set up your
+                            account and start barter </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 5%; font-family: 'Roboto', sans-serif; font-size: 18px;">
+                <div class="col-3">
+                    <div class="row">
+                        <a href="Biodata_Diri.html" style="text-decoration: none; color : black; font-weight: bold;">
+                            Biodata Diri </a>
+                        <a href="Daftar_Alamat.html" style="text-decoration: none; color: black; "> Daftar Alamat </a>
+                        <a href="Pembayaran.html" style="text-decoration: none; color: black;"> Pembayaran </a>
+                        <a href="Rekening_bank.html" style="text-decoration: none; color: black;"> Rekening Bank</a>
+                        <a href="Notifikasi.html" style="text-decoration: none; color: black;"> Notifikasi</a>
+                        <a href="Keamanan.html" style="text-decoration: none; color: black;"> Keamanan </a>
+                        <hr style=" margin : 28px 10px; width: 80%;">
+                        <!-- Button trigger modal -->
+                        <a href="#" style="font-size: 16px; font-weight: bold; text-decoration: none; color: #FA5C7C;" data-bs-toggle="modal" data-bs-target="#ModalHapusAkun">
+                            Delete Account
+                        </a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalHapusAkun" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p
+                                            style=" margin: 0; padding-top: 50px; padding-left: 150px; padding-right: 150px; font-size: 33px; text-align: center;">
+                                            Kami sedih melihat Anda pergi </p>
+                                        <p
+                                            style="padding-top: 40px; padding-right:50px; padding-left: 50px; font-size: 16px;">
+                                            Jika Anda ingin mengurangi notifikasi
+                                            email, Anda dapat <span style="color: #0034F0 ;"> menonaktifkannya
+                                                disini</span>
+                                            <br> atau jika Anda hanya ingin mengubah nama pengguna, Anda dapat <span
+                                                style="color: #0034F0 ;">
+                                                melakukannya di sini.</span>
+                                            <br>
+                                            <br> Harap diperhatikan, penghapusan akun bersifat final. Tidak akan ada
+                                            cara untuk memulihkan akun Anda. </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary " data-bs-dismiss="modal"
+                                            style="background: #0034F0; "> Tidak Jadi </button>
+                                        <button type="button" class="btn btn-secondary"
+                                            style="background: #E3E3E3; color: black;"> Hapus Akun</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-1">
+                            <img src="Asset/yang ini.JPG" alt="" style="border-radius: 70px; width: 60px; ">
+                        </div>
+                        <div class="col-3 d-flex align-items-center ">
+                            <button type="button"
+                                class=" btn btn-primary font-family: 'Roboto', sans-serif; font-size: 18px;"> Upload new
+                                picture </button>
+                        </div>
+                        <div class="col-4 d-flex align-items-center ">
+                            <button type="button"
+                                class="btn btn-secondary font-family: 'Roboto', sans-serif; font-size: 18px; ">Delete
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- Nama -->
+                    <label for="Nama" style="padding-top : 20px; font-family: 'Roboto', sans-serif; font-size: 18px;"
+                        class="form-label "> Nama </label>
+                    <input type="text" placeholder="Full Name" class="form-control" id="Nama" aria-describedby="Nama"
+                        style="height: 55px ;">
+                    <div id="Nama" class="form-text"
+                        style="font-family: 'Roboto', sans-serif; font-size: 18px; color: rgba(0, 0, 0, 0.3); ">We’re
+                        big on real names around here, so people know who’s who.
+                    </div>
+
+                    <!-- Tanggal Lahir -->
+                    <label for="Tanggal Lahir"
+                        style="padding-top: 42px; font-family: 'Roboto', sans-serif; font-size: 18px;"
+                        class="form-label "> Tanggal Lahir</label>
+                    <input type="text" placeholder="Tanggal Lahir" class="form-control" id="Tanggal Lahir"
+                        aria-describedby="Tanggal Lahir" style="height: 55px;">
+
+                    <!-- Jenis Kelamin -->
+                    <label for="Jenis Kelamin"
+                        style="padding-top: 42px ; font-family: 'Roboto', sans-serif; font-size: 18px; "
+                        class="form-label "> Jenis Kelamin</label>
+                    <div class=" dropdown d-grid gap-2">
+                        <button class=" text-start btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="border: solid 1px rgba (0,0,0,.1); font-family: 'Roboto', sans-serif; font-size: 18px; height: 55px;">
+                            Pilih Jenis Kelamin
+                        </button>
+                        <div class="d-grid gap-2">
+                        </div>
+
+                    </div>
+
+                    <!-- Ubah Kontak -->
+                    <label for="Ubah Kontak"
+                        style="padding-top : 42px; font-family: 'Roboto', sans-serif; font-size: 18px; color: rgba(0, 0, 0, 0.5);"
+                        class="form-label "> Ubah Kontak </label>
+                    <hr style="margin: 4px 0 ;">
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1"
+                            style="padding-top : 42px; font-family: 'Roboto', sans-serif; font-size: 18px; "
+                            class="form-label">Email address</label>
+                        <input type="email" style="padding-bottom: 0px; height: 55px !important ;" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+
+                    <label for="Number" style="padding-top: 42px; font-family: 'Roboto', sans-serif; font-size: 18px; "
+                        class="form-label"> Nomor HP</label>
+                    <input type="number" class="form-control" id="Number" aria-describedby="Number"
+                        style="height: 55px;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
