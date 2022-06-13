@@ -92,6 +92,7 @@ $app->middleware([
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
+    'isAdmin' => App\Http\Middleware\IsAdmin::class,
 ]);
 
 
