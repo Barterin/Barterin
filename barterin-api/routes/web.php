@@ -17,33 +17,51 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+// Auth router
 $router->group(['prefix' => 'auth'], function ($router) {
-    $router->post('/login', 'AuthController@login');
-    $router->post('/register', 'AuthController@register');
-    $router->post('/refresh', 'AuthController@refresh');
-    $router->post('/logout', 'AuthController@logout');
-    $router->post('/user-profile', 'AuthController@userProfile');
-    $router->post('/send-email', 'MailController@sendEmailVerification');
-    $router->post('/verify-email', 'MailController@verifyEmail');
+    $router->post('/login', 'Auth\AuthController@login');
+    $router->post('/register', 'Auth\AuthController@register');
+    $router->post('/refresh', 'Auth\AuthController@refresh');
+    $router->post('/logout', 'Auth\AuthController@logout');
+    $router->post('/user-profile', 'Auth\AuthController@userProfile');
+    $router->post('/send-email', 'Auth\MailController@sendEmailVerification');
+    $router->post('/verify-email', 'Auth\MailController@verifyEmail');
 });
 
-$router->group(['middleware' => 'auth', 'prefix' => 'address'], function ($router) {
-    $router->get('list', 'AddressController@list');
-    $router->get('id/{addressId}', 'AddressController@list');
-    $router->post('store', 'AddressController@store');
-    $router->post('delete', 'AddressController@delete');
-    $router->post('update/{addressId}', 'AddressController@update');
+// Admin router
+$router->group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function ($router) {
+    $router->group(['prefix' => 'category'], function ($router) {
+        $router->get('list', 'Admin\CategoryItemController@list');
+        $router->get('id/{categoryId}', 'Admin\CategoryItemController@list');
+        $router->post('store', 'Admin\CategoryItemController@store');
+        $router->delete('delete/{categoryId}', 'Admin\CategoryItemController@delete');
+        $router->post('update/{categoryId}', 'Admin\CategoryItemController@update');
+    });
+    $router->group(['prefix' => 'type'], function ($router) {
+        $router->get('list/{categoryId}', 'Admin\TypeItemController@list');
+        $router->get('id/{typeId}', 'Admin\TypeItemController@list');
+        $router->post('store/{categoryId}', 'Admin\TypeItemController@store');
+        $router->delete('delete/{typeId}', 'Admin\TypeItemController@delete');
+        $router->post('update/{typeId}', 'Admin\TypeItemController@update');
+    });
 });
 
-$router->group(['prefix' => 'category'], function ($router) {
-    $router->get('list', 'CategoryItemController@list');
-    $router->get('id/{categoryId}', 'CategoryItemController@list');
-    $router->post('store', 'CategoryItemController@store');
-    $router->post('delete', 'CategoryItemController@delete');
-    $router->post('update/{categoryId}', 'CategoryItemController@update');
+// Member router
+$router->group(['prefix' => 'member', 'middleware' => 'auth'], function ($router) {
+    $router->group(['prefix' => 'address'], function ($router) {
+        $router->get('list', 'Member\AddressController@list');
+        $router->get('id/{addressId}', 'Member\AddressController@list');
+        $router->post('store', 'Member\AddressController@store');
+        $router->post('update/{addressId}', 'Member\AddressController@update');
+        $router->delete('delete/{addressId}', 'Member\AddressController@delete');
+    });
+    $router->group(['prefix' => 'user'], function ($router) {
+        $router->post('update', 'Member\UserProfileController@update');
+        $router->post('upload-photo', 'Member\UserProfileController@uploadPhotoProfile');
+    });
 });
 
-$router->group(['middleware' => 'auth', 'prefix' => 'user'], function ($router) {
-    $router->post('update', 'UserProfileController@update');
-    $router->post('upload-photo', 'UserProfileController@uploadPhotoProfile');
+// Public router
+$router->group(['prefix' => 'files'], function ($router) {
+    $router->get('profile/{imageFile}', 'FileRequest@profile');
 });
