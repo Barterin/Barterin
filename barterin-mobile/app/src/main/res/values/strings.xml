@@ -44,4 +44,7 @@
     <string name="text_phone_number">Phone Number</string>
     <string name="text_city">City</string>
     <string name="text_save_address">Save Address</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_born">Born</string>
+    <string name="text_edit_your_profile">Edit Your Profile</string>
 </resources>

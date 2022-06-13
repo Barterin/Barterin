@@ -69,6 +69,23 @@ class SharedPreferenceClass(context: Context) {
         return userSharedPref.getString("username", null).toString()
     }
 
+    fun getProfilePicture(): String {
+        return userSharedPref.getString("profile_picture", null).toString()
+    }
+
+    fun getPhoneNumber(): String {
+        return userSharedPref.getString("phone", null).toString()
+    }
+
+    fun getBorn(): String {
+        return userSharedPref.getString("born", null).toString()
+    }
+
+    fun getGender(): String {
+        return userSharedPref.getString("gender", null).toString()
+    }
+
+
     fun verifyEmail(isVerified: String) {
         val edit = userSharedPref.edit()
         edit.putString("verifiedEmail", isVerified)
