@@ -1,27 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Member;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Models\Categoryitem as Table;
+use App\Models\Address;
+use App\Http\Controllers\Controller;
 
-class CategoryItemController extends Controller
+class AddressController extends Controller
 {
 
     function __construct()
     {
-        $this->middleware('auth', ['except' => ['list']]);
         $this->validateRules = [
-            "name" => "required|string|min:3|max:255|unique:category_item|regex:/^[a-zA-Z0-9 ]+$/u",
+            "penerima" => "required|string|min:3",
+            "nohp" => "required|min:10|max:13",
+            "label" => "required|string|min:3",
+            "kota_kecamatan" => "required|string|min:3",
+            "alamat_lengkap" => "required|min:10",
+            "kode_pos" => "required|min:3"
         ];
         $this->validateMessage = [
             'required' => 'kolom ini harus diisi',
-            'min' => 'kategori setidaknya harus memiliki :min karakter',
-            'max' => 'kategori tidak boleh lebih dari :max karakter',
-            'regex' => 'kategori hanya boleh diisi oleh alfabet dan angka',
-            'unique' => 'Kategori sudah ada'
+            'nohp.min' => 'nomor hp setidaknya harus memiliki :min angka',
+            'nohp.max' => 'nomor hp tidak boleh lebih dari :max angka',
+            'kode_pos.min' => 'kode pos setidaknya memiliki :min angka',
+            'label.min' => 'label setidaknya harus memiliki :min huruf',
+            'label.unique' => 'label sudah digunakan',
+            'penerima.min' => 'penerima setidaknya harus memiliki :min huruf',
+            'kota_kecamatan.min' => 'kota atau kecamatan setidaknya harus memiliki :min huruf',
+            'alamat_lengkap.min' => 'alamat setidaknya harus memiliki :min huruf',
+            'kode_pos.min' => 'kode pos setidaknya harus memiliki :min huruf',
         ];
         $this->userData = json_decode(strval(auth()->user()));
     }
@@ -30,18 +39,22 @@ class CategoryItemController extends Controller
     {
         try {
 
-            $data = Table::orderBy("id", "desc");
+            $data = Address::where('user_id', $this->userData->id)->orderBy("id", "desc");
 
-            if ($request->categoryId != null)
-                $data->where('id', Decrypt($request->categoryId));
+            if ($request->addressId != null)
+                $data->where('id', Decrypt($request->addressId));
 
             $addressData = [];
 
             foreach ($data->get() as $rows) {
                 $row = [];
                 $row["id"] = Encrypt($rows->id);
-                $row["name"] = $rows->name;
-                $row["slug"] = $rows->slug;
+                $row["penerima"] = $rows->penerima;
+                $row["nohp"] = $rows->nohp;
+                $row["label"] = $rows->label;
+                $row["kota_kecamatan"] = $rows->kota_kecamatan;
+                $row["alamat_lengkap"] = $rows->alamat_lengkap;
+                $row["kode_pos"] = $rows->kode_pos;
                 $addressData[] = $row;
             }
 
@@ -79,17 +92,14 @@ class CategoryItemController extends Controller
             if ($userData->verified_email == 'false')
                 throw new \Exception('Email belum terverifikasi', 400);
 
-            $categoryData = [
-                'name' => $request->input('name'),
-                'slug' => Str::of($request->input('name'))->slug('-')
-            ];
+            $addressData = array_merge(['user_id' => $userData->id], $request->all());
 
-            $insertId = Table::create($categoryData)->id;
+            $insertId = Address::create($addressData)->id;
 
             $response = [
                 'statusCode' => 200,
-                'message' => "Kategori berhasil dimasukan",
-                'id' => $insertId . " , " . Encrypt($insertId)
+                'message' => "Alamat berhasil dimasukan",
+                'id' => Encrypt($insertId)
             ];
         } catch (\Throwable | \Exception $error) {
             $response = [
@@ -109,9 +119,9 @@ class CategoryItemController extends Controller
     {
         try {
 
-            if (!$request->has('id')) throw new \Exception('Bad request', 400);
+            if (!$request->addressId) throw new \Exception('Bad request', 400);
 
-            $data = Table::where(['id' => Decrypt($request->input('id'))]);
+            $data = Address::where(['id' => Decrypt($request->addressId)]);
 
             if (!$data->get()->first()) throw new \Exception('Data not found', 404);
 
@@ -119,7 +129,7 @@ class CategoryItemController extends Controller
 
             $response = [
                 'statusCode' => 200,
-                'message' => "Kategori berhasil dihapus",
+                'message' => "Alamat berhasil dihapus",
             ];
         } catch (\Throwable | \Exception $error) {
             $response = [
@@ -146,18 +156,15 @@ class CategoryItemController extends Controller
             if ($validator->fails())
                 throw new \Exception('Kolom inputan tidak sesuai, periksa kembali kolom inputan anda', 400);
 
-            $data = Table::where(['id' => Decrypt($request->categoryId)]);
+            $data = Address::where(['id' => Decrypt($request->addressId)]);
 
             if (!$data->get()->first()) throw new \Exception('Data not found', 404);
 
-            $data->update([
-                'name' => $request->input('name'),
-                'slug' => Str::of($request->input('name'))->slug('-')
-            ]);
+            $data->update($request->all());
 
             $response = [
                 'statusCode' => 200,
-                'message' => "Kategori berhasil diupdate",
+                'message' => "Alamat berhasil diupdate",
             ];
         } catch (\Throwable | \Exception $error) {
             $response = [
