@@ -6,13 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".ui.emailverification.EmailVerificationActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="13dp"
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/ic_logo_barterin_next"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/text_otp_verification"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,101 +41,143 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="@string/text_email_verification"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
+        android:text="@string/text_otp_verification"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/text_send_email"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/emailUsertext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:text="dickyaryya@mail.com" />
-
-    <EditText
-        android:id="@+id/editTextCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:background="#F3F3F4"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/emailUsertext"
-        app:layout_constraintStart_toStartOf="@+id/emailUsertext"
-        app:layout_constraintTop_toBottomOf="@+id/emailUsertext" />
-
-    <Button
-        android:id="@+id/btn_verify"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Verify Account"
-        app:layout_constraintEnd_toEndOf="@+id/editTextCode"
-        app:layout_constraintStart_toStartOf="@+id/editTextCode"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCode" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/text_email_header"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_verify">
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:text="We sent your code to Email" />
+
+    <TextView
+        android:id="@+id/text_time_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_email_header"
+        tools:text="This code will expired in time" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_verify"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_time_header">
 
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/text_otp1"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="@string/text_don_t_receive_code"/>
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/text_otp2" />
 
-
-        <TextView
-            android:id="@+id/signupText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <EditText
+            android:id="@+id/text_otp2"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Resend"
-            android:textColor="@color/light_blue" />
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/text_otp3"/>
 
+        <EditText
+            android:id="@+id/text_otp3"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/text_otp4"/>
+
+        <EditText
+            android:id="@+id/text_otp4"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/text_otp5"/>
+
+        <EditText
+            android:id="@+id/text_otp5"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/text_otp6"/>
+
+        <EditText
+            android:id="@+id/text_otp6"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1" />
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar3"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:visibility="gone"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_verify"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:text="@string/text_continue"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_resend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/text_resend_otp_code"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
