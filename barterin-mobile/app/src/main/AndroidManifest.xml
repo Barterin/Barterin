@@ -62,7 +62,7 @@
         </activity>
         <activity
             android:name=".ui.emailverification.EmailVerificationActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
