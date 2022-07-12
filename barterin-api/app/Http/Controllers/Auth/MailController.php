@@ -25,7 +25,7 @@ class MailController extends Controller
 
             if (empty($getData)) throw new \Exception('Email tidak ditemukan', 400);
 
-            $expiresIn = 5;
+            $expiresIn = 2;
 
             $verify = [
                 'verify_code' => GenerateRandomNumber(),
