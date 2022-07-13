@@ -35,17 +35,17 @@ class LoginActivity : AppCompatActivity() {
         setupView()
         formValidation()
 
-        binding.signupText.setOnClickListener {
+        binding.signUpText.setOnClickListener {
             Intent(this, RegisterActivity::class.java).also {
                 startActivity(it)
             }
         }
 
-        binding.loginButton.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             if (binding.userNameEditText.text!!.length < 6) {
-                binding.txtUsernameEmpty.visibility = View.VISIBLE
+                Toast.makeText(this, "Username must not Empty !", Toast.LENGTH_SHORT).show()
             } else if (binding.passwordEditText.text!!.length < 8) {
-                binding.txtPasswordEmpty.visibility = View.VISIBLE
+                Toast.makeText(this, "password must not Empty !", Toast.LENGTH_SHORT).show()
             } else {
                 loginProcess()
             }
@@ -55,47 +55,47 @@ class LoginActivity : AppCompatActivity() {
     @SuppressLint("CheckResult")
     private fun formValidation() {
 
-        val usernameStream = binding.userNameEditText.let {
-            RxTextView.textChanges(it)
-                .skipInitialValue()
-                .map { username ->
-                    username.length !in 11 downTo 5
-                }
-        }
-
-        usernameStream?.subscribe {
-            showUserNameAlert(it)
-        }
-
-        val passwordStream = binding.passwordEditText.let {
-            RxTextView.textChanges(it)
-                .skipInitialValue()
-                .map { password ->
-                    password.length < 8
-                }
-        }
-
-        passwordStream?.subscribe {
-            showPasswordMinimalAlert(it)
-        }
+//        val usernameStream = binding.userNameEditText.let {
+//            RxTextView.textChanges(it)
+//                .skipInitialValue()
+//                .map { username ->
+//                    username.length !in 11 downTo 5
+//                }
+//        }
+//
+//        usernameStream?.subscribe {
+//            showUserNameAlert(it)
+//        }
+//
+//        val passwordStream = binding.passwordEditText.let {
+//            RxTextView.textChanges(it)
+//                .skipInitialValue()
+//                .map { password ->
+//                    password.length < 8
+//                }
+//        }
+//
+//        passwordStream?.subscribe {
+//            showPasswordMinimalAlert(it)
+//        }
 
     }
 
-    private fun showPasswordMinimalAlert(it: Boolean?) {
-        if (it == true) {
-            binding.txtPasswordEmpty.visibility = View.VISIBLE
-        } else {
-            binding.txtPasswordEmpty.visibility = View.INVISIBLE
-        }
-    }
-
-    private fun showUserNameAlert(it: Boolean?) {
-        if (it == true) {
-            binding.txtUsernameEmpty.visibility = View.VISIBLE
-        } else {
-            binding.txtUsernameEmpty.visibility = View.INVISIBLE
-        }
-    }
+//    private fun showPasswordMinimalAlert(it: Boolean?) {
+//        if (it == true) {
+//            binding.txtPasswordEmpty.visibility = View.VISIBLE
+//        } else {
+//            binding.txtPasswordEmpty.visibility = View.INVISIBLE
+//        }
+//    }
+//
+//    private fun showUserNameAlert(it: Boolean?) {
+//        if (it == true) {
+//            binding.txtUsernameEmpty.visibility = View.VISIBLE
+//        } else {
+//            binding.txtUsernameEmpty.visibility = View.INVISIBLE
+//        }
+//    }
 
 
     private fun loginProcess() {
