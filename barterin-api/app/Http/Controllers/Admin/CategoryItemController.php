@@ -15,13 +15,13 @@ class CategoryItemController extends Controller
     {
         $this->middleware('auth', ['except' => ['list']]);
         $this->validateRules = [
-            "name" => "required|string|min:3|max:255|unique:category_item|regex:/^[a-zA-Z0-9 ]+$/u",
+            "name" => "required|string|min:3|max:255|unique:category_item|regex:/^[a-zA-Z0-9& ]+$/u",
         ];
         $this->validateMessage = [
             'required' => 'kolom ini harus diisi',
             'min' => 'kategori setidaknya harus memiliki :min karakter',
             'max' => 'kategori tidak boleh lebih dari :max karakter',
-            'regex' => 'kategori hanya boleh diisi oleh alfabet dan angka',
+            'regex' => 'kategori hanya boleh diisi oleh alfabet, angka dan simbol &',
             'unique' => 'Kategori sudah ada'
         ];
         $this->userData = json_decode(strval(auth()->user()));
