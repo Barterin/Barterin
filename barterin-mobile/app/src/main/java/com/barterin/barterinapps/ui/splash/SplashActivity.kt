@@ -31,6 +31,20 @@ class SplashActivity : AppCompatActivity() {
 
         checkStateUser()
         setupView()
+
+        binding.btnNext.setOnClickListener {
+            sharedpref = SharedPreferenceClass(this)
+
+            if (sharedpref.getVerifiedEmail() == "true" && sharedpref.checkState()) {
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+
+        }
+
     }
 
     private fun checkStateUser() {
