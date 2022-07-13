@@ -15,6 +15,8 @@ class Address extends Model
         "label",
         "kota_kecamatan",
         "alamat_lengkap",
-        "kode_pos"
+        "kode_pos",
+        "longitude",
+        "latitude"
     ];
 }
