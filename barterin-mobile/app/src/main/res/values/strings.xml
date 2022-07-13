@@ -29,7 +29,7 @@
     <string name="text_email_empty_alert">Email Format Invalid</string>
     <string name="description_for_splashscreen">Description for splash screen</string>
     <string name="text_email_verification">Email Verification</string>
-    <string name="text_send_email">We have sent code to your email:</string>
+    <string name="text_send_email">We sent your code to </string>
     <string name="text_don_t_receive_code">Don\'t receive code ?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -47,4 +47,11 @@
     <string name="text_gender">Gender</string>
     <string name="text_born">Born</string>
     <string name="text_edit_your_profile">Edit Your Profile</string>
+    <string name="text_expired">This code will expired in</string>
+    <string name="text_has_expired">This code has expired, please resend it</string>
+    <string name="text_code_not_expired">Your code has not expired</string>
+    <string name="text_code_resend">Your code has been resent</string>
+    <string name="text_otp_verification">OTP Verification</string>
+    <string name="text_continue">Continue</string>
+    <string name="text_resend_otp_code">Resend OTP Code</string>
 </resources>

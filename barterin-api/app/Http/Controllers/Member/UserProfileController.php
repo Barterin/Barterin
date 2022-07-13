@@ -82,11 +82,12 @@ class UserProfileController extends Controller
             $validator = Validator::make(
                 $request->all(),
                 [
-                    "photo" => "required|image"
+                    "photo" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:2048"
                 ],
                 [
                     "required" => "Tidak ada file yang dipilih",
-                    "image" => "Format gambar tidak valid"
+                    "image" => "Format gambar tidak valid",
+                    "max" => "Ukuran gambar tidak boleh lebih dari 2 MB"
                 ]
             );
 

@@ -59,9 +59,27 @@ $router->group(['prefix' => 'member', 'middleware' => 'auth'], function ($router
         $router->post('update', 'Member\UserProfileController@update');
         $router->post('upload-photo', 'Member\UserProfileController@uploadPhotoProfile');
     });
+    $router->group(['prefix' => 'items'], function ($router) {
+        $router->get('list', 'Member\BarterItemsController@list');
+        $router->get('id/{itemsId}', 'Member\BarterItemsController@list');
+        $router->post('store', 'Member\BarterItemsController@store');
+        $router->post('update/{itemsId}', 'Member\BarterItemsController@update');
+        $router->delete('delete/{itemsId}', 'Member\BarterItemsController@delete');
+    });
+    $router->group(['prefix' => 'cart'], function ($router) {
+        $router->post('store', 'Member\CartController@store');
+        $router->get('list', 'Member\CartController@list');
+        $router->delete('delete/{cartId}', 'Member\CartController@delete');
+    });
 });
 
 // Public router
+
+$router->group(['prefix' => 'public'], function ($router) {
+    $router->get('items/barter', 'PublicApi\HomeApiController@itemListBarter');
+    $router->get('items/donate', 'PublicApi\HomeApiController@itemListDonate');
+});
+
 $router->group(['prefix' => 'files'], function ($router) {
     $router->get('profile/{imageFile}', 'FileRequest@profile');
 });
