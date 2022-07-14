@@ -37,8 +37,8 @@ class HomeApiController extends Controller
                 (SELECT count(*) FROM offer WHERE item_id = barter_items.id) bidder
             '))
             ->orderBy("id", "desc")
-            ->join('category_item as cat', 'cat.id', '=', 'barter_items.category_id')
             ->join('type_item as type', 'type.id', '=', 'barter_items.type_id')
+            ->join('category_item as cat', 'cat.id', '=', 'type.category_id')
             ->join('users as u', 'u.id', '=', 'barter_items.user_id')
             ->join('profiles as prof', 'prof.user_id', '=', 'barter_items.user_id')
             ->join('address as add', 'add.id', '=', 'barter_items.address_id');
