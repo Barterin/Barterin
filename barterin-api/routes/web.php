@@ -71,6 +71,12 @@ $router->group(['prefix' => 'member', 'middleware' => 'auth'], function ($router
         $router->get('list', 'Member\CartController@list');
         $router->delete('delete/{cartId}', 'Member\CartController@delete');
     });
+    $router->group(['prefix' => 'offer'], function ($router) {
+        $router->get('list', 'Member\OfferController@list');
+        $router->get('list/{offerId}', 'Member\OfferController@listBidder');
+        $router->post('store', 'Member\OfferController@store');
+        $router->post('accept', 'Member\OfferController@acceptOffer');
+    });
 });
 
 // Public router
