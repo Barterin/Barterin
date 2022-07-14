@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * Router Setup
  * --------------------------------------------------------------------
  */
-$routes->setDefaultNamespace('App\Controllers');
+$routes->setDefaultNamespace('App\Controllers\Frontend');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
@@ -33,6 +33,10 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->get('/', 'Home::index');
+
+$routes->group('/', ['namespace' => 'App\Controllers\Frontend'], function ($routes) {
+    $routes->get('home', 'HomeController::index');
+});
 
 $routes->group('/auth', ['namespace' => 'App\Controllers\Frontend'], function ($routes) {
     $routes->get('login', 'AuthController::login');
