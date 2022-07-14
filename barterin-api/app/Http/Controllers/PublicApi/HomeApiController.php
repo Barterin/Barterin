@@ -167,22 +167,6 @@ class HomeApiController extends Controller
                 $user = TableUsers::select('users.id', 'fullname', 'phone')->where(['users.id' => $rows->user_id])
                     ->join('profiles', 'users.id', '=', 'profiles.user_id')
                     ->get()->first();
-                // $row = [];
-                // $row["id"] = Encrypt($rows->id);
-                // $row['user'] = [
-                //     "id" => Encrypt($user->id),
-                //     "name" => $user->fullname,
-                //     "phone" => $user->phone
-                // ];
-                // $row['image'] = $imageItems;
-                // $row["name"] = $rows->name;
-                // $row["description"] = $rows->description;
-                // $row['used_time'] = $rows->used_time . " " . $dateUnit[$rows->date_unit];
-                // // $row['purchase_price'] = $rows->purchase_price;
-                // // $row['item_for'] = $rows->item_for;
-                // $row['address_item'] = $address->alamat_lengkap;
-                // $row['address_region'] = $address->kota_kecamatan;
-                // $itemsData[] = $row;
                 $row = [];
                 $row['user'] = [
                     "id" => Encrypt($rows->user_id),
