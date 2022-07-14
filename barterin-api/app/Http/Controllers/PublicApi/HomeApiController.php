@@ -33,7 +33,8 @@ class HomeApiController extends Controller
                 add.alamat_lengkap address_full,
                 add.kota_kecamatan address_region,
                 add.longitude address_longitude,
-                add.latitude address_latitude
+                add.latitude address_latitude,
+                (SELECT count(*) FROM offer WHERE item_id = barter_items.id) bidder
             '))
             ->orderBy("id", "desc")
             ->join('category_item as cat', 'cat.id', '=', 'barter_items.category_id')
@@ -114,6 +115,7 @@ class HomeApiController extends Controller
                     "address_region" => $rows->address_region,
                     "address_longitude" => $rows->address_longitude,
                     "address_latitude" => $rows->address_latitude,
+                    "bidder" => $rows->bidder
                 ];
                 $itemsData[] = $row;
             }
