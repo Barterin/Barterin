@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Categoryitem as Table;
+use App\Models\CategoryItem as Table;
 
 class CategoryItemController extends Controller
 {
