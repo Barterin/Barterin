@@ -1,63 +1,66 @@
-
-header{
+header {
     display: initial;
 }
 
 .navbar {
     overflow: hidden;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-.barterin-logo{
+.barterin-logo {
     width: 150px;
     height: 50px;
 }
 
 .search-box {
     /* This bit sets up the horizontal layout */
-    display:flex;
-    flex-direction:row;
-    
+    display: flex;
+    flex-direction: row;
+
     /* This bit draws the box around it */
-    border:none !important;
+    border: none !important;
     background-color: white;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     /* I've used padding so you can see the edges of the elements. */
-    padding:5px;
+    padding: 5px;
 }
-  
+
 .search-field {
     /* Tell the input to use all the available space */
-    flex-grow:2;
+    flex-grow: 2;
     width: 400px;
     /* And hide the input's outline, so the form looks like the outline */
-    border:none !important;
+    border: none !important;
     background-color: white;
-  }
-  
+}
+
 .search-field:focus {
     /* removing the input focus blue box. Put this on the form if you like. */
     outline: none;
-  }
-  
-.head-button {
-    /* Just a little styling to make it pretty */
-    border:none !important;
-    border-radius: 5px;
-    background-color:#0034F0;
-    color:white;
 }
 
-.head-button:hover{
+.head-button {
+    /* Just a little styling to make it pretty */
+    border: none !important;
+    border-radius: 5px;
+    background-color: #0034f0;
+    color: white;
+}
+
+.head-button:hover {
     background-color: #002ac2;
 }
 
 .head-profile:hover {
-    background-color: #F3F3F3;
+    background-color: #f3f3f3;
 }
 
-.profile-picture{
+.profile-picture {
     width: 30px;
     height: 30px;
+}
+
+.dropdown-menu {
+    z-index: 9999;
 }
