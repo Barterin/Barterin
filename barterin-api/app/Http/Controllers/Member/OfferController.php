@@ -159,6 +159,7 @@ class OfferController extends Controller
 
             if (!$barang) throw new \Exception('Barang tidak tersedia', 404);
             if (!$barangPenawar) throw new \Exception('Barang Anda sudah tidak tersedia', 404);
+            if ($barang->user_id == $this->userData->id) throw new \Exception('Tidak dapat membuat penawaran ke barang sendiri', 400);
             if ($barangPenawar->user_id != $userData->id) throw new \Exception('Bukan barang Anda', 401);
             if ($barangPenawar->item_for != "0") throw new \Exception('Barang yang Anda masukan bukan barang untuk barter', 400);
 
