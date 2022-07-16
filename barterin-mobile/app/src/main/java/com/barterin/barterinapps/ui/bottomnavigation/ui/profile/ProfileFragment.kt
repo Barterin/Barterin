@@ -59,7 +59,7 @@ class ProfileFragment : Fragment() {
             .placeholder(R.drawable.placeholder)
             .into(binding.imgProfile)
 
-        binding.txtName.text = sharedpref.getName()
+        binding.txtName.text = sharedpref.getToken()
         binding.txtUsername.text = sharedpref.getUsername()
         binding.txtEmail.text = sharedpref.getEmail()
 
