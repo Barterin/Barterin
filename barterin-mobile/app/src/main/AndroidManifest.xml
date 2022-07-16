@@ -37,6 +37,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BarterinApps">
         <activity
+            android:name=".AddPhotoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.additem.AddItemActivity"
             android:exported="true" />
         <activity
