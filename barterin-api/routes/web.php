@@ -77,6 +77,13 @@ $router->group(['prefix' => 'member', 'middleware' => 'auth'], function ($router
         $router->post('store', 'Member\OfferController@store');
         $router->post('accept', 'Member\OfferController@acceptOffer');
     });
+
+    $router->group(['prefix' => 'offer-donate'], function ($router) {
+        $router->get('list', 'Member\OfferDonateController@list');
+        $router->get('list/{offerId}', 'Member\OfferDonateController@listBidder');
+        $router->post('store', 'Member\OfferDonateController@store');
+        $router->post('accept', 'Member\OfferDonateController@acceptOffer');
+    });
 });
 
 // Public router
