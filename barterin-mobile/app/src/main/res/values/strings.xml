@@ -55,4 +55,11 @@
     <string name="text_continue">Continue</string>
     <string name="text_resend_otp_code">Resend OTP Code</string>
     <string name="text_welcome_back">Welcome Back</string>
+    <string name="text_categories">Categories</string>
+    <string name="upload_item">Upload Items</string>
+    <string name="text_type">Item Type</string>
+    <string name="text_item_name">Item Name</string>
+    <string name="text_item_description">Item Description</string>
+    <string name="text_estimated">Estimated Length of Use</string>
+    <string name="text_price_range">Price Range</string>
 </resources>
