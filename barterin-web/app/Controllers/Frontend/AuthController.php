@@ -80,6 +80,7 @@ class AuthController extends BaseController
 
             curl_close($curl);
             // echo $response;
+            // exit;
             $responseData = json_decode($response);
             session()->setFlashdata("message", $responseData->message);
             header("refresh:1;url=" . base_url("auth/email-verification"));

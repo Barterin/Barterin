@@ -81,7 +81,7 @@ $(document).ready(function () {
             if (e.statusCode == 200) {
                 let html = "";
                 const data = e.data;
-                // console.log(data);
+                //console.log(data);
                 data.forEach((element) => {
                     const image = element.item.image;
                     const item = element.item;
