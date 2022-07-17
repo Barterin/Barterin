@@ -23,12 +23,12 @@
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="#">Setting</a></li>
                     <li><a class="dropdown-item" href="#">Transaksi</a></li>
-                    <li><a class="dropdown-item" href="<?= base_url('auth/logout') ?>">Logout</a></li>
+                    <li><a class="dropdown-item" href="#" id="btnLogout">Logout</a></li>
                 </ul>
             </div>   
         </div>
     </nav>
 </header>
 
-<loadjs-head></loadjs-head>
-<loadcss-head></loadcss-head>
+<loadjs-navbar></loadjs-navbar>
+<loadcss-navbar></loadcss-navbar>
