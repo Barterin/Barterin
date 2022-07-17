@@ -91,6 +91,8 @@ $router->group(['prefix' => 'member', 'middleware' => 'auth'], function ($router
 $router->group(['prefix' => 'public'], function ($router) {
     $router->get('items/barter', 'PublicApi\HomeApiController@itemListBarter');
     $router->get('items/donate', 'PublicApi\HomeApiController@itemListDonate');
+    $router->get('category', 'PublicApi\HomeApiController@category');
+    $router->get('type', 'PublicApi\HomeApiController@type');
 });
 
 $router->group(['prefix' => 'files'], function ($router) {

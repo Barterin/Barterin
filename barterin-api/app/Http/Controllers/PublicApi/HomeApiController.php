@@ -12,6 +12,8 @@ use App\Models\BarterItems as ItemTable;
 use App\Models\UploadImageBarang as ImageUpload;
 use App\Models\Address as TableAddress;
 use App\Models\User as TableUsers;
+use App\Models\CategoryItem as TableCatetgoryItems;
+use App\Models\TypeItem as TableTypeItems;
 
 class HomeApiController extends Controller
 {
@@ -207,6 +209,86 @@ class HomeApiController extends Controller
             $response = [
                 'statusCode' => GetStatusCode($error),
                 'message' => $error->getMessage(),
+            ];
+        } finally {
+            return response()->json(
+                $response,
+                $response['statusCode']
+            );
+        }
+    }
+
+    public function category(Request $request)
+    {
+        try {
+
+            $data = TableCatetgoryItems::orderBy('name', 'asc');
+
+            if ($request->slug != null)
+                $data->where('slug', $request->slug);
+
+            if ($request->search != null)
+                $data->where('name', 'like', '%' . $request->search . '%');
+
+            $catData = [];
+            foreach ($data->get() as $key) {
+                $row = [];
+                $row['id'] = Encrypt($key->id);
+                $row['name'] = $key->name;
+                $row['slug'] = $key->slug;
+                $catData[] = $row;
+            }
+
+            $response = [
+                'statusCode' => 200,
+                'data' => $catData
+            ];
+        } catch (\Throwable | \Exception $error) {
+            $response = [
+                'statusCode' => GetStatusCode($error),
+                'message' => $error->getMessage()
+            ];
+        } finally {
+            return response()->json(
+                $response,
+                $response['statusCode']
+            );
+        }
+    }
+
+    public function type(Request $request)
+    {
+        try {
+
+            $data = TableTypeItems::orderBy('name', 'asc');
+
+            if ($request->slug != null)
+                $data->where('slug', $request->slug);
+
+            if ($request->search != null)
+                $data->where('name', 'like', '%' . $request->search . '%');
+
+            if ($request->categoryId != null)
+                $data->where('category_id', Decrypt($request->categoryId));
+
+            $catData = [];
+            foreach ($data->get() as $key) {
+                $row = [];
+                $row['id'] = Encrypt($key->id);
+                $row['categoryId'] = Encrypt($key->category_id);
+                $row['name'] = $key->name;
+                $row['slug'] = $key->slug;
+                $catData[] = $row;
+            }
+
+            $response = [
+                'statusCode' => 200,
+                'data' => $catData
+            ];
+        } catch (\Throwable | \Exception $error) {
+            $response = [
+                'statusCode' => GetStatusCode($error),
+                'message' => $error->getMessage()
             ];
         } finally {
             return response()->json(
