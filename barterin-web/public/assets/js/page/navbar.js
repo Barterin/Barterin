@@ -11,7 +11,7 @@ $(document).ready(function () {
                 $("#login-section").html(`
                     <div class="btn dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="../../assets/image/profile.png" class="rounded-circle profile-picture">
+                        <img src="../../assets/image/profile.png" class="rounded-circle head-profile-picture">
                         <span class="fw-bold">${e.data.fullname}</span>
                     </div>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
@@ -50,7 +50,7 @@ $(document).ready(function () {
             console.log(e.message);
             if (response.statusCode == 401) {
                 $("#login-section").html(`
-                    <a href="${baseUrl}/auth/login" class="internal">Login</a>
+                    <a href="${baseUrl}/auth/login" class="btn btn-primary">Login</a>
                 `);
             }
         },
