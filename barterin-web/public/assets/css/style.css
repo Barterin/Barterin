@@ -1,7 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@800;900&display=swap");
+
 .loadingGan .bar {
-  background: #0031F0;
-  /* background: #38f; */
-  border-radius: 4px;
-  box-shadow: 0 0 10px #59d;
-  /* margin: 0 auto; */
+    background: #0031f0;
+    /* background: #38f; */
+    border-radius: 4px;
+    box-shadow: 0 0 10px #59d;
+    /* margin: 0 auto; */
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+main {
+    margin: auto;
 }

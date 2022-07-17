@@ -276,7 +276,10 @@ loadFiles(
         `${baseUrl}/assets/slick/slick/slick.css`,
         `${baseUrl}/assets/slick/slick/slick-theme.css`,
         `${baseUrl}/assets/slick/slick/slick.js`,
+        `${baseUrl}/assets/css/page/navbar.css`,
+        `${baseUrl}/assets/js/page/navbar.js`,
         `${socketUrl}/socket.io/socket.io.js`,
+
         // `/autosize.min.js`,
     ],
     true

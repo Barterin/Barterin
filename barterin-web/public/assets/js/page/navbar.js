@@ -13,7 +13,7 @@ $(document).ready(function () {
                     <div class="btn dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <img src="${e.data.profile_picture == "-" ? "../../assets/image/profile.png" : `${apiUrl}/uploads/images/profiles/${e.data.profile_picture}`}" alt="" class="rounded-circle head-profile-picture" />
-                        <span class="fw-bold">${firstName[0]}</span>
+                        <span class="nav-full-name">${firstName[0]}</span>
                     </div>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
                         <li><a class="dropdown-item internal" href="${baseUrl}/profile/biodata">Profile</a></li>
@@ -34,7 +34,7 @@ $(document).ready(function () {
                         },
                         dataType: "JSON",
                         success: function (e) {
-                            e.statusCode == 200 && location.reload();
+                            e.statusCode == 200 && loadPage(baseUrl);
                         },
                         error: function (e) {
                             const response = e.responseJSON;
@@ -49,7 +49,6 @@ $(document).ready(function () {
         },
         error: function (e) {
             const response = e.responseJSON;
-            console.log(e.message);
             if (response.statusCode == 401) {
                 $("#login-section").html(`
                     <a href="${baseUrl}/auth/login" class="btn btn-primary">Login</a>
