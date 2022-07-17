@@ -15,7 +15,7 @@ $(document).ready(function () {
                         <span class="fw-bold">${e.data.fullname}</span>
                     </div>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item internal" href="${baseUrl}/profile/biodata">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Setting</a></li>
                         <li><a class="dropdown-item" href="#">Transaksi</a></li>
                         <li><a class="dropdown-item" href="#" id="btnLogout">Logout</a></li>
@@ -54,5 +54,7 @@ $(document).ready(function () {
                 `);
             }
         },
+    }).done(function () {
+        initahref();
     });
 });
