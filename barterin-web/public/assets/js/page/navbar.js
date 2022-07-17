@@ -32,7 +32,7 @@ $(document).ready(function () {
                         },
                         dataType: "JSON",
                         success: function (e) {
-                            e.statusCode == 200 && location.reload();
+                            e.statusCode == 200 && loadPage(baseUrl);
                         },
                         error: function (e) {
                             const response = e.responseJSON;
@@ -47,7 +47,6 @@ $(document).ready(function () {
         },
         error: function (e) {
             const response = e.responseJSON;
-            console.log(e.message);
             if (response.statusCode == 401) {
                 $("#login-section").html(`
                     <a href="${baseUrl}/auth/login" class="btn btn-primary">Login</a>
