@@ -1,9 +1,13 @@
+/*---------- IMPORT ----------*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@800;900&display=swap');
+
+
+/*------------ STYLE -----------*/
 header {
     display: initial;
 }
 
 .navbar {
-    overflow: hidden;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -61,6 +65,3 @@ header {
     height: 30px;
 }
 
-.dropdown-menu {
-    z-index: 9999;
-}

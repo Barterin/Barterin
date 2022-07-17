@@ -1,5 +1,5 @@
 <?= $this->include('frontend/layouts/head'); ?>
-<!-- <?= $this->include('frontend/layouts/nav'); ?> -->
+<?= $this->include('frontend/layouts/navbar'); ?>
 
 <main>
     <?= $this->renderSection('content'); ?>

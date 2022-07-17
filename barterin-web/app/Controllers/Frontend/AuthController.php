@@ -15,7 +15,7 @@ class AuthController extends BaseController
             $uri = service('uri');
             $response = json_decode(ApiPost("/auth/user-profile"));
             if ($response->statusCode == 200 && $uri->getSegment("2") != 'logout' && $uri->getSegment(2) != 'email-verification') {
-                header("refresh:0,url=" . base_url());
+                header("refresh:0,url=" . base_url("home"));
             }
         }
     }
@@ -84,7 +84,7 @@ class AuthController extends BaseController
             session()->setFlashdata("message", $responseData->message);
             header("refresh:1;url=" . base_url("auth/email-verification"));
         } else {
-            header("refresh:1;url=" . base_url());
+            header("refresh:1;url=" . base_url("home"));
         }
     }
 }

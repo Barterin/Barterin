@@ -48,19 +48,16 @@
     </div>
 </div>
 <div class="container-lg mt-3">
-    <h1>Barang Donasi</h1>
-    <div class="card item-card" aria-hidden="true" style="width: 10rem">
-        <img src="../../assets/image/ps-joystick.jpg" class="card-img-top" alt="">
-        <div class="card-body">
-            <h5 class="card-title placeholder-glow">
-                <span class="placeholder col-6 bg-dark"></span>
-                Item Name
-            </h5>
-            <p class="card-text placeholder-glow">
-                <i class="placeholder col-7 bi bi-geo-alt-fill"></i>
-                <span class="placeholder col-7 bg-dark"></span>
-            </p>
-        </div>
+    <div class="row">
+        <h1 class="col m-auto">Barang Donasi</h1>
+        <a href="#" class="col text-decoration-none d-flex align-items-center m-auto justify-content-end">
+            See More
+            <i class="bi bi-arrow-right-short"></i>
+        </a>
+    </div>
+    <div class="row mt-3 donasi-slider" id="donasiSliderItems">
+
+
     </div>
 </div>
 </body>
