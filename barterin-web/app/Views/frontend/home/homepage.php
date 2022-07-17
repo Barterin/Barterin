@@ -36,7 +36,7 @@
 </div>
 <div class="container-lg mt-3">
     <div class="row">
-        <h1 class="col m-auto">Barang Barter</h1>
+        <h1 class="col m-auto fw-bold">Barang Barter</h1>
         <a href="#" class="col text-decoration-none d-flex align-items-center m-auto justify-content-end">
             See More
             <i class="bi bi-arrow-right-short"></i>
@@ -49,7 +49,7 @@
 </div>
 <div class="container-lg mt-3">
     <div class="row">
-        <h1 class="col m-auto">Barang Donasi</h1>
+        <h1 class="col m-auto fw-bold">Barang Donasi</h1>
         <a href="#" class="col text-decoration-none d-flex align-items-center m-auto justify-content-end">
             See More
             <i class="bi bi-arrow-right-short"></i>
@@ -64,5 +64,6 @@
 
 <loadjs-homepage></loadjs-homepage>
 <loadcss-homepage></loadcss-homepage>
+<loadcss-main></loadcss-main>
 
 <?= $this->endSection(); ?>

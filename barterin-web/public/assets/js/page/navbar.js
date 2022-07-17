@@ -8,11 +8,12 @@ $(document).ready(function () {
         dataType: "JSON",
         success: function (e) {
             if (e.statusCode == 200) {
+                const firstName = e.data.fullname.split(" ");
                 $("#login-section").html(`
                     <div class="btn dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="../../assets/image/profile.png" class="rounded-circle head-profile-picture">
-                        <span class="fw-bold">${e.data.fullname}</span>
+                        <img src="${e.data.profile_picture == "-" ? "../../assets/image/profile.png" : `${apiUrl}/uploads/images/profiles/${e.data.profile_picture}`}" alt="" class="rounded-circle head-profile-picture" />
+                        <span class="fw-bold">${firstName[0]}</span>
                     </div>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
                         <li><a class="dropdown-item internal" href="${baseUrl}/profile/biodata">Profile</a></li>
@@ -21,6 +22,7 @@ $(document).ready(function () {
                         <li><a class="dropdown-item" href="#" id="btnLogout">Logout</a></li>
                     </ul>
                 `);
+
                 // -------------- LOGOUT --------------- //
                 $("#btnLogout").click((e) => {
                     e.preventDefault();
