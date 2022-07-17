@@ -1,7 +1,7 @@
 <?= $this->include('frontend/layouts/head'); ?>
-<?= $this->include('frontend/layouts/navbar'); ?>
 
 <main>
+    <?= $this->include('frontend/layouts/navbar'); ?>
     <?= $this->renderSection('content'); ?>
 </main>
 
