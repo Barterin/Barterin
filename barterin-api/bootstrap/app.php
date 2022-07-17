@@ -82,12 +82,13 @@ $app->configure('mail');
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-$app->middleware([
-    App\Http\Middleware\CorsMiddleware::class
-]);
+// $app->middleware([
+
+// ]);
 
 $app->middleware([
     Fruitcake\Cors\HandleCors::class,
+    App\Http\Middleware\CorsMiddleware::class
 ]);
 
 $app->routeMiddleware([
