@@ -126,3 +126,23 @@ data class EditProfileResponse(
     @field:SerializedName("message")
     val message: String,
 )
+
+data class Categories(
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("data")
+    val data: List<CategoriesResult>,
+)
+
+@Parcelize
+data class CategoriesResult(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("slug")
+    val slug: String,
+) : Parcelable

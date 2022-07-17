@@ -41,7 +41,7 @@ interface ApiService {
     ): SendVerificationResponse
 
     @FormUrlEncoded
-    @POST("address/store")
+    @POST("member/address/store")
     suspend fun addAddress(
         @Header("Authorization") token: String,
         @Field("label") label: String,
@@ -52,21 +52,20 @@ interface ApiService {
         @Field("kode_pos") kode_pos: String,
     ): AddAddressResponse
 
-    @GET("address/list")
+    @GET("member/address/list")
     suspend fun getAddressList(
         @Header("Authorization") token: String,
     ): AddressResponse
 
-    @FormUrlEncoded
-    @POST("address/delete")
+    @DELETE("member/address/delete/{id}")
     suspend fun deleteAddress(
         @Header("Authorization") token: String,
-        @Field("id") id: String
+        @Path("id") id: String
     ): DeleteAddressResponse
 
 
     @FormUrlEncoded
-    @POST("address/update/{id}")
+    @POST("member/address/update/{id}")
     suspend fun updateAddress(
         @Path("id") id: String,
         @Header("Authorization") token: String,
@@ -94,5 +93,11 @@ interface ApiService {
         @Field("born") born: String,
         @Field("gender") gender: String
     ): EditProfileResponse
+
+    @GET("admin/category/list")
+    suspend fun getCategoryList(
+        @Header("Authorization") token: String,
+    ): Categories
+
 
 }

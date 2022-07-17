@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import com.barterin.barterinapps.data.local.entity.AddressEntity
-import com.barterin.barterinapps.data.local.room.BarterinDao
+//import com.barterin.barterinapps.data.local.entity.AddressEntity
+//import com.barterin.barterinapps.data.local.room.BarterinDao
 import com.barterin.barterinapps.data.remote.response.*
 import com.barterin.barterinapps.data.remote.retrofit.ApiService
 import com.barterin.barterinapps.utils.AppExecutors
@@ -15,7 +15,7 @@ import okhttp3.RequestBody
 
 class BarterinRepository private constructor(
     private val apiService: ApiService,
-    private val barterinDao: BarterinDao
+//    private val barterinDao: BarterinDao
 ) {
 
     fun login(
@@ -257,6 +257,24 @@ class BarterinRepository private constructor(
         }
     }
 
+    fun getCategory(token: String): LiveData<Result<List<CategoriesResult>>> = liveData {
+        emit(Result.Loading)
+
+        try {
+            val response = apiService.getCategoryList("Bearer $token")
+
+            if (response.statusCode == 200) {
+                Log.d("error response", "true: Berhasil ")
+                emit(Result.Success(response.data))
+            } else {
+                Log.d("error response", "false: Gagal")
+            }
+        } catch (e: Exception) {
+            Log.d("BarterinRepository", "getcategory: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
     fun deleteAddress(token: String, id: String): LiveData<Result<DeleteAddressResponse>> = liveData {
         emit(Result.Loading)
         try {
@@ -314,10 +332,10 @@ class BarterinRepository private constructor(
         private var instance: BarterinRepository? = null
         fun getInstance(
             apiService: ApiService,
-            storyDao: BarterinDao
+//            storyDao: BarterinDao
         ): BarterinRepository =
             instance ?: synchronized(this) {
-                instance ?: BarterinRepository(apiService, storyDao)
+                instance ?: BarterinRepository(apiService)
             }.also { instance = it }
     }
 
