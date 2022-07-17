@@ -12,7 +12,7 @@ $(document).ready(function () {
                     <div class="btn dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <img src="../../assets/image/profile.png" class="rounded-circle head-profile-picture">
-                        <span class="fw-bold">${e.data.fullname}</span>
+                        <span class="nav-full-name">${e.data.fullname}</span>
                     </div>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
                         <li><a class="dropdown-item internal" href="${baseUrl}/profile/biodata">Profile</a></li>
