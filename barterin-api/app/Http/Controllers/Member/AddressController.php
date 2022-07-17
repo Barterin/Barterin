@@ -44,6 +44,12 @@ class AddressController extends Controller
             if ($request->addressId != null)
                 $data->where('id', Decrypt($request->addressId));
 
+            if ($request->search != null) {
+                $data->where('label', 'like', '%' . $request->search . '%');
+                $data->orWhere('alamat_lengkap', 'like', '%' . $request->search . '%');
+                $data->orWhere('kota_kecamatan', 'like', '%' . $request->search . '%');
+            }
+
             $addressData = [];
 
             foreach ($data->get() as $rows) {

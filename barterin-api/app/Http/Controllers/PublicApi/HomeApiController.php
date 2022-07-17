@@ -12,6 +12,8 @@ use App\Models\BarterItems as ItemTable;
 use App\Models\UploadImageBarang as ImageUpload;
 use App\Models\Address as TableAddress;
 use App\Models\User as TableUsers;
+use App\Models\CategoryItem as TableCatetgoryItems;
+use App\Models\TypeItem as TableTypeItems;
 
 class HomeApiController extends Controller
 {
@@ -33,11 +35,12 @@ class HomeApiController extends Controller
                 add.alamat_lengkap address_full,
                 add.kota_kecamatan address_region,
                 add.longitude address_longitude,
-                add.latitude address_latitude
+                add.latitude address_latitude,
+                (SELECT count(*) FROM offer WHERE item_id = barter_items.id) bidder
             '))
             ->orderBy("id", "desc")
-            ->join('category_item as cat', 'cat.id', '=', 'barter_items.category_id')
             ->join('type_item as type', 'type.id', '=', 'barter_items.type_id')
+            ->join('category_item as cat', 'cat.id', '=', 'type.category_id')
             ->join('users as u', 'u.id', '=', 'barter_items.user_id')
             ->join('profiles as prof', 'prof.user_id', '=', 'barter_items.user_id')
             ->join('address as add', 'add.id', '=', 'barter_items.address_id');
@@ -114,6 +117,7 @@ class HomeApiController extends Controller
                     "address_region" => $rows->address_region,
                     "address_longitude" => $rows->address_longitude,
                     "address_latitude" => $rows->address_latitude,
+                    "bidder" => $rows->bidder
                 ];
                 $itemsData[] = $row;
             }
@@ -205,6 +209,86 @@ class HomeApiController extends Controller
             $response = [
                 'statusCode' => GetStatusCode($error),
                 'message' => $error->getMessage(),
+            ];
+        } finally {
+            return response()->json(
+                $response,
+                $response['statusCode']
+            );
+        }
+    }
+
+    public function category(Request $request)
+    {
+        try {
+
+            $data = TableCatetgoryItems::orderBy('name', 'asc');
+
+            if ($request->slug != null)
+                $data->where('slug', $request->slug);
+
+            if ($request->search != null)
+                $data->where('name', 'like', '%' . $request->search . '%');
+
+            $catData = [];
+            foreach ($data->get() as $key) {
+                $row = [];
+                $row['id'] = Encrypt($key->id);
+                $row['name'] = $key->name;
+                $row['slug'] = $key->slug;
+                $catData[] = $row;
+            }
+
+            $response = [
+                'statusCode' => 200,
+                'data' => $catData
+            ];
+        } catch (\Throwable | \Exception $error) {
+            $response = [
+                'statusCode' => GetStatusCode($error),
+                'message' => $error->getMessage()
+            ];
+        } finally {
+            return response()->json(
+                $response,
+                $response['statusCode']
+            );
+        }
+    }
+
+    public function type(Request $request)
+    {
+        try {
+
+            $data = TableTypeItems::orderBy('name', 'asc');
+
+            if ($request->slug != null)
+                $data->where('slug', $request->slug);
+
+            if ($request->search != null)
+                $data->where('name', 'like', '%' . $request->search . '%');
+
+            if ($request->categoryId != null)
+                $data->where('category_id', Decrypt($request->categoryId));
+
+            $catData = [];
+            foreach ($data->get() as $key) {
+                $row = [];
+                $row['id'] = Encrypt($key->id);
+                $row['categoryId'] = Encrypt($key->category_id);
+                $row['name'] = $key->name;
+                $row['slug'] = $key->slug;
+                $catData[] = $row;
+            }
+
+            $response = [
+                'statusCode' => 200,
+                'data' => $catData
+            ];
+        } catch (\Throwable | \Exception $error) {
+            $response = [
+                'statusCode' => GetStatusCode($error),
+                'message' => $error->getMessage()
             ];
         } finally {
             return response()->json(

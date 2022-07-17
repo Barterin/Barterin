@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.barterin.barterinapps.data.BarterinRepository
 import com.barterin.barterinapps.di.Injection
 import com.barterin.barterinapps.ui.addaddress.AddAddressViewModel
+import com.barterin.barterinapps.ui.additem.AddItemViewModel
 import com.barterin.barterinapps.ui.addresslist.AddressViewModel
 import com.barterin.barterinapps.ui.emailverification.EmailVerificationActivity
 import com.barterin.barterinapps.ui.emailverification.EmailVerificationViewModel
@@ -38,6 +39,9 @@ class ViewModelFactory private constructor(private val barterinRepository: Barte
         }
         if (modelClass.isAssignableFrom(UpdateProfileViewModel::class.java)) {
             return UpdateProfileViewModel(barterinRepository) as T
+        }
+        if (modelClass.isAssignableFrom(AddItemViewModel::class.java)) {
+            return AddItemViewModel(barterinRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

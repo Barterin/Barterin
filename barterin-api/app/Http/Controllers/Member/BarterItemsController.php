@@ -19,7 +19,7 @@ class BarterItemsController extends Controller
         $this->validateRules = [
             "photo" => "array",
             "photo.*" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:3072",
-            "category_id" => "required",
+            // "category_id" => "required",
             "type_id" => "required",
             "address_id" => "required",
             "name" => "required|string|min:3|max:255",
@@ -114,7 +114,7 @@ class BarterItemsController extends Controller
                 $request->all(),
                 [
                     'user_id' => $userData->id,
-                    'category_id' => Decrypt($request->input('category_id')),
+                    // 'category_id' => Decrypt($request->input('category_id')),
                     'type_id' => Decrypt($request->input('type_id')),
                     'address_id' => Decrypt($request->input('address_id')),
                 ]

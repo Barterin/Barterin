@@ -71,6 +71,19 @@ $router->group(['prefix' => 'member', 'middleware' => 'auth'], function ($router
         $router->get('list', 'Member\CartController@list');
         $router->delete('delete/{cartId}', 'Member\CartController@delete');
     });
+    $router->group(['prefix' => 'offer'], function ($router) {
+        $router->get('list', 'Member\OfferController@list');
+        $router->get('list/{offerId}', 'Member\OfferController@listBidder');
+        $router->post('store', 'Member\OfferController@store');
+        $router->post('accept', 'Member\OfferController@acceptOffer');
+    });
+
+    $router->group(['prefix' => 'offer-donate'], function ($router) {
+        $router->get('list', 'Member\OfferDonateController@list');
+        $router->get('list/{offerId}', 'Member\OfferDonateController@listBidder');
+        $router->post('store', 'Member\OfferDonateController@store');
+        $router->post('accept', 'Member\OfferDonateController@acceptOffer');
+    });
 });
 
 // Public router
@@ -78,6 +91,8 @@ $router->group(['prefix' => 'member', 'middleware' => 'auth'], function ($router
 $router->group(['prefix' => 'public'], function ($router) {
     $router->get('items/barter', 'PublicApi\HomeApiController@itemListBarter');
     $router->get('items/donate', 'PublicApi\HomeApiController@itemListDonate');
+    $router->get('category', 'PublicApi\HomeApiController@category');
+    $router->get('type', 'PublicApi\HomeApiController@type');
 });
 
 $router->group(['prefix' => 'files'], function ($router) {
