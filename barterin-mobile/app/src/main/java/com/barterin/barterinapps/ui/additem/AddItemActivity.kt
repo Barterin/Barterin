@@ -33,9 +33,21 @@ class AddItemActivity : AppCompatActivity() {
         getAutoCompleteText()
 
         binding?.btnNextUpload?.setOnClickListener {
-            startActivity(Intent(this, AddPhotoActivity::class.java))
+            moveWithData()
         }
 
+    }
+
+    private fun moveWithData() {
+        val intent = Intent(this, AddPhotoActivity::class.java)
+//        intent.putExtra("category", binding?.categoriesNameEditText?.text.toString())
+        intent.putExtra("type", binding?.itemTypeEditText?.text.toString())
+        intent.putExtra("address", binding?.adressNameEditText?.text.toString())
+        intent.putExtra("itemName", binding?.itemNameEditText?.text.toString())
+        intent.putExtra("itemDescription", binding?.itemDescriptionEditText?.text.toString())
+        intent.putExtra("usedTime", binding?.usedTimeEditText?.text.toString())
+        intent.putExtra("priceRange", binding?.priceRangeEditText?.text.toString())
+        startActivity(intent)
     }
 
     private fun getAutoCompleteText() {

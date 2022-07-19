@@ -169,4 +169,15 @@ data class TypeResult(
     val slug: String,
 )
 
+data class UploadImageResult(
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("id")
+    val id: String,
+)
+
 

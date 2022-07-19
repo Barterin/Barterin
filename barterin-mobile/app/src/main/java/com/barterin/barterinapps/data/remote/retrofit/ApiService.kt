@@ -3,7 +3,10 @@ package com.barterin.barterinapps.data.remote.retrofit
 import com.barterin.barterinapps.data.remote.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Call
 import retrofit2.http.*
+
 
 interface ApiService {
 
@@ -104,6 +107,23 @@ interface ApiService {
         @Path("id") id: String,
         @Header("Authorization") token: String,
     ): Categories
+
+
+
+    @Multipart
+    @POST("member/items/store")
+    suspend fun uploadItem(
+        @Header("Authorization") token: String,
+        @Part("type_id") type_id: RequestBody,
+        @Part("address_id") address_id: RequestBody,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("used_time") used_time: RequestBody,
+        @Part("date_unit") date_unit: RequestBody,
+        @Part("purchase_price") purchase_price: RequestBody,
+        @Part("item_for") item_for: RequestBody,
+        @Part file: Array<MultipartBody.Part>
+    ) : UploadImageResult
 
 
 }

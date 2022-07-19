@@ -243,7 +243,6 @@ class BarterinRepository private constructor(
         try {
 
             val response = apiService.getAddressList("Bearer $token")
-            val address = response.data
 
             if (response.statusCode == 200) {
                 Log.d("error response", "true: Berhasil ")
@@ -326,6 +325,45 @@ class BarterinRepository private constructor(
             emit(Result.Error(e.message.toString()))
         }
 
+    }
+
+    fun uploadItem(
+        token: String,
+        type_id: RequestBody,
+        address_id: RequestBody,
+        name: RequestBody,
+        description: RequestBody,
+        used_time: RequestBody,
+        date_unit: RequestBody,
+        purchase_price: RequestBody,
+        item_for: RequestBody,
+        file: Array<MultipartBody.Part>
+    ): LiveData<Result<UploadImageResult>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.uploadItem(
+                "Bearer $token",
+                type_id,
+                address_id,
+                name,
+                description,
+                used_time,
+                date_unit,
+                purchase_price,
+                item_for,
+                file
+            )
+            if (response.statusCode == 200) {
+                Log.d("error response", "true: ${response.message} ")
+                emit(Result.Success(response))
+            } else {
+                Log.d("error response", "false: ${response.message} ")
+                emit(Result.Error(response.message))
+            }
+        } catch (e: Exception) {
+            Log.d("StoryRepository", "error: ${e.message.toString()} ")
+            emit(Result.Error(e.message.toString()))
+        }
     }
 
     companion object {

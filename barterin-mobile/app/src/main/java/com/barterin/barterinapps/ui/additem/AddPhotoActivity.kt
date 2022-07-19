@@ -6,20 +6,31 @@ import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
-import com.barterin.barterinapps.databinding.ActivityAddItemBinding
 import com.barterin.barterinapps.databinding.ActivityAddPhotoBinding
-import com.barterin.barterinapps.ui.updateprofile.UpdateProfileActivity
+import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
+import com.barterin.barterinapps.utils.reduceFileImage
 import com.barterin.barterinapps.utils.uriToFile
+import com.barterin.barterinapps.viewmodel.ViewModelFactory
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.create
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+
 
 class AddPhotoActivity : AppCompatActivity() {
 
@@ -68,6 +79,10 @@ class AddPhotoActivity : AppCompatActivity() {
             )
         }
 
+        val category = intent.getStringExtra("category")
+
+        Toast.makeText(this@AddPhotoActivity, category, Toast.LENGTH_SHORT).show()
+
 
         binding?.image1?.setOnClickListener {
             openGalery1()
@@ -81,7 +96,114 @@ class AddPhotoActivity : AppCompatActivity() {
             openGalery3()
         }
 
+        binding?.btnNextUpload?.setOnClickListener {
+            uploadData()
+        }
 
+
+    }
+
+
+    private fun uploadData() {
+
+        val type = intent.getStringExtra("type")
+        val address = intent.getStringExtra("address")
+        val itemName = intent.getStringExtra("itemName")
+        val itemDescription = intent.getStringExtra("itemDescription")
+        val usedTime = intent.getStringExtra("usedTime")
+        val priceRange = intent.getStringExtra("priceRange")
+
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[AddItemViewModel::class.java]
+        sharedpref = SharedPreferenceClass(this)
+
+        if (getFile1 == null) {
+            Toast.makeText(this, "Please Input Image Number One !", Toast.LENGTH_SHORT).show()
+        } else if (getFile2 == null) {
+            Toast.makeText(this, "Please Input Image Number Two !", Toast.LENGTH_SHORT).show()
+        } else if (getFile3 == null) {
+            Toast.makeText(this, "Please Input Image Number Three !", Toast.LENGTH_SHORT).show()
+        } else {
+
+            val file = reduceFileImage(getFile1 as File)
+            val file2 = reduceFileImage(getFile2 as File)
+            val file3 = reduceFileImage(getFile3 as File)
+
+            val typeRequest = type?.toRequestBody("text/plain".toMediaType())
+            val addressRequest = address?.toRequestBody("text/plain".toMediaType())
+            val itemNameRequest = itemName?.toRequestBody("text/plain".toMediaType())
+            val itemDescriptionRequest = itemDescription?.toRequestBody("text/plain".toMediaType())
+            val usedTimeRequest = usedTime?.toRequestBody("text/plain".toMediaType())
+            val dateUnitRequest = "3".toRequestBody("text/plain".toMediaType())
+            val priceRangeRequest = priceRange?.toRequestBody("text/plain".toMediaType())
+            val itemForRequest = "0".toRequestBody("text/plain".toMediaType())
+
+
+            val requestImageFile1 = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultiPart1: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "photo[]",
+                file.name,
+                requestImageFile1,
+            )
+
+            val requestImageFile2 = file2.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultiPart2: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "photo[]",
+                file.name,
+                requestImageFile2
+            )
+
+            val requestImageFile3 = file3.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultiPart3: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "photo[]",
+                file.name,
+                requestImageFile3
+            )
+
+            val listOfImages = arrayOf(imageMultiPart1, imageMultiPart2, imageMultiPart3)
+
+
+
+            viewModel.uploadItem(
+                sharedpref.getToken(),
+                typeRequest!!,
+                addressRequest!!,
+                itemNameRequest!!,
+                itemDescriptionRequest!!,
+                usedTimeRequest!!,
+                dateUnitRequest,
+                priceRangeRequest!!,
+                itemForRequest,
+                listOfImages
+            ).observe(this) { result ->
+                if (result != null) {
+                    when (result) {
+                        is com.barterin.barterinapps.data.Result.Loading -> {
+                            binding?.progressBar8?.visibility = View.VISIBLE
+                        }
+                        is com.barterin.barterinapps.data.Result.Success -> {
+                            binding?.progressBar8?.visibility = View.GONE
+                            Toast.makeText(
+                                this,
+                                "Success",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            Intent(this, HomeActivity::class.java).also {
+                                startActivity(it)
+                            }
+                        }
+                        is com.barterin.barterinapps.data.Result.Error -> {
+                            binding?.progressBar8?.visibility = View.GONE
+                            Toast.makeText(
+                                this,
+                                resources.getString(R.string.text_error) + result.error,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun openGalery3() {
