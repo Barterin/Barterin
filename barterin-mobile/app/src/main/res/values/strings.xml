@@ -62,4 +62,5 @@
     <string name="text_item_description">Item Description</string>
     <string name="text_estimated">Estimated Length of Use</string>
     <string name="text_price_range">Price Range</string>
+    <string name="upload_image">Upload Images</string>
 </resources>

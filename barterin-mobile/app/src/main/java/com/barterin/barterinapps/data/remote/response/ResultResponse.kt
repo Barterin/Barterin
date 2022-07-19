@@ -135,7 +135,7 @@ data class Categories(
     val data: List<CategoriesResult>,
 )
 
-@Parcelize
+
 data class CategoriesResult(
     @field:SerializedName("id")
     val id: String,
@@ -145,4 +145,28 @@ data class CategoriesResult(
 
     @field:SerializedName("slug")
     val slug: String,
-) : Parcelable
+)
+
+data class Type(
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("data")
+    val data: List<TypeResult>,
+)
+
+data class TypeResult(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("categoryId")
+    val categoryId: String,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("slug")
+    val slug: String,
+)
+
+

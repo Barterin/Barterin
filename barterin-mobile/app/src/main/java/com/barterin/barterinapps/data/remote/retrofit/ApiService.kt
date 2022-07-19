@@ -94,8 +94,14 @@ interface ApiService {
         @Field("gender") gender: String
     ): EditProfileResponse
 
-    @GET("admin/category/list")
+    @GET("public/category")
     suspend fun getCategoryList(
+        @Header("Authorization") token: String,
+    ): Categories
+
+    @GET("public/type?category={id}")
+    suspend fun getTypeList(
+        @Path("id") id: String,
         @Header("Authorization") token: String,
     ): Categories
 

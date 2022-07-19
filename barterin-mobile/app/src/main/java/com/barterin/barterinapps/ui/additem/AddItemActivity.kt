@@ -1,14 +1,12 @@
 package com.barterin.barterinapps.ui.additem
 
-import android.R
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -16,8 +14,6 @@ import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityAddItemBinding
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
-import io.reactivex.internal.util.ArrayListSupplier
-import java.util.ArrayList
 
 
 class AddItemActivity : AppCompatActivity() {
@@ -36,6 +32,9 @@ class AddItemActivity : AppCompatActivity() {
 
         getAutoCompleteText()
 
+        binding?.btnNextUpload?.setOnClickListener {
+            startActivity(Intent(this, AddPhotoActivity::class.java))
+        }
 
     }
 
@@ -53,20 +52,24 @@ class AddItemActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         binding?.progressBar7?.visibility = View.GONE
-                        val categoryName = arrayListOf<String?>()
+
+                        val categoryName = arrayListOf<String>()
                         result.data.map {
                             categoryName.add(it.name)
                         }
 
-                        val adapter = ArrayAdapter(applicationContext, R.layout.simple_list_item_1, categoryName)
-                        (binding?.categoriesNameEditText as AutoCompleteTextView).setAdapter(adapter)
 
-                        Toast.makeText(
-                            this,
-                            "$categoryName",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        val adapter = ArrayAdapter(
+                            applicationContext,
+                            android.R.layout.simple_list_item_1,
+                            categoryName
+                        )
 
+                        adapter.add(categoryName.toString().trim())
+                        binding?.categoriesNameEditText?.setAdapter(adapter)
+
+//                        val adapter = ArrayAdapter(applicationContext, R.layout.simple_list_item_1, categoryName)
+//                        (binding?.categoriesNameEditText as AutoCompleteTextView).setAdapter(adapter)
 
                     }
                     is Result.Error -> {
@@ -81,7 +84,6 @@ class AddItemActivity : AppCompatActivity() {
             }
         }
     }
-
 
     private fun setupView() {
 
