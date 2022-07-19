@@ -86,9 +86,7 @@ class UpdateProfileActivity : AppCompatActivity() {
         getData()
 
         binding.btnUpdate.setOnClickListener {
-
             uploadImage()
-
         }
 
     }

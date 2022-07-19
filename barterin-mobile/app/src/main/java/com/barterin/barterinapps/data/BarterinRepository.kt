@@ -265,6 +265,7 @@ class BarterinRepository private constructor(
 
             if (response.statusCode == 200) {
                 Log.d("error response", "true: Berhasil ")
+
                 emit(Result.Success(response.data))
             } else {
                 Log.d("error response", "false: Gagal")
