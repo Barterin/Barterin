@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\TypeItem as Table;
-use App\Models\Categoryitem as TableCategory;
+use App\Models\CategoryItem as TableCategory;
 
 class TypeItemController extends Controller
 {
