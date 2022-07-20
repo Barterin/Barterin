@@ -53,6 +53,11 @@ $routes->group('/profile', ['namespace' => 'App\Controllers\Frontend'], function
     $routes->get('alamat', 'ProfileController::alamat');
 });
 
+$routes->group('/barang', ['namespace' => 'App\Controllers\Frontend'], function ($routes) {
+    $routes->get('detail-produk', 'BarangController::detailProduk');
+    $routes->get('upload-barter', 'BarangController::uploadBarter');
+    $routes->get('tawaran', 'BarangController::tawaran');
+});
 $routes->group('/test', ['namespace' => 'App\Controllers\Frontend'], function ($routes) {
     $routes->get('page1', 'Page1::index');
     $routes->get('page2', 'Page2::index');

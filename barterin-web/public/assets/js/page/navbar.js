@@ -13,12 +13,13 @@ $(document).ready(function () {
                     <div class="btn dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <img src="${e.data.profile_picture == "-" ? "../../assets/image/profile.png" : `${apiUrl}/uploads/images/profiles/${e.data.profile_picture}`}" alt="" class="rounded-circle head-profile-picture" />
-                        <span class="nav-full-name">${firstName[0]}</span>
+                        <span class="nav-full-name">Hi, ${firstName[0]}</span>
                     </div>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
                         <li><a class="dropdown-item internal" href="${baseUrl}/profile/biodata">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Setting</a></li>
-                        <li><a class="dropdown-item" href="#">Transaksi</a></li>
+                        <li><a class="dropdown-item" href="${baseUrl}/barang/upload-barter">Unggah Produk</a></li>
+                        <li><a class="dropdown-item" href="${baseUrl}/barang/tawaran">Daftar Tawaran</a></li>
                         <li><a class="dropdown-item" href="#" id="btnLogout">Logout</a></li>
                     </ul>
                 `);

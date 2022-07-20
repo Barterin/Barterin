@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Controllers\Frontend;
+
+use App\Controllers\BaseController;
+
+class BarangController extends BaseController
+{
+    public function detailProduk()
+    {
+        $data = [
+            'title' => 'Barterin | Detail Produk',
+        ];
+
+        return View('frontend/barang/detail_produk', $data);
+    }
+
+    public function uploadBarter()
+    {
+        $data = [
+            'title' => 'Barterin | Upload Produk',
+        ];
+
+        return View('frontend/barang/upload_barter', $data);
+    }
+
+    public function tawaran()
+    {
+        $data = [
+            'title' => 'Barterin | Daftar Tawaran',
+        ];
+
+        return View('frontend/barang/tawaran', $data);
+    }
+
+
+}
