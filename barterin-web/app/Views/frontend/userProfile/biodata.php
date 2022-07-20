@@ -5,9 +5,11 @@
     <div class="container px-4">
         <div class="row gx-5 mt-3">
             <div class="d-flex flex-row align-items-center" id="profile">
-                <img src="../../assets/image/profile.png" alt="" class="profile-picture rounded-circle me-3" />
+                <div id="profile-picture">
+
+                </div>
                 <div class="row user-name">
-                    <p class="fs-3 fw-bold">Name / Biodata Diri</p>
+                    <p class="fs-3 fw-bold" id="name-menu"></p>
                     <p class="fs-6">Set up your account and start barter</p>
                 </div>
             </div>
@@ -38,47 +40,45 @@
                 </div>
             </div>
 
-            <div class="col" enctype="multipart/form-data">
+            
+            <div class="col">
                 <div class="row">
-                    <div class="col-1">
-                        <img src="../../assets/image/profile.png" alt="" class="rounded circle profile-picture" />
+                    <div class="col-1" id="profile-picture-preview">
+    
                     </div>
                     <div class="mt-3">
                         <label for="formFile" class="form-label fw-bold">Upload Foto Profile</label>
                         <input type="file" class="form-control" id="formFile">
                     </div>
                 </div>
+                <form id="userProfileForm" enctype="multipart/form-data">
                 <!-- Nama -->
                 <label for="Nama" class="form-label fw-bold mt-3">
                     Nama
                 </label>
-                <input type="text" placeholder="Nama Lengkap" class="form-control" id="nama" name="nama" aria-describedby="nama" autofocus />
-
+                <input type="text" placeholder="Nama Lengkap" class="form-control" id="fullname" name="fullname" aria-describedby="nama" autofocus />
                 <!-- Tanggal Lahir -->
                 <label for="Tanggal Lahir" class="form-label fw-bold mt-3">
                     Tanggal Lahir</label>
-                <input type="date" placeholder="Tanggal Lahir" class="form-control" id="tanggalLahir" aria-describedby="tanggalLahir" />
+                <input type="date" placeholder="Tanggal Lahir" class="form-control" id="tanggalLahir" name="born" aria-describedby="tanggalLahir" />
                 <!-- Jenis Kelamin -->
                 <label for="Jenis Kelamin" class="form-label fw-bold mt-3">
                     Jenis Kelamin</label>
-                <div class="dropdown d-grid gap-2">
-                    <button class="text-start btn btn-light dropdown-toggle" type="button" id="jkDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Pilih Jenis Kelamin
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="jkDropdown">
-                        <li class="dropdown-item" value="male">Laki-Laki</li>
-                        <li class="dropdown-item" value="female">Perempuan</li>
-                    </ul>
-                </div>
+                <select class="text-start form-select" name="gender" id="jkDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Pilih Jenis Kelamin
+                    <option value="male">Laki - Laki</option>
+                    <option value="female">Perempuan</option>
+                </select>
                 <label for="Number" class="form-label fw-bold mt-3">
                     Nomor HP
                 </label>
-                <input type="number" class="form-control" id="Number" aria-describedby="Number" />
+                <input type="number" class="form-control" id="Number" name="phone" aria-describedby="Number" />
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary mt-3 align-items-end">
                         Simpan
                     </button>
                 </div>
+            </form>
             </div>
         </div>
     </div>

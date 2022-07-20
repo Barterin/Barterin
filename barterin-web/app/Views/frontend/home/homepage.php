@@ -64,6 +64,5 @@
 
 <loadjs-homepage></loadjs-homepage>
 <loadcss-homepage></loadcss-homepage>
-<loadcss-main></loadcss-main>
 
 <?= $this->endSection(); ?>
