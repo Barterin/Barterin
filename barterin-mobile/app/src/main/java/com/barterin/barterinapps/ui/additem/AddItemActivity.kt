@@ -66,9 +66,9 @@ class AddItemActivity : AppCompatActivity() {
                         binding?.progressBar7?.visibility = View.GONE
 
                         val categoryName = arrayListOf<String>()
-                        result.data.map {
-                            categoryName.add(it.name)
-                        }
+//                        result.data.map {
+//                            categoryName.add(it.name)
+//                        }
 
 
                         val adapter = ArrayAdapter(

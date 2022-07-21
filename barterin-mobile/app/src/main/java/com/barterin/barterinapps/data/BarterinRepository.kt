@@ -244,6 +244,7 @@ class BarterinRepository private constructor(
 
             val response = apiService.getAddressList("Bearer $token")
 
+
             if (response.statusCode == 200) {
                 Log.d("error response", "true: Berhasil ")
                 emit(Result.Success(response.data))
@@ -264,7 +265,6 @@ class BarterinRepository private constructor(
 
             if (response.statusCode == 200) {
                 Log.d("error response", "true: Berhasil ")
-
                 emit(Result.Success(response.data))
             } else {
                 Log.d("error response", "false: Gagal")
