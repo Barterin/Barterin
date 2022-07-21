@@ -37,8 +37,6 @@ class AddressActivity : AppCompatActivity() {
             }
         }
 
-
-
     }
 
     private fun getList() {
@@ -58,6 +56,7 @@ class AddressActivity : AppCompatActivity() {
                     is Result.Success -> {
                         binding.progressBar5.visibility = View.GONE
                         val addressData = result.data
+                        Toast.makeText(this, result.data.toString(), Toast.LENGTH_SHORT).show()
                         addressAdapter.submitList(addressData)
 
                     }

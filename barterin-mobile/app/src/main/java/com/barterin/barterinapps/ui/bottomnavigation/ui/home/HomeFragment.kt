@@ -2,39 +2,81 @@ package com.barterin.barterinapps.ui.bottomnavigation.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.barterin.barterinapps.data.Result
+import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.FragmentHomeBinding
-import com.barterin.barterinapps.ui.additem.AddItemActivity
+import com.barterin.barterinapps.ui.addresslist.AddressAdapter
+import com.barterin.barterinapps.ui.addresslist.AddressViewModel
+import com.barterin.barterinapps.viewmodel.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var sharedpref: SharedPreferenceClass
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
 
-        binding.imageView9.setOnClickListener {
-            startActivity(Intent(requireContext(), AddItemActivity::class.java))
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (activity != null) {
+            getCategoryList()
+        } else {
+            Toast.makeText(requireContext(), "yahaha", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun getCategoryList() {
+
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        val viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+        sharedpref = SharedPreferenceClass(requireContext())
+        val categoryAdapter = CatgoryAdapter()
+        viewModel.getCategoryList(sharedpref.getToken()).observe(viewLifecycleOwner) { result ->
+            if (result != null) {
+                when (result) {
+                    is Result.Loading -> {
+                        Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    }
+                    is Result.Success -> {
+                        val data = result.data
+                        categoryAdapter.setList(data)
+                        Log.d("anjink", result.data.toString())
+                    }
+                    is Result.Error -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "error nih" + result.error,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+        with(binding.rvCategory) {
+            this.layoutManager = LinearLayoutManager(context)
+            this.setHasFixedSize(true)
+            this.adapter?.notifyDataSetChanged()
+            this.adapter = categoryAdapter
         }
 
-        return root
     }
 
     override fun onDestroyView() {

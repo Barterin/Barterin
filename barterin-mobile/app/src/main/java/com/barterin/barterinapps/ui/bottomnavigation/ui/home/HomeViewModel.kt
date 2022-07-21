@@ -3,11 +3,10 @@ package com.barterin.barterinapps.ui.bottomnavigation.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.barterin.barterinapps.data.BarterinRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val barterinRepository: BarterinRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getCategoryList(token: String) = barterinRepository.getCategory(token)
+
 }
