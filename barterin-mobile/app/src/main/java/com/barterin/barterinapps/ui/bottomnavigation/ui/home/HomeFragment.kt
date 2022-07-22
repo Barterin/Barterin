@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
             }
         }
         with(binding.rvCategory) {
-            this.layoutManager = LinearLayoutManager(context)
+            this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             this.setHasFixedSize(true)
             this.adapter?.notifyDataSetChanged()
             this.adapter = categoryAdapter
