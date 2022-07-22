@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -41,9 +42,17 @@ class CatgoryAdapter : RecyclerView.Adapter<CatgoryAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val categoryName: TextView = itemView.findViewById(R.id.txt_title_category)
+        private val contraint: ConstraintLayout = itemView.findViewById(R.id.contraint_category)
 
         fun bind(user: CategoriesResult) {
             categoryName.text = user.name
+
+            if (user.slug == "elektronik") {
+                contraint.setBackgroundResource(R.drawable.ic_computer)
+            } else if (user.slug == "fashion-muslim") {
+                contraint.setBackgroundResource(R.drawable.ic_fashion)
+            }
+
         }
 
     }
