@@ -13,7 +13,7 @@ data class GetDataUser(
     @field:SerializedName("data")
     val data: UserResponse,
 
-)
+    )
 
 data class RegisterResult(
     @field:SerializedName("message")
@@ -101,7 +101,7 @@ data class AddressResult(
 
     @field:SerializedName("kode_pos")
     val kode_pos: String,
-): Parcelable
+) : Parcelable
 
 data class DeleteAddressResponse(
     @field:SerializedName("statusCode")
@@ -178,6 +178,94 @@ data class UploadImageResult(
 
     @field:SerializedName("id")
     val id: String,
+)
+
+data class BarterDataResponse(
+
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("data")
+    val data: List<DataItem>,
+    )
+
+data class DataItem(
+
+    @field:SerializedName("user")
+    val user: UserItem,
+
+    @field:SerializedName("category")
+    val category: CategoryItem,
+
+    @field:SerializedName("type")
+    val type: TypeItem,
+
+    @field:SerializedName("item")
+    val item: ItemBarter,
+
+)
+
+data class ItemBarter(
+
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("image")
+    val image: List<String>,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("description")
+    val description: String,
+
+    @field:SerializedName("used_time")
+    val used_time: String,
+
+    @field:SerializedName("purchase_price")
+    val purchase_price: String,
+
+    @field:SerializedName("address_item")
+    val address_item: String,
+
+    @field:SerializedName("address_region")
+    val address_region: String,
+
+    @field:SerializedName("address_longitude")
+    val address_longitude: String,
+
+    @field:SerializedName("address_latitude")
+    val address_latitude: String,
+
+    @field:SerializedName("bidder")
+    val bidder: String,
+)
+
+data class UserItem(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("phone")
+    val phone: String
+)
+
+data class CategoryItem(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("name")
+    val name: String,
+)
+
+data class TypeItem(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("name")
+    val name: String,
 )
 
 
