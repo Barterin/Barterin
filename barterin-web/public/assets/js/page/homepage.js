@@ -14,7 +14,6 @@ function initSlick() {
 }
 
 function initSlickDonasi() {
-    
     $(".donasi-slider").slick({
         dots: false,
         infinite: true,
@@ -46,7 +45,7 @@ $(document).ready(function () {
                     const item = element.item;
                     // console.log(image);
                     html += `
-                      <div class="card item-card m-1 col-1" aria-hidden="true" style="width: 10rem; max-height: 15rem;" id="barter-card" onclick="detailProduk()">
+                      <div class="card barter-item-container barter-card item-card m-1 col-1" aria-hidden="true" style="width: 10rem; max-height: 15rem;" data-id="${item.id}">
                         <img src="${image[0]}" class="card-img-top img img-fluid" alt="">
                         <div class="card-body">
                             <h5 class="card-title placeholder-glow">
@@ -66,6 +65,11 @@ $(document).ready(function () {
         },
     }).done(() => {
         initSlick();
+        $(".barter-card").click(function (e) {
+            const id = $(this).data("id");
+            // alert(id);
+            loadPage(`${baseUrl}/barang/${id}`);
+        });
     });
 
     //GET Donation Item
@@ -107,10 +111,9 @@ $(document).ready(function () {
     }).done(() => {
         initSlickDonasi();
     });
-
-
 });
 
-function detailProduk(){
-    window.location.href = `${baseUrl}/barang/detail-produk`
-}
+// function detailProduk() {
+//     // window.location.href = `${baseUrl}/barang/detail-produk`
+//     loadPage(`${baseUrl}/barang/detail-produk`);
+// }
