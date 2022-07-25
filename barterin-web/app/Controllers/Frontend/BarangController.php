@@ -6,10 +6,11 @@ use App\Controllers\BaseController;
 
 class BarangController extends BaseController
 {
-    public function detailProduk()
+    public function detailProduk($id = "")
     {
         $data = [
             'title' => 'Barterin | Detail Produk',
+            'idBarang' => $id
         ];
 
         return View('frontend/barang/detail_produk', $data);
@@ -32,6 +33,4 @@ class BarangController extends BaseController
 
         return View('frontend/barang/tawaran', $data);
     }
-
-
 }
