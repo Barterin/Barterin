@@ -123,9 +123,11 @@ interface ApiService {
         @Part file: Array<MultipartBody.Part>
     ) : UploadImageResult
 
-
     @GET("public/items/barter")
     suspend fun getAllBarterItems(): BarterDataResponse
 
-
+    @POST("auth/logout")
+    suspend fun logoutUser(
+        @Header("Authorization") token: String,
+    ): LogoutResponse
 }

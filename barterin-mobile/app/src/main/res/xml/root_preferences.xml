@@ -1,0 +1,32 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/text_language_settings">
+
+        <Preference
+            android:key="change_language_key"
+            android:title="@string/change_language" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/messages_theme">
+
+        <ListPreference
+            app:defaultValue="@string/pref_dark_auto"
+            app:entries="@array/dark_mode"
+            app:entryValues="@array/dark_mode_value"
+            app:key="@string/pref_key_dark"
+            app:title="@string/pref_dark_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/text_account_settings">
+
+        <Preference
+            android:key="change_address_key"
+            android:title="@string/text_my_address" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

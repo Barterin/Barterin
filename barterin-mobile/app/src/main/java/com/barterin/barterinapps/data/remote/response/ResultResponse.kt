@@ -268,4 +268,12 @@ data class TypeItem(
     val name: String,
 )
 
+data class LogoutResponse(
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("message")
+    val message: String,
+)
+
 
