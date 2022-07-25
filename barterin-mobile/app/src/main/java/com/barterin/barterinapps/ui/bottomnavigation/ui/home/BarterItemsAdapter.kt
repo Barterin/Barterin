@@ -1,5 +1,6 @@
 package com.barterin.barterinapps.ui.bottomnavigation.ui.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.remote.response.DataItem
+import com.barterin.barterinapps.ui.detailitem.DetailItemActivity
 import com.bumptech.glide.Glide
+
 
 class BarterItemsAdapter : RecyclerView.Adapter<BarterItemsAdapter.ViewHolder>() {
 
     private val dataList = ArrayList<DataItem>()
+    var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallBack(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BarterItemsAdapter.ViewHolder {
         val view =
@@ -38,6 +46,8 @@ class BarterItemsAdapter : RecyclerView.Adapter<BarterItemsAdapter.ViewHolder>()
         private val purchasePrice: TextView = itemView.findViewById(R.id.txt_purchase_price)
         private val imgItem: ImageView = itemView.findViewById(R.id.img_barter_item)
 
+
+
         fun bind(user: DataItem) {
             itemName.text = user.item.name
             usedTime.text = user.item.used_time
@@ -46,11 +56,19 @@ class BarterItemsAdapter : RecyclerView.Adapter<BarterItemsAdapter.ViewHolder>()
             Glide.with(itemView.context)
                 .load(user.item.image[0])
                 .into(imgItem)
+
+            itemView.setOnClickListener {
+                onItemClickCallback?.onItemClicked(user)
+            }
+
         }
 
     }
 
-
     override fun getItemCount(): Int = dataList.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: DataItem)
+    }
 
 }

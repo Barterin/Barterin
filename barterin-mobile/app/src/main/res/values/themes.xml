@@ -16,4 +16,13 @@
         <item name="android:textColor">@color/black</item>
 
     </style>
+
+    <style name="Theme.BarterinApps.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.BarterinApps.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.BarterinApps.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

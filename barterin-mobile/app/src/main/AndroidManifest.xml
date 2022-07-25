@@ -37,6 +37,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BarterinApps">
         <activity
+            android:name=".ui.detailitem.DetailItemActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BarterinApps.NoActionBar" />
+        <activity
             android:name=".ui.settings.SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
