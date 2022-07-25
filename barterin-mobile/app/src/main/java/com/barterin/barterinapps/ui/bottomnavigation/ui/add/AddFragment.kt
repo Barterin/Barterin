@@ -1,13 +1,13 @@
 package com.barterin.barterinapps.ui.bottomnavigation.ui.add
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.barterin.barterinapps.databinding.FragmentAddBinding
+import com.barterin.barterinapps.ui.additem.AddItemActivity
 
 
 class AddFragment : Fragment() {
@@ -23,17 +23,11 @@ class AddFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(AddViewModel::class.java)
-
         _binding = FragmentAddBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        startActivity(Intent(requireContext(), AddItemActivity::class.java))
+        activity?.finish()
+        return binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
     }
 
     override fun onDestroyView() {

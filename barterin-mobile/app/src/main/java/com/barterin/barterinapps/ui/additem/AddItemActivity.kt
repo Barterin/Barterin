@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityAddItemBinding
+import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 
 
@@ -109,6 +110,12 @@ class AddItemActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
     }
 
 }
