@@ -24,6 +24,7 @@ class HomeApiController extends Controller
     private function getItemsData($itemsFor)
     {
         $data = ItemTable::select(DB::raw('
+                barter_items.id items_id,
                 barter_items.*, 
                 cat.id cat_id, 
                 cat.name cat_name, 
@@ -107,7 +108,7 @@ class HomeApiController extends Controller
                 ];
                 // $row['image'] = $imageItems;
                 $row['item'] = [
-                    "id" => Encrypt($rows->id),
+                    "id" => Encrypt($rows->items_id),
                     "image" => $imageItems,
                     "name" => $rows->name,
                     "description" => $rows->description,
