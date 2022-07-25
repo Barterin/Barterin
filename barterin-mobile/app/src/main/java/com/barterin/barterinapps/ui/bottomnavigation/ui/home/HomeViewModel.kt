@@ -9,4 +9,6 @@ class HomeViewModel(private val barterinRepository: BarterinRepository) : ViewMo
 
     fun getCategoryList(token: String) = barterinRepository.getCategory(token)
 
+    fun getAllBarterItems() = barterinRepository.getBarterItem()
+
 }

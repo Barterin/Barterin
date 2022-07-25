@@ -108,8 +108,6 @@ interface ApiService {
         @Header("Authorization") token: String,
     ): Categories
 
-
-
     @Multipart
     @POST("member/items/store")
     suspend fun uploadItem(
@@ -124,6 +122,10 @@ interface ApiService {
         @Part("item_for") item_for: RequestBody,
         @Part file: Array<MultipartBody.Part>
     ) : UploadImageResult
+
+
+    @GET("public/items/barter")
+    suspend fun getAllBarterItems(): BarterDataResponse
 
 
 }
