@@ -13,10 +13,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
+import com.barterin.barterinapps.data.remote.response.DataItem
 import com.barterin.barterinapps.databinding.FragmentHomeBinding
-import com.barterin.barterinapps.ui.addresslist.AddressAdapter
-import com.barterin.barterinapps.ui.addresslist.AddressViewModel
+import com.barterin.barterinapps.ui.detailitem.DetailItemActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
+import java.io.Serializable
 
 class HomeFragment : Fragment() {
 
@@ -79,6 +80,37 @@ class HomeFragment : Fragment() {
             this.adapter?.notifyDataSetChanged()
             this.adapter = barteritemsAdapter
         }
+
+        barteritemsAdapter.setOnItemClickCallBack(object : BarterItemsAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: DataItem) {
+                // Parcelable not support type or json object value yet,
+                // so i must send data one by one :v fucking hell
+                Intent(requireContext(), DetailItemActivity::class.java).also {
+                    it.putExtra("id_user", data.user.id)
+                    it.putExtra("name_user", data.user.name)
+                    it.putExtra("phone_user", data.user.phone)
+                    it.putExtra("id_category", data.category.id)
+                    it.putExtra("name_category", data.category.name)
+                    it.putExtra("id_type", data.type.id)
+                    it.putExtra("name_type", data.type.name)
+                    it.putExtra("id_item", data.item.id)
+                    it.putExtra("image_item_1", data.item.image[0])
+                    it.putExtra("image_item_2", data.item.image[1])
+                    it.putExtra("image_item_3", data.item.image[2])
+                    it.putExtra("name_item", data.item.name)
+                    it.putExtra("description_item", data.item.description)
+                    it.putExtra("usedTime_item", data.item.used_time)
+                    it.putExtra("purchasePrice_item", data.item.purchase_price)
+                    it.putExtra("address_item", data.item.address_item)
+                    it.putExtra("region_item", data.item.address_region)
+                    it.putExtra("longitude_item", data.item.address_longitude)
+                    it.putExtra("latitude_item", data.item.address_latitude)
+                    it.putExtra("bidder", data.item.bidder)
+                    startActivity(it)
+                }
+            }
+        })
+
     }
 
     private fun getCategoryList() {

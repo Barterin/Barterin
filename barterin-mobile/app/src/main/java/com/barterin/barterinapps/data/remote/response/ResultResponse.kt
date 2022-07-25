@@ -3,6 +3,8 @@ package com.barterin.barterinapps.data.remote.response
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
+import java.io.Serializable
 
 
 data class GetDataUser(
@@ -189,6 +191,7 @@ data class BarterDataResponse(
     val data: List<DataItem>,
     )
 
+
 data class DataItem(
 
     @field:SerializedName("user")
@@ -203,7 +206,7 @@ data class DataItem(
     @field:SerializedName("item")
     val item: ItemBarter,
 
-)
+    )
 
 data class ItemBarter(
 
