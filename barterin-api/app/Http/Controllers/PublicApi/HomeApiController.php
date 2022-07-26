@@ -245,6 +245,7 @@ class HomeApiController extends Controller
                 $row['name'] = $key->name;
                 $row['slug'] = $key->slug;
                 $row['count'] = $key->count;
+                $row['image'] = $key->image != null ? getenv('APP_URL') . "/uploads/images/category/" . $key->image : null;
                 $catData[] = $row;
             }
 
