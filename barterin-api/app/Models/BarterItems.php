@@ -10,7 +10,6 @@ class BarterItems extends Model
 
     protected $fillable = [
         "user_id",
-        "category_id",
         "type_id",
         "address_id",
         "name",
