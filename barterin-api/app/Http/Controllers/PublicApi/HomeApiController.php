@@ -219,11 +219,18 @@ class HomeApiController extends Controller
         }
     }
 
+
     public function category(Request $request)
     {
         try {
 
-            $data = TableCatetgoryItems::orderBy('name', 'asc');
+            $data = TableCatetgoryItems::select(DB::raw('category_item.*, (
+                    SELECT count(*) FROM barter_items as items 
+                    JOIN type_item as type ON type.id = items.type_id
+                    JOIN category_item as cat ON cat.id = type.category_id
+                    WHERE cat.id = category_item.id
+                ) as count'))
+                ->orderBy('category_item.name', 'asc');
 
             if ($request->slug != null)
                 $data->where('slug', $request->slug);
@@ -237,6 +244,7 @@ class HomeApiController extends Controller
                 $row['id'] = Encrypt($key->id);
                 $row['name'] = $key->name;
                 $row['slug'] = $key->slug;
+                $row['count'] = $key->count;
                 $catData[] = $row;
             }
 
