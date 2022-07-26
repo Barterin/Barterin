@@ -11,5 +11,6 @@ class CategoryItem extends Model
     protected $fillable = [
         "name",
         "slug",
+        "image"
     ];
 }
