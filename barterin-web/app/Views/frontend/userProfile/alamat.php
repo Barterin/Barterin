@@ -16,10 +16,10 @@
             <div class="row d-flex flex-lg-row flex-column mt-4">
                 <div class="col-lg-3 menu">
                     <div class="row">
-                        <a href="Biodata_Diri.html" class="fw-bold text-decoration-none text-body">
+                        <a href="<?php $base_url ?>/profile/biodata" class="fw-bold text-decoration-none text-body">
                             Biodata Diri
                         </a>
-                        <a href="Daftar_Alamat.html" class="text-decoration-none text-body">
+                        <a href="<?php $base_url ?>/profile/alamat" class="text-decoration-none text-body">
                             Daftar Alamat
                         </a>
                         <a href="Pembayaran.html" class="text-decoration-none text-body">
@@ -120,21 +120,22 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-body">
+                <form id="formAlamat">
                 <!-- Label Alamat -->
                 <label for="LabelALamat" class="form-label fw-bold mt-3"> Label Alamat </label>
-                <input type="text" placeholder="Alamat Rumah" class="form-control" id="Alamat" aria-describedby="Alamat">
+                <input type="text" placeholder="Alamat Rumah" class="form-control" id="Alamat" aria-describedby="Alamat" name="label">
                 <!-- Nama Penerima -->
                 <div class="col-12">
                     <div class="row d-flex justify-content-between">
                         <div class="col-7">
                                 <label for="Nama Penerima" class="form-label mt-3 fw-bold"> Nama Penerima</label>
-                                <input type="text" placeholder="Nama Penerima" class="form-control" id="Nama Penerima" aria-describedby="Nama Penerima">
+                                <input type="text" placeholder="Nama Penerima" class="form-control" id="Nama Penerima" aria-describedby="Nama Penerima" name="penerima">
                         </div>
                         <!-- No Ponsel -->
                         <div class="col-5">
                             <label for="Number" class="form-label fw-bold mt-3"> No. Ponsel </label>
                             <input type="number" placeholder="+628 - 0000 - 0000 - 00"
-                                class="form-control" id="Number" aria-describedby="Number">
+                                class="form-control" id="Number" aria-describedby="Number" name="nohp">
                         </div>
                     </div>
                 </div>
@@ -143,30 +144,27 @@
                     <div class="row d-flex justify-content-between">
                         <div class="col-9">
                                 <label for="Kota atau Kecamatan" class="form-label fw-bold mt-3"> Kota atau Kecamatan</label>
-                                <input type="text" placeholder="Jawa Barat, Kota Bandung, Cibeunying Kidul" class="form-control" id="Kota atau Kecamatan" aria-describedby="Kota atau Kecamatan">
+                                <input type="text" placeholder="Jawa Barat, Kota Bandung, Cibeunying Kidul" class="form-control" id="Kota atau Kecamatan" aria-describedby="Kota atau Kecamatan" name="kota_kecamatan">
                         </div>
                         <!-- Kode Pos -->
                         <div class="col-3">
                             <label for="Number" class="form-label fw-bold mt-3"> Kode Pos </label>
                             <input type="number" placeholder="40124" class="form-control"
-                                id="Number" aria-describedby="Number">
+                                id="Number" aria-describedby="Number" name="kode_pos">
                         </div>
                     </div>
                 </div>
                 <!-- Alamat  -->
                 <label for="Alamat" class="form-label fw-bold mt-3">Alamat</label>
                 <input type="text" placeholder="Gg. Sukapada, RT 3 rw 15 193 - 139a"
-                    class="form-control" id="Alamat" aria-describedby="Alamat">
-                <!-- Alamat Map -->
-                <label for="Alamat Map" class="form-label fw-bold mt-3"> Alamat Map</label>
-                <input type="text" class="form-control" id="Alamat Map"
-                    aria-describedby="Alamat Map">
+                    class="form-control" id="Alamat" aria-describedby="Alamat" name="alamat_lengkap">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     Keluar </button>
-                <button type="button" class="btn btn-primary"> Simpan Alamat</button>
+                <button type="submit" class="btn btn-primary"> Simpan Alamat</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

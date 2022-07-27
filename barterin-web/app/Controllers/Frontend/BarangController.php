@@ -16,13 +16,13 @@ class BarangController extends BaseController
         return View('frontend/barang/detail_produk', $data);
     }
 
-    public function uploadBarter()
+    public function upload()
     {
         $data = [
             'title' => 'Barterin | Upload Produk',
         ];
 
-        return View('frontend/barang/upload_barter', $data);
+        return View('frontend/barang/upload', $data);
     }
 
     public function tawaran()
