@@ -16,7 +16,7 @@
             <div class="row d-flex flex-lg-row flex-column mt-4">
                 <div class="col-lg-3 menu">
                     <div class="row">
-                        <a href="<?php $base_url ?>/profile/biodatas" class="fw-bold text-decoration-none text-body">
+                        <a href="<?php $base_url ?>/profile/biodata" class="fw-bold text-decoration-none text-body">
                             Biodata Diri
                         </a>
                         <a href="<?php $base_url ?>/profile/alamat" class="text-decoration-none text-body">
