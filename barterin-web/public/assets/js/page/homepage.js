@@ -90,7 +90,7 @@ $(document).ready(function () {
                     const image = element.item.image;
                     const item = element.item;
                     html += `
-                        <div class="card item-card m-1 col-1" aria-hidden="true" style="width: 10rem; max-height: 15rem;">
+                        <div class="card donate-item-container donate-card item-card m-1 col-1" aria-hidden="true" style="width: 10rem; max-height: 15rem;" data-id="${item.id}">
                             <img src="${image[0]}" class="card-img-top img img-fluid" alt="">
                             <div class="card-body">
                                 <h5 class="card-title placeholder-glow">
@@ -110,6 +110,11 @@ $(document).ready(function () {
         },
     }).done(() => {
         initSlickDonasi();
+        $(".donate-card").click(function (e) {
+            const id = $(this).data("id");
+            // alert(id);
+            loadPage(`${baseUrl}/barang/${id}`);
+        });
     });
 });
 
