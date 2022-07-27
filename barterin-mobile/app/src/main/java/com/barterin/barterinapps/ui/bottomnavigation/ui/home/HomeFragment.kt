@@ -15,6 +15,7 @@ import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.data.remote.response.DataItem
 import com.barterin.barterinapps.databinding.FragmentHomeBinding
+import com.barterin.barterinapps.ui.cart.CartActivity
 import com.barterin.barterinapps.ui.detailitem.DetailItemActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 import java.io.Serializable
@@ -44,6 +45,11 @@ class HomeFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), "yahaha", Toast.LENGTH_SHORT).show()
         }
+
+        binding.navCart.setOnClickListener {
+            startActivity(Intent(requireContext(), CartActivity::class.java))
+        }
+
     }
 
     private fun getBarterList() {
