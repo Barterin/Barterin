@@ -17,7 +17,7 @@ class BarterItemsController extends Controller
     {
         $this->middleware('auth', ['except' => ['list']]);
         $this->validateRules = [
-            "photo" => "array",
+            // "photo" => "array",
             "photo.*" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:3072",
             // "category_id" => "required",
             "type_id" => "required",
