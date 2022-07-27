@@ -130,4 +130,11 @@ interface ApiService {
     suspend fun logoutUser(
         @Header("Authorization") token: String,
     ): LogoutResponse
+
+    @FormUrlEncoded
+    @POST("member/cart/store")
+    suspend fun addToCart(
+        @Header("Authorization") token: String,
+        @Field("items_id") items_id: String,
+    ): AddToCartResponse
 }

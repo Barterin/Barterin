@@ -279,4 +279,15 @@ data class LogoutResponse(
     val message: String,
 )
 
+data class AddToCartResponse(
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("id")
+    val id: String,
+)
+
 
