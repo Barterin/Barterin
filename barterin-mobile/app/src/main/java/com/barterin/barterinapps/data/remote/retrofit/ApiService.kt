@@ -143,4 +143,10 @@ interface ApiService {
         @Header("Authorization") token: String
     ): GetCartResponse
 
+    @DELETE("member/cart/delete/{id}")
+    suspend fun deleteChart(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): DeleteAddressResponse
+
 }

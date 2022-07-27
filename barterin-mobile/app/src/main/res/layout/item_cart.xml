@@ -42,7 +42,7 @@
             android:gravity="start"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imageView18"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete_chart"
             app:layout_constraintStart_toEndOf="@+id/img_cart"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="item name" />
@@ -86,7 +86,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_seller_location" />
 
         <ImageView
-            android:id="@+id/imageView18"
+            android:id="@+id/btn_delete_chart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
