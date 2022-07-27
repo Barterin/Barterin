@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    //------------- GET ID ---------------// 
+$(document).ready(function () {
+    //------------- GET ID ---------------//
     $.ajax({
         url: `${apiUrl}/auth/user-profile`,
         method: "post",
@@ -8,7 +8,7 @@ $(document).ready(function() {
         },
         dataType: "JSON",
         success: function (e) {
-            console.log(e);
+            // console.log(e);
             if (e.statusCode == 200) {
                 const firstName = e.data.fullname.split(" ");
                 $("#name-menu").prepend(`
@@ -16,23 +16,27 @@ $(document).ready(function() {
                 `);
                 // get image
                 $("#profile-picture,#profile-picture-preview").html(`
-                    <img src="${e.data.profile_picture == "-" ? "../../assets/image/profile.png" : `${apiUrl}/uploads/images/profiles/${e.data.profile_picture}`}" alt="" class="rounded-circle profile-picture" />
+                    <img src="${
+                        e.data.profile_picture == "-"
+                            ? "../../assets/image/profile.png"
+                            : `${apiUrl}/uploads/images/profiles/${e.data.profile_picture}`
+                    }" alt="" class="rounded-circle profile-picture" />
                 `);
-                Object.keys(e.data).forEach(key => {
-                    console.log(key);
-                    $(`[name="${key}"]`).val(e.data[key])?.change()
-                });            
+                Object.keys(e.data).forEach((key) => {
+                    // console.log(key);
+                    $(`[name="${key}"]`).val(e.data[key])?.change();
+                });
             }
-        }
-    })
+        },
+    });
     //---------------- POST PROFILE ---------------- //
-    $("#userProfileForm").submit(e => {
-        e.preventDefault()
+    $("#userProfileForm").submit((e) => {
+        e.preventDefault();
 
-        const data = new FormData($(`#userProfileForm`).get(0))
+        const data = new FormData($(`#userProfileForm`).get(0));
         $.ajax({
             url: `${apiUrl}/member/user/update`,
-            method: 'POST',
+            method: "POST",
             timeout: 0,
             headers: {
                 Authorization: `Bearer ${__access_token}`,
@@ -43,25 +47,23 @@ $(document).ready(function() {
             mimeType: "multipart/form-data",
             dataType: "JSON",
             beforeSend: function () {
-                disableButton()
+                disableButton();
             },
             complete: function () {
-                enableButton()
+                enableButton();
             },
             success: function (e) {
-                e.statusCode == 200 && msgSweetSuccess(e.message)
+                e.statusCode == 200 && msgSweetSuccess(e.message);
             },
             error: function (e) {
-                const response = e.responseJSON
-                if (response.statusCode == 500) 
-                    msgSweetError(response.message, 1)
+                const response = e.responseJSON;
+                if (response.statusCode == 500)
+                    msgSweetError(response.message, 1);
                 if (response.statusCode == 401)
-                    msgSweetWarning(response.message)
-                validate(response.input)
-                enableButton()
-            }
-        })
-
-    })
-
-})
+                    msgSweetWarning(response.message);
+                validate(response.input);
+                enableButton();
+            },
+        });
+    });
+});
