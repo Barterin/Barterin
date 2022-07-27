@@ -152,10 +152,23 @@ class HomeApiController extends Controller
             $data->where('status', "0");
 
             if ($request->itemsId != null)
-                $data->where('id', Decrypt($request->itemsId));
+                $data->where('barter_items.id', Decrypt($request->itemsId));
 
             if ($request->userId != null)
-                $data->where('user_id', Decrypt($request->userId));
+                $data->where('barter_items.user_id', Decrypt($request->userId));
+
+            if ($request->categoryId != null)
+                $data->where('barter_items.category_id', Decrypt($request->categoryId));
+
+            if ($request->typeId != null)
+                $data->where('barter_items.type_id', Decrypt($request->typeId));
+
+            if ($request->search != null) {
+                $data->where('barter_items.name', 'like', '%' . $request->search . '%');
+                $data->orWhere('barter_items.description', 'like', '%' . $request->search . '%');
+                $data->orWhere('cat.name', 'like', '%' . $request->search . '%');
+                $data->orWhere('type.name', 'like', '%' . $request->search . '%');
+            }
 
             $data->skip($skip)->take($take);
 
@@ -168,10 +181,6 @@ class HomeApiController extends Controller
                 foreach (ImageUpload::select('file_path')->where(['items_id' => $rows->id])->get() as $key) {
                     $imageItems[] = getenv('APP_URL') . "/" . $key->file_path;
                 }
-                $address = TableAddress::select('alamat_lengkap', 'kota_kecamatan')->where(['id' => $rows->address_id])->get()->first();
-                $user = TableUsers::select('users.id', 'fullname', 'phone')->where(['users.id' => $rows->user_id])
-                    ->join('profiles', 'users.id', '=', 'profiles.user_id')
-                    ->get()->first();
                 $row = [];
                 $row['user'] = [
                     "id" => Encrypt($rows->user_id),
