@@ -22,7 +22,7 @@ $(document).ready(function () {
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
                         <li><a class="dropdown-item internal" href="${baseUrl}/profile/biodata">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Setting</a></li>
-                        <li><a class="dropdown-item internal" href="${baseUrl}/barang/upload-barter">Unggah Produk</a></li>
+                        <li><a class="dropdown-item internal" href="${baseUrl}/barang/upload">Unggah Produk</a></li>
                         <li><a class="dropdown-item internal" href="${baseUrl}/barang/tawaran">Daftar Tawaran</a></li>
                         <li><a class="dropdown-item" href="#" id="btnLogout">Logout</a></li>
                     </ul>
