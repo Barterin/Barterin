@@ -68,7 +68,7 @@ $(document).ready(function () {
         $(".barter-card").click(function (e) {
             const id = $(this).data("id");
             // alert(id);
-            loadPage(`${baseUrl}/barang/${id}`);
+            loadPage(`${baseUrl}/barang/barter/${id}`);
         });
     });
 
@@ -113,7 +113,7 @@ $(document).ready(function () {
         $(".donate-card").click(function (e) {
             const id = $(this).data("id");
             // alert(id);
-            loadPage(`${baseUrl}/barang/${id}`);
+            loadPage(`${baseUrl}/barang/donasi/${id}`);
         });
     });
 });
