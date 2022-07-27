@@ -137,4 +137,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Field("items_id") items_id: String,
     ): AddToCartResponse
+
+    @GET("member/cart/list")
+    suspend fun getAllChart(
+        @Header("Authorization") token: String
+    ): GetCartResponse
+
 }

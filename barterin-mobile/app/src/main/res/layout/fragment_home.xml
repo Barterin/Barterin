@@ -16,12 +16,12 @@
         android:layout_marginEnd="16dp"
         android:background="#F8F8F9"
         app:cornerRadius="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView11"
+        app:layout_constraintEnd_toStartOf="@+id/nav_cart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/nav_cart"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"

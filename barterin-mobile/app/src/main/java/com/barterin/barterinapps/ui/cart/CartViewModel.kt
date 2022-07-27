@@ -1,0 +1,10 @@
+package com.barterin.barterinapps.ui.cart
+
+import androidx.lifecycle.ViewModel
+import com.barterin.barterinapps.data.BarterinRepository
+
+class CartViewModel(private val barterinRepository: BarterinRepository) : ViewModel() {
+
+    fun getCartItem(token: String) = barterinRepository.getChartItem(token)
+
+}

@@ -431,6 +431,26 @@ class BarterinRepository private constructor(
 
     }
 
+    fun getChartItem(token: String): LiveData<Result<List<DataCartResult>>> = liveData {
+        emit(Result.Loading)
+
+        try {
+
+            val response = apiService.getAllChart("Bearer $token")
+
+
+            if (response.statusCode == 200) {
+                Log.d("error response", "true: Berhasil ")
+                emit(Result.Success(response.data))
+            } else {
+                Log.d("error response", "false: Gagal")
+            }
+        } catch (e: Exception) {
+            Log.d("BarterinRepository", "getAddressList: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
 
     companion object {
         @Volatile
