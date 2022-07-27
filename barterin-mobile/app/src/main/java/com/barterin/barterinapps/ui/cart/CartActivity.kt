@@ -80,4 +80,29 @@ class CartActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
+    fun deleteChart(id: String) {
+
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[CartViewModel::class.java]
+        sharedpref = SharedPreferenceClass(this)
+
+        viewModel.deleteChart(sharedpref.getToken(), id).observe(this) { result ->
+            if (result != null) {
+                when(result) {
+                    is Result.Loading -> {
+                        binding.progressBar10.visibility = View.VISIBLE
+                    }
+                    is Result.Success -> {
+                        binding.progressBar10.visibility = View.GONE
+                        this.recreate()
+                        Toast.makeText(this, result.data.message, Toast.LENGTH_SHORT).show()
+                    }
+                    is Result.Error -> {
+                        binding.progressBar10.visibility = View.GONE
+                        Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
 }

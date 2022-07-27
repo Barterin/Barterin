@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.remote.response.DataCartResult
 import com.barterin.barterinapps.data.remote.response.DataItem
+import com.barterin.barterinapps.ui.addresslist.AddressActivity
 import com.barterin.barterinapps.ui.bottomnavigation.ui.home.BarterItemsAdapter
 import com.bumptech.glide.Glide
 
@@ -45,6 +46,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
         private val seller: TextView = itemView.findViewById(R.id.txt_seller_location)
         private val buttonAdd : Button = itemView.findViewById(R.id.button_add_tawaran)
         private val imgCart : ImageView = itemView.findViewById(R.id.img_cart)
+        private val deleteChart : ImageView = itemView.findViewById(R.id.btn_delete_chart)
 
 
         fun bind(user: DataCartResult) {
@@ -59,6 +61,14 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
             buttonAdd.setOnClickListener {
                 onItemClickCallback?.onItemClicked(user)
             }
+
+            deleteChart.setOnClickListener {
+                if (itemView.context is CartActivity) {
+                    (itemView.context as CartActivity).deleteChart(user.id)
+                }
+            }
+
+
 
         }
 
