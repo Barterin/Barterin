@@ -247,6 +247,7 @@ const validate = function (data) {
     $(`input[class*='validate']`).removeClass("is-invalid validate");
     Object.keys(data).forEach((element) => {
         $(`input[name="${element}"]`).addClass("is-invalid validate");
+        $(`textarea[name="${element}"]`).addClass("is-invalid validate");
         $(`[id='validate_${element}']`).addClass("invalid-feedback");
         $(`[id='validate_${element}']`).html(data[element][0]);
     });
