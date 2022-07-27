@@ -6,14 +6,24 @@ use App\Controllers\BaseController;
 
 class BarangController extends BaseController
 {
-    public function detailProduk($id = "")
+    public function detailBarangBarter($id = "")
     {
         $data = [
-            'title' => 'Barterin | Detail Produk',
+            'title' => 'Barterin | Detail Barang',
             'idBarang' => $id
         ];
 
-        return View('frontend/barang/detail_produk', $data);
+        return View('frontend/barang/detail_barang', $data);
+    }
+
+    public function detailBarangDonasi($id = "")
+    {
+        $data = [
+            'title' => 'Barterin | Detail Barang',
+            'idBarang' => $id
+        ];
+
+        return View('frontend/barang/detail_barang_donasi', $data);
     }
 
     public function upload()
