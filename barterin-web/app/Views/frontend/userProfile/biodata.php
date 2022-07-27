@@ -17,20 +17,20 @@
         <div class="row d-flex flex-lg-row flex-column mt-4">
             <div class="col-lg-3 menu">
                 <div class="row">
-                    <a href="Biodata_Diri.html" class="fw-bold text-decoration-none text-body">
+                    <a href="<?php $base_url ?>/profile/biodata" class="fw-bold text-decoration-none text-body">
                         Biodata Diri
                     </a>
-                    <a href="Daftar_Alamat.html" class="text-decoration-none text-body">
+                    <a href="<?php $base_url ?>/profile/alamat" class="text-decoration-none text-body">
                         Daftar Alamat
                     </a>
-                    <a href="Pembayaran.html" class="text-decoration-none text-body">
+                    <a href="#" class="text-decoration-none text-body">
                         Pembayaran
                     </a>
-                    <a href="Rekening_bank.html" class="text-decoration-none text-body">
+                    <a href="#" class="text-decoration-none text-body">
                         Rekening Bank</a>
-                    <a href="Notifikasi.html" class="text-decoration-none text-body">
+                    <a href="#" class="text-decoration-none text-body">
                         Notifikasi</a>
-                    <a href="Keamanan.html" class="text-decoration-none text-body">
+                    <a href="#" class="text-decoration-none text-body">
                         Keamanan
                     </a>
                     <!-- Button trigger modal -->
