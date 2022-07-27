@@ -33,4 +33,13 @@ class BarangController extends BaseController
 
         return View('frontend/barang/tawaran', $data);
     }
+
+    public function barangku()
+    {
+        $data = [
+            'title' => 'Barterin | Barangku',
+        ];
+
+        return View('frontend/barang/barangku', $data);
+    }
 }

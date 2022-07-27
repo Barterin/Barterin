@@ -3,11 +3,12 @@
 
 <div class="container mt-5">
     <div class="row">
+    <form id="formUploadBarang">
         <h1>Upload Barang</h1>
         <div class="col-3 text-center mt-4">
             <img src="../Asset/profile.png" class="mb-3" style="width: 100%; border-radius: 5px;" alt="">
             <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile01">
+                <input type="file" class="form-control" id="inputGroupFile01" name="photo[]" multiple>
             </div>
         </div>
         <div class="col-9">
@@ -33,7 +34,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label class="mt-2" for="">Lama Pemakaian</label>
-                        <input class="form-control mt-1 shadow-none" type="text" name="used_time">
+                        <input class="form-control mt-1 shadow-none" type="number" name="used_time">
                         <div id="validate_used_time"></div>
                     </div>
                 </div>
@@ -58,6 +59,7 @@
             <div class="form-group">
                 <label class="mt-2" for="">Deskripsi Barang</label>
                 <textarea class="form-control mt-1 shadow-none" type="text" name="description"></textarea>
+                <div id="validate_description"></div>
             </div>
 
             <div class="form-group">
@@ -76,10 +78,11 @@
             </div>
 
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary btn-sm" style="margin-bottom: 30px ;"> Tambah </button>
+                <button type="submit" class="btn btn-primary btn-sm" style="margin-bottom: 30px ;"> Tambah </button>
             </div>
         </div>
     </div>
+    </form>
 </div>
 
 <loadjs-uploadBarang></loadjs-uploadBarang>
