@@ -10,17 +10,21 @@ class ProfileController extends BaseController
     {
         $data = [
             'title' => 'Barterin | Profile',
+            'section' => 'sectionBiodata',
+            'subTitle' => 'Atur Biodata diri'
         ];
 
-        return View('frontend/userProfile/biodata', $data);
+        return View('frontend/userProfile/profile', $data);
     }
-    
+
     public function alamat()
     {
         $data = [
             'title' => 'Barterin | Alamat',
+            'section' => 'sectionAlamat',
+            'subTitle' => 'Atur Alamat'
         ];
 
-        return View('frontend/userProfile/alamat', $data);
+        return View('frontend/userProfile/profile', $data);
     }
 }
