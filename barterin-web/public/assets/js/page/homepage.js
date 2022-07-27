@@ -117,8 +117,3 @@ $(document).ready(function () {
         });
     });
 });
-
-// function detailProduk() {
-//     // window.location.href = `${baseUrl}/barang/detail-produk`
-//     loadPage(`${baseUrl}/barang/detail-produk`);
-// }
