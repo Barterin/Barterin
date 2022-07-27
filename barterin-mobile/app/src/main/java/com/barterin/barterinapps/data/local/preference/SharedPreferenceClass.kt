@@ -85,6 +85,10 @@ class SharedPreferenceClass(context: Context) {
         return userSharedPref.getString("gender", null).toString()
     }
 
+    fun getIdUser(): String {
+        return userSharedPref.getString("id", null).toString()
+    }
+
 
     fun verifyEmail(isVerified: String) {
         val edit = userSharedPref.edit()

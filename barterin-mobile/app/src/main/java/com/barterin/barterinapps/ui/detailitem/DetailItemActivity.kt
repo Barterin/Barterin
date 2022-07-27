@@ -2,19 +2,26 @@ package com.barterin.barterinapps.ui.detailitem
 
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.barterin.barterinapps.R
+import com.barterin.barterinapps.data.Result
+import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.data.remote.response.DataItem
 import com.barterin.barterinapps.databinding.ActivityDetailItemBinding
+import com.barterin.barterinapps.ui.login.LoginViewModel
+import com.barterin.barterinapps.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 
 class DetailItemActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailItemBinding
+    private lateinit var sharedpref: SharedPreferenceClass
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +57,28 @@ class DetailItemActivity : AppCompatActivity() {
         val image1 = intent.getStringExtra("image_item_1")
         val image2 = intent.getStringExtra("image_item_2")
         val image3 = intent.getStringExtra("image_item_3")
+        val itemName = intent.getStringExtra("name_item")
+        val estPrice = intent.getStringExtra("purchasePrice_item")
+        val description = intent.getStringExtra("description_item")
+        val usedTime = intent.getStringExtra("usedTime_item")
+        val location = intent.getStringExtra("region_item")
+        val idUser = intent.getStringExtra("id_user")
+        sharedpref = SharedPreferenceClass(this)
+
+        binding.txtNamaBarang.text = itemName
+        binding.txtHargaDetail.text = estPrice
+        binding.txtDetailDescription.text = description
+        binding.txtUsedTime.text = "Used Time: $usedTime"
+        binding.txtLocation.text = "Location : $location"
+
+        binding.btnAddToCart.setOnClickListener {
+
+            val id = intent.getStringExtra("id_item")
+            if (id != null) {
+                addToCart(id)
+            }
+
+        }
 
         Glide.with(this)
             .load(image1)
@@ -70,6 +99,36 @@ class DetailItemActivity : AppCompatActivity() {
         Toast.makeText(this, data, Toast.LENGTH_SHORT).show()
 
 
+    }
+
+    private fun addToCart(itemsId: String) {
+
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[DetailItemViewModel::class.java]
+        sharedpref = SharedPreferenceClass(this)
+
+        viewModel.addToCart(sharedpref.getToken(), itemsId).observe(this) { result ->
+            if (result != null) {
+                when(result) {
+                    is Result.Loading -> {
+                        binding.progressBar11.visibility = View.VISIBLE
+                    }
+                    is Result.Success -> {
+                        binding.progressBar11.visibility = View.GONE
+                        val message = result.data.message
+                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                    }
+                    is Result.Error -> {
+                        binding.progressBar11.visibility = View.GONE
+                        Toast.makeText(
+                            this,
+                            resources.getString(R.string.text_error) + result.error,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
     }
 
 

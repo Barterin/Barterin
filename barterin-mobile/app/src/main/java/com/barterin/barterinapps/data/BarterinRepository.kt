@@ -408,7 +408,29 @@ class BarterinRepository private constructor(
 
     }
 
-    
+
+    fun addToCart(
+        token: String,
+        itemsId: String,
+    ): LiveData<Result<AddToCartResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.addToCart("Bearer $token", itemsId)
+
+            if (response.statusCode == 200) {
+                Log.d("error response", "true: ${response.message} ")
+                emit(Result.Success(response))
+            } else {
+                Log.d("error response", "false: ${response.message} ")
+                emit(Result.Error(response.message))
+            }
+        } catch (e: Exception) {
+            Log.d("BarterinRepository", "error: ${e.message.toString()} ")
+            emit(Result.Error(e.message.toString()))
+        }
+
+    }
+
 
     companion object {
         @Volatile
