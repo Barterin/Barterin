@@ -517,6 +517,27 @@ class BarterinRepository private constructor(
     }
 
 
+    fun getOfferList(token: String): LiveData<Result<List<OfferData>>> = liveData {
+        emit(Result.Loading)
+
+        try {
+
+            val response = apiService.getOfferBarter("Bearer $token")
+
+
+            if (response.statusCode == 200) {
+                Log.d("error response", "true: Berhasil ")
+                emit(Result.Success(response.data))
+            } else {
+                Log.d("error response", "false: Gagal")
+            }
+        } catch (e: Exception) {
+            Log.d("BarterinRepository", "getAddressList: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+
 
     companion object {
         @Volatile

@@ -163,4 +163,9 @@ interface ApiService {
         @Header("Authorization") token: String
     ) : GetMyItemsResponse
 
+    @GET("member/offer/list")
+    suspend fun getOfferBarter(
+        @Header("Authorization") token: String
+    ) : GetOfferResponse
+
 }
