@@ -37,6 +37,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BarterinApps">
         <activity
+            android:name=".ui.myitems.MyItemsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.cart.CartActivity"
             android:exported="false" />
         <activity

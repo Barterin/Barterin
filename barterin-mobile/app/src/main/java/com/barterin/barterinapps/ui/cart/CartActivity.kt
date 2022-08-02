@@ -1,5 +1,6 @@
 package com.barterin.barterinapps.ui.cart
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,8 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
+import com.barterin.barterinapps.data.remote.response.DataCartResult
 import com.barterin.barterinapps.databinding.ActivityCartBinding
 import com.barterin.barterinapps.ui.bottomnavigation.ui.home.HomeViewModel
+import com.barterin.barterinapps.ui.myitems.MyItemsActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 
 class CartActivity : AppCompatActivity() {
@@ -52,6 +55,7 @@ class CartActivity : AppCompatActivity() {
                     }
                     is Result.Error -> {
                         Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                        binding.progressBar10.visibility = View.GONE
                     }
                 }
             }
@@ -63,6 +67,15 @@ class CartActivity : AppCompatActivity() {
             this.adapter?.notifyDataSetChanged()
             this.adapter = cartAdapter
         }
+
+        cartAdapter.setOnItemClickCallBack(object : CartAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: DataCartResult) {
+                val intent = Intent(this@CartActivity, MyItemsActivity::class.java)
+                intent.putExtra("id_items", data.id)
+                startActivity(intent)
+            }
+
+        })
 
     }
 

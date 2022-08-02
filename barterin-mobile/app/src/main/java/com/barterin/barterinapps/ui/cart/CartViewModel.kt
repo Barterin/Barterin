@@ -9,4 +9,6 @@ class CartViewModel(private val barterinRepository: BarterinRepository) : ViewMo
 
     fun deleteChart(token: String, id: String) = barterinRepository.deleteChart(token, id)
 
+    fun offerBarter(token: String, id:String, withId: String) = barterinRepository.offerBarter(token, id, withId)
+
 }

@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
+import retrofit2.http.Field
 import java.io.Serializable
 
 
@@ -325,6 +326,40 @@ data class BarangDataResult(
 
     @field:SerializedName("status")
     val status: String,
+)
+
+data class GetMyItemsResponse(
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("data")
+    val data: List<GetMyItems>
+)
+
+data class GetMyItems(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("image")
+    val image: List<String>,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("description")
+    val description: String,
+
+    @field:SerializedName("used_time")
+    val used_time: String,
+
+    @field:SerializedName("purchase_price")
+    val purchase_price: String,
+
+    @field:SerializedName("item_for")
+    val item_for: String,
+
+    @field:SerializedName("address_item")
+    val address_item: String,
 )
 
 

@@ -149,4 +149,18 @@ interface ApiService {
         @Path("id") id: String
     ): DeleteAddressResponse
 
+    @FormUrlEncoded
+    @POST("member/offer/store")
+    suspend fun barterOffer(
+        @Header("Authorization") token: String,
+        @Field("item_id") item_id: String,
+        @Field("with_item_id") with_item_id: String,
+    ): DeleteAddressResponse
+
+
+    @GET("member/items/list")
+    suspend fun getMyItems(
+        @Header("Authorization") token: String
+    ) : GetMyItemsResponse
+
 }
