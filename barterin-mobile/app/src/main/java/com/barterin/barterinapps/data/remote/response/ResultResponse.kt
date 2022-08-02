@@ -362,4 +362,41 @@ data class GetMyItems(
     val address_item: String,
 )
 
+data class GetOfferResponse(
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("data")
+    val data: List<OfferData>
+)
+
+data class OfferData(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("barang")
+    val barang: DataBarangOffer
+)
+
+data class DataBarangOffer (
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("image")
+    val image: String,
+
+    @field:SerializedName("user")
+    val user: String,
+
+    @field:SerializedName("region")
+    val region: String,
+
+    @field:SerializedName("status")
+    val status: String,
+)
+
+
 

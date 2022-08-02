@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_wishlist"
-        android:name="com.barterin.barterinapps.ui.bottomnavigation.ui.wishlist.WishlistFragment"
+        android:name="com.barterin.barterinapps.ui.bottomnavigation.ui.offer.OfferFragment"
         android:label="@string/title_wishlist"
         tools:layout="@layout/fragment_wishlist" />
 

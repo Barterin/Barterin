@@ -9,6 +9,7 @@ import com.barterin.barterinapps.ui.addaddress.AddAddressViewModel
 import com.barterin.barterinapps.ui.additem.AddItemViewModel
 import com.barterin.barterinapps.ui.addresslist.AddressViewModel
 import com.barterin.barterinapps.ui.bottomnavigation.ui.home.HomeViewModel
+import com.barterin.barterinapps.ui.bottomnavigation.ui.offer.OfferViewModel
 import com.barterin.barterinapps.ui.bottomnavigation.ui.profile.ProfileViewModel
 import com.barterin.barterinapps.ui.cart.CartViewModel
 import com.barterin.barterinapps.ui.detailitem.DetailItemViewModel
@@ -62,6 +63,9 @@ class ViewModelFactory private constructor(private val barterinRepository: Barte
         }
         if (modelClass.isAssignableFrom(MyItemsViewModel::class.java)) {
             return MyItemsViewModel(barterinRepository) as T
+        }
+        if (modelClass.isAssignableFrom(OfferViewModel::class.java)) {
+            return OfferViewModel(barterinRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
