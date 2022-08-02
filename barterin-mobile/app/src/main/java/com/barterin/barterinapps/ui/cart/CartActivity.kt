@@ -71,10 +71,9 @@ class CartActivity : AppCompatActivity() {
         cartAdapter.setOnItemClickCallBack(object : CartAdapter.OnItemClickCallback {
             override fun onItemClicked(data: DataCartResult) {
                 val intent = Intent(this@CartActivity, MyItemsActivity::class.java)
-                intent.putExtra("id_items", data.id)
+                intent.putExtra("id_items", data.barang.id)
                 startActivity(intent)
             }
-
         })
 
     }

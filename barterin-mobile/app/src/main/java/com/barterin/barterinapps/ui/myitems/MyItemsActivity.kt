@@ -8,6 +8,7 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.annotation.UiThread
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.barterin.barterinapps.data.Result
@@ -70,7 +71,23 @@ class MyItemsActivity : AppCompatActivity() {
 
         myItemsAdapter.setOnItemClickCallBack(object : MyItemsAdapter.OnItemClickCallback {
             override fun onItemClicked(data: GetMyItems) {
-
+                val withId = intent.getStringExtra("id_items")
+                viewModel.offerBarter(sharedpref.getToken(), withId.toString(), data.id).observe(this@MyItemsActivity) { result ->
+                    if (result != null) {
+                        when(result) {
+                            is Result.Loading -> {
+                                binding.progressBar12.visibility = View.VISIBLE
+                            }
+                            is Result.Success -> {
+                                binding.progressBar12.visibility = View.GONE
+                                startActivity(Intent(this@MyItemsActivity, MyItemsActivity::class.java))
+                            }
+                            is Result.Error -> {
+                                binding.progressBar12.visibility = View.GONE
+                            }
+                        }
+                    }
+                }
             }
         })
     }

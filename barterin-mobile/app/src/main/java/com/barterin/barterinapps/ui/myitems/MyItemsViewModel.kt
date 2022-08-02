@@ -7,4 +7,7 @@ class MyItemsViewModel(private val barterinRepository: BarterinRepository) : Vie
 
     fun getMyItems(token: String) = barterinRepository.getMyItem(token)
 
+    fun offerBarter(token: String, id:String, withId: String) = barterinRepository.offerBarter(token, id, withId)
+
+
 }
