@@ -80,10 +80,16 @@ class MyItemsActivity : AppCompatActivity() {
                             }
                             is Result.Success -> {
                                 binding.progressBar12.visibility = View.GONE
-                                startActivity(Intent(this@MyItemsActivity, MyItemsActivity::class.java))
+                                val intent = Intent(this@MyItemsActivity, BarterSuccesActivity::class.java)
+                                intent.putExtra("success", true)
+                                startActivity(intent)
                             }
                             is Result.Error -> {
                                 binding.progressBar12.visibility = View.GONE
+                                val intent = Intent(this@MyItemsActivity, BarterSuccesActivity::class.java)
+                                intent.putExtra("success", false)
+                                intent.putExtra("message", result.error)
+                                startActivity(intent)
                             }
                         }
                     }

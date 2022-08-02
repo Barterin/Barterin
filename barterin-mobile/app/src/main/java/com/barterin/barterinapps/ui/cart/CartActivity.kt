@@ -75,7 +75,6 @@ class CartActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-
     }
 
     private fun setupView() {
