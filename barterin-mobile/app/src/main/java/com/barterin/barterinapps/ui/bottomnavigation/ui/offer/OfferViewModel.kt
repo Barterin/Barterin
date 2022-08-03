@@ -9,4 +9,6 @@ class OfferViewModel(private val barterinRepository: BarterinRepository) : ViewM
 
     fun getOfferItem(token: String) = barterinRepository.getOfferList(token)
 
+    fun acceptOffer(token: String, offerId: String) = barterinRepository.acceptBarter(token, offerId)
+
 }
