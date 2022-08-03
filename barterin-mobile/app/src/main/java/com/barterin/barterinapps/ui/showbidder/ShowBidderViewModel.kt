@@ -7,4 +7,6 @@ class ShowBidderViewModel(private val barterinRepository: BarterinRepository) : 
 
     fun showBidder(id: String, token: String) = barterinRepository.getBidderList(id, token)
 
+    fun acceptOffer(token: String, offerId: String) = barterinRepository.acceptBarter(token, offerId)
+
 }
