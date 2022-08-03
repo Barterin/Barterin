@@ -1,6 +1,8 @@
 package com.barterin.barterinapps.ui.bottomnavigation.ui.offer
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
+import com.barterin.barterinapps.data.remote.response.OfferData
 import com.barterin.barterinapps.databinding.FragmentWishlistBinding
 import com.barterin.barterinapps.ui.bottomnavigation.ui.home.HomeViewModel
+import com.barterin.barterinapps.ui.showbidder.ShowBidderActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 
 
@@ -31,7 +35,6 @@ class OfferFragment : Fragment() {
     ): View {
 
         _binding = FragmentWishlistBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -80,6 +83,15 @@ class OfferFragment : Fragment() {
             this.adapter?.notifyDataSetChanged()
             this.adapter = offerItemsAdapter
         }
+
+        offerItemsAdapter.setOnItemCallBack(object: OfferAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: OfferData) {
+                val intent = Intent(requireContext(), ShowBidderActivity::class.java)
+                intent.putExtra("id", data.barang.id)
+                startActivity(intent)
+            }
+
+        })
 
     }
 

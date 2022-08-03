@@ -157,7 +157,6 @@ interface ApiService {
         @Field("with_item_id") with_item_id: String,
     ): DeleteAddressResponse
 
-
     @GET("member/items/list")
     suspend fun getMyItems(
         @Header("Authorization") token: String
@@ -166,6 +165,19 @@ interface ApiService {
     @GET("member/offer/list")
     suspend fun getOfferBarter(
         @Header("Authorization") token: String
+    ) : GetOfferResponse
+
+    @FormUrlEncoded
+    @POST("member/offer/accept")
+    suspend fun acceptOffer(
+        @Header("Authorization") token: String,
+        @Field("offerId") offerId: String,
+    ) : AcceptOfferResponse
+
+    @GET("member/offer/list/bidder")
+    suspend fun getBidderList(
+        @Query("itemId") itemId: String,
+        @Header("Authorization") token: String,
     ) : GetOfferResponse
 
 }

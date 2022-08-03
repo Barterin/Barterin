@@ -398,5 +398,13 @@ data class DataBarangOffer (
     val status: String,
 )
 
+data class AcceptOfferResponse (
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("message")
+    val message: String,
+)
+
 
 

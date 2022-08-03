@@ -1,4 +1,4 @@
-package com.barterin.barterinapps.ui.bottomnavigation.ui.offer
+package com.barterin.barterinapps.ui.showbidder
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.barterin.barterinapps.R
-import com.barterin.barterinapps.data.remote.response.DataItem
 import com.barterin.barterinapps.data.remote.response.OfferData
-import com.barterin.barterinapps.ui.bottomnavigation.ui.home.BarterItemsAdapter
+import com.barterin.barterinapps.ui.bottomnavigation.ui.offer.OfferAdapter
 import com.bumptech.glide.Glide
 
-class OfferAdapter : RecyclerView.Adapter<OfferAdapter.ViewHolder>()  {
+class ShowBidderAdapter : RecyclerView.Adapter<ShowBidderAdapter.ViewHolder>()  {
 
     private val dataList = ArrayList<OfferData>()
     var onItemClickCallback: OnItemClickCallback? = null
@@ -30,11 +29,11 @@ class OfferAdapter : RecyclerView.Adapter<OfferAdapter.ViewHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_offer, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_bidder, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: OfferAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ShowBidderAdapter.ViewHolder, position: Int) {
         holder.bind(dataList[position])
     }
 
@@ -42,11 +41,11 @@ class OfferAdapter : RecyclerView.Adapter<OfferAdapter.ViewHolder>()  {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val itemName: TextView = itemView.findViewById(R.id.txt_nameItem_offer)
-        private val penjual: TextView = itemView.findViewById(R.id.txt_penjual_offer)
-        private val location: TextView = itemView.findViewById(R.id.txt_seller_location_offer)
-        private val imgItem: ImageView = itemView.findViewById(R.id.img_cart_offer)
-        private val button: Button = itemView.findViewById(R.id.button_add_offer)
+        private val itemName: TextView = itemView.findViewById(R.id.txt_nameItem_bidder)
+        private val penjual: TextView = itemView.findViewById(R.id.txt_penjual_bidder)
+        private val location: TextView = itemView.findViewById(R.id.txt_seller_location_bidder)
+        private val imgItem: ImageView = itemView.findViewById(R.id.img_cart_bidder)
+        private val button: Button = itemView.findViewById(R.id.button_add_bidder)
 
         fun bind(user: OfferData) {
             itemName.text = user.barang.name
@@ -60,14 +59,11 @@ class OfferAdapter : RecyclerView.Adapter<OfferAdapter.ViewHolder>()  {
             button.setOnClickListener {
                 onItemClickCallback?.onItemClicked(user)
             }
-
         }
-
     }
 
     interface OnItemClickCallback {
         fun onItemClicked(data: OfferData)
     }
-
 
 }

@@ -37,6 +37,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BarterinApps">
         <activity
+            android:name=".ui.showbidder.ShowBidderActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.myitems.BarterSuccesActivity"
             android:exported="false" />
         <activity
