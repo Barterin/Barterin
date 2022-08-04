@@ -21,7 +21,7 @@
         <ImageView
             android:id="@+id/img_cart_offer"
             android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_height="0dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:scaleType="centerCrop"
@@ -53,8 +53,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:gravity="start"
-            android:textSize="12sp"
-            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="@+id/txt_penjual_offer"
             app:layout_constraintStart_toStartOf="@+id/txt_penjual_offer"
             app:layout_constraintTop_toBottomOf="@+id/txt_penjual_offer"
@@ -83,6 +81,15 @@
             app:cornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/txt_seller_location_offer"
+            app:layout_constraintTop_toBottomOf="@+id/txt_status_barang_offer" />
+
+        <TextView
+            android:id="@+id/txt_status_barang_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="status barang"
+            app:layout_constraintStart_toEndOf="@+id/img_cart_offer"
             app:layout_constraintTop_toBottomOf="@+id/txt_seller_location_offer" />
 
 
