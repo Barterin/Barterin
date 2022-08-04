@@ -47,11 +47,29 @@ class OfferAdapter : RecyclerView.Adapter<OfferAdapter.ViewHolder>()  {
         private val location: TextView = itemView.findViewById(R.id.txt_seller_location_offer)
         private val imgItem: ImageView = itemView.findViewById(R.id.img_cart_offer)
         private val button: Button = itemView.findViewById(R.id.button_add_offer)
+        private val statusBarang: TextView = itemView.findViewById(R.id.txt_status_barang_offer)
+
 
         fun bind(user: OfferData) {
             itemName.text = user.barang.name
             penjual.text = user.barang.user
             location.text = user.barang.region
+
+            when (user.barang.status) {
+                "0" -> {
+                    statusBarang.text = "Available"
+                }
+                "1" -> {
+                    statusBarang.text = "Already bartered"
+                }
+                "2" -> {
+                    statusBarang.text = "Was Removed"
+                }
+                else -> {
+                    statusBarang.text = "Unknown"
+                }
+            }
+
 
             Glide.with(itemView.context)
                 .load(user.barang.image)
