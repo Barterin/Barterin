@@ -275,6 +275,26 @@ class BarterinRepository private constructor(
         }
     }
 
+
+    fun getType(id: String, token: String): LiveData<Result<List<DataTypes>>> = liveData {
+        emit(Result.Loading)
+
+        try {
+            val response = apiService.getTypeList(id,"Bearer $token")
+
+            if (response.statusCode == 200) {
+                Log.d("error response", "true: Berhasil ")
+                emit(Result.Success(response.data))
+            } else {
+                Log.d("error response", "false: Gagal")
+            }
+        } catch (e: Exception) {
+            Log.d("BarterinRepository", "getcategory: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+
     fun deleteAddress(token: String, id: String): LiveData<Result<DeleteAddressResponse>> = liveData {
         emit(Result.Loading)
         try {
@@ -561,12 +581,8 @@ class BarterinRepository private constructor(
 
     fun getBidderList(id: String, token: String): LiveData<Result<List<OfferData>>> = liveData {
         emit(Result.Loading)
-
         try {
-
             val response = apiService.getBidderList(id, "Bearer $token")
-
-
             if (response.statusCode == 200) {
                 Log.d("error response", "true: Berhasil ")
                 emit(Result.Success(response.data))
@@ -578,7 +594,6 @@ class BarterinRepository private constructor(
             emit(Result.Error(e.message.toString()))
         }
     }
-
 
 
 

@@ -33,23 +33,10 @@ class AddItemActivity : AppCompatActivity() {
 
         getAutoCompleteText()
 
-        binding?.btnNextUpload?.setOnClickListener {
-            moveWithData()
-        }
 
     }
 
-    private fun moveWithData() {
-        val intent = Intent(this, AddPhotoActivity::class.java)
-//        intent.putExtra("category", binding?.categoriesNameEditText?.text.toString())
-        intent.putExtra("type", binding?.itemTypeEditText?.text.toString())
-        intent.putExtra("address", binding?.adressNameEditText?.text.toString())
-        intent.putExtra("itemName", binding?.itemNameEditText?.text.toString())
-        intent.putExtra("itemDescription", binding?.itemDescriptionEditText?.text.toString())
-        intent.putExtra("usedTime", binding?.usedTimeEditText?.text.toString())
-        intent.putExtra("priceRange", binding?.priceRangeEditText?.text.toString())
-        startActivity(intent)
-    }
+
 
     private fun getAutoCompleteText() {
 
@@ -65,26 +52,21 @@ class AddItemActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         binding?.progressBar7?.visibility = View.GONE
-
-                        val categoryName = arrayListOf<String>()
-//                        result.data.map {
-//                            categoryName.add(it.name)
-//                        }
-
-
+                        val categoryName = arrayListOf<String?>()
+                        result.data.map {
+                            categoryName.add(it.name)
+                        }
                         val adapter = ArrayAdapter(
-                            applicationContext,
-                            android.R.layout.simple_list_item_1,
+                            this@AddItemActivity,
+                            android.R.layout.select_dialog_item,
                             categoryName
                         )
-
-                        adapter.add(categoryName.toString().trim())
+                        adapter.notifyDataSetChanged()
                         binding?.categoriesNameEditText?.setAdapter(adapter)
 
-//                        val adapter = ArrayAdapter(applicationContext, R.layout.simple_list_item_1, categoryName)
-//                        (binding?.categoriesNameEditText as AutoCompleteTextView).setAdapter(adapter)
-
+//                      getTypeList(idItem.toString())
                     }
+
                     is Result.Error -> {
                         binding?.progressBar7?.visibility = View.GONE
                         Toast.makeText(
@@ -96,6 +78,28 @@ class AddItemActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+//    private fun getTypeList(id: String) {
+//
+//        val factory = ViewModelFactory.getInstance(this)
+//        val viewModel = ViewModelProvider(this, factory)[AddItemViewModel::class.java]
+//        sharedpref = SharedPreferenceClass(this)
+//
+//        viewModel.getTypeList(id, sharedpref.getT)
+//
+//    }
+
+    private fun moveWithData(idCategory: String) {
+        val intent = Intent(this, AddPhotoActivity::class.java)
+//        intent.putExtra("category", binding?.categoriesNameEditText?.text.toString())
+        intent.putExtra("type", binding?.itemTypeEditText?.text.toString())
+        intent.putExtra("address", binding?.adressNameEditText?.text.toString())
+        intent.putExtra("itemName", binding?.itemNameEditText?.text.toString())
+        intent.putExtra("itemDescription", binding?.itemDescriptionEditText?.text.toString())
+        intent.putExtra("usedTime", binding?.usedTimeEditText?.text.toString())
+        intent.putExtra("priceRange", binding?.priceRangeEditText?.text.toString())
+        startActivity(intent)
     }
 
     private fun setupView() {

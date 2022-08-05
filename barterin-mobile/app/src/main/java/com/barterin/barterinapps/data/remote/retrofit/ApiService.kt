@@ -102,11 +102,11 @@ interface ApiService {
         @Header("Authorization") token: String,
     ): Categories
 
-    @GET("public/type?category={id}")
+    @GET("public/type")
     suspend fun getTypeList(
-        @Path("id") id: String,
+        @Query("category") category: String,
         @Header("Authorization") token: String,
-    ): Categories
+    ): TypeResponse
 
     @Multipart
     @POST("member/items/store")

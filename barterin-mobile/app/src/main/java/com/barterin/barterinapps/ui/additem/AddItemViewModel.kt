@@ -40,4 +40,7 @@ class AddItemViewModel(private val barterinRepository: BarterinRepository) : Vie
         item_for,
         file
     )
+
+    fun getTypeList(id: String, token: String) = barterinRepository.getType(id, token)
+
 }
