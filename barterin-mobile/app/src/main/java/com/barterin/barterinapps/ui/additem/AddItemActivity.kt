@@ -7,6 +7,7 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,7 @@ import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityAddItemBinding
 import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
+import com.barterin.barterinapps.ui.bottomnavigation.ui.home.CatgoryAdapter
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 
 
@@ -64,24 +66,37 @@ class AddItemActivity : AppCompatActivity() {
                         binding?.progressBar7?.visibility = View.VISIBLE
                     }
                     is Result.Success -> {
-                        binding?.progressBar7?.visibility = View.GONE
 
-                        val categoryName = arrayListOf<String>()
-//                        result.data.map {
-//                            categoryName.add(it.name)
-//                        }
+                        val data = result.data
 
+                        val dataName = arrayListOf<String>()
+
+                        result.data.map {
+                            dataName.add(it.name)
+                        }
 
                         val adapter = ArrayAdapter(
-                            applicationContext,
-                            android.R.layout.simple_list_item_1,
-                            categoryName
+                            this@AddItemActivity,
+                            android.R.layout.select_dialog_item,
+                            dataName
                         )
 
-                        adapter.add(categoryName.toString().trim())
+                        adapter.notifyDataSetChanged()
                         binding?.categoriesNameEditText?.setAdapter(adapter)
 
-//                        val adapter = ArrayAdapter(applicationContext, R.layout.simple_list_item_1, categoryName)
+
+//                        binding?.progressBar7?.visibility = View.GONE
+//
+//                        val categoryName = arrayListOf<String>()
+//
+//                        val adapter = ArrayAdapter(
+//                            applicationContext,
+//                            android.R.layout.simple_list_item_1,
+//                            categoryName
+//                        )
+//
+//                        adapter.add(categoryName.toString().trim())
+//                        binding?.categoriesNameEditText?.setAdapter(adapter)
 //                        (binding?.categoriesNameEditText as AutoCompleteTextView).setAdapter(adapter)
 
                     }
@@ -96,6 +111,8 @@ class AddItemActivity : AppCompatActivity() {
                 }
             }
         }
+
+
     }
 
     private fun setupView() {
