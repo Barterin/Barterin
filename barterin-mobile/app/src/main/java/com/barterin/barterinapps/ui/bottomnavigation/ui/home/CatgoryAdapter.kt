@@ -34,6 +34,8 @@ class CatgoryAdapter : RecyclerView.Adapter<CatgoryAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    //test
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataList[position])
     }
