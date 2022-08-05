@@ -406,5 +406,29 @@ data class AcceptOfferResponse (
     val message: String,
 )
 
+data class TypeResponse (
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("message")
+    val data: List<DataTypes>,
+)
+
+data class DataTypes (
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("categoryId")
+    val categoryId: String,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("slug")
+    val slug: String,
+)
+
+
+
 
 
