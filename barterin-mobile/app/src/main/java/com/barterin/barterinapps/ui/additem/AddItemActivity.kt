@@ -3,6 +3,8 @@ package com.barterin.barterinapps.ui.additem
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -34,8 +36,58 @@ class AddItemActivity : AppCompatActivity() {
         getAutoCompleteText()
 
 
+        binding?.categoriesNameEditText?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                showTypeList(p0.toString())
+                Toast.makeText(this@AddItemActivity, p0, Toast.LENGTH_LONG).show()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                showTypeList(p0.toString())
+                Toast.makeText(this@AddItemActivity, p0, Toast.LENGTH_LONG).show()
+            }
+
+        })
     }
 
+    private fun showTypeList(id: String) {
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[AddItemViewModel::class.java]
+        sharedpref = SharedPreferenceClass(this)
+
+        viewModel.getTypeList(id, sharedpref.getToken()).observe(this) { result ->
+            if (result != null) {
+                when(result) {
+                    is Result.Loading -> {
+                        binding?.progressBar7?.visibility = View.VISIBLE
+                    }
+                    is Result.Success -> {
+                        Toast.makeText(this@AddItemActivity, "hasilnya $id", Toast.LENGTH_SHORT).show()
+                        binding?.progressBar7?.visibility = View.GONE
+                        val typeList = arrayListOf<String?>()
+                        result.data.map {
+                            typeList.add(it.name)
+                        }
+                        val adapter = ArrayAdapter(
+                            this@AddItemActivity,
+                            android.R.layout.select_dialog_item,
+                            typeList
+                        )
+                        adapter.notifyDataSetChanged()
+                        binding?.itemTypeEditText?.setAdapter(adapter)
+                    }
+                    is Result.Error -> {
+                        binding?.progressBar7?.visibility = View.GONE
+                        Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
 
 
     private fun getAutoCompleteText() {
@@ -54,7 +106,7 @@ class AddItemActivity : AppCompatActivity() {
                         binding?.progressBar7?.visibility = View.GONE
                         val categoryName = arrayListOf<String?>()
                         result.data.map {
-                            categoryName.add(it.name)
+                            categoryName.add(it.id)
                         }
                         val adapter = ArrayAdapter(
                             this@AddItemActivity,
@@ -79,16 +131,6 @@ class AddItemActivity : AppCompatActivity() {
             }
         }
     }
-
-//    private fun getTypeList(id: String) {
-//
-//        val factory = ViewModelFactory.getInstance(this)
-//        val viewModel = ViewModelProvider(this, factory)[AddItemViewModel::class.java]
-//        sharedpref = SharedPreferenceClass(this)
-//
-//        viewModel.getTypeList(id, sharedpref.getT)
-//
-//    }
 
     private fun moveWithData(idCategory: String) {
         val intent = Intent(this, AddPhotoActivity::class.java)
