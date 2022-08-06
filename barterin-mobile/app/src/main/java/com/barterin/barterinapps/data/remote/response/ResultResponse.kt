@@ -410,7 +410,7 @@ data class TypeResponse (
     @field:SerializedName("statusCode")
     val statusCode: Int,
 
-    @field:SerializedName("message")
+    @field:SerializedName("data")
     val data: List<DataTypes>,
 )
 

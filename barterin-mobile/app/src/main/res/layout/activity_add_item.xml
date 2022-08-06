@@ -43,7 +43,6 @@
             android:id="@+id/categoriesNameEditText"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:ems="10"
             android:paddingStart="8dp"
             android:hint="@string/text_categories"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -62,11 +61,8 @@
             android:id="@+id/itemTypeEditText"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:ems="10"
             android:hint="@string/text_type"
-            android:inputType="textEmailAddress"
-            android:paddingStart="8dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:paddingStart="8dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -84,7 +80,6 @@
             android:id="@+id/adressNameEditText"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:ems="10"
             android:hint="@string/text_add_address"
             android:inputType="textEmailAddress"
             android:paddingStart="8dp"
