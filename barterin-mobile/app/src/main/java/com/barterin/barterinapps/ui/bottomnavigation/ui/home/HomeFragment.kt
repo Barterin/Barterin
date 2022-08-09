@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
+import com.barterin.barterinapps.data.remote.response.CategoriesResult
 import com.barterin.barterinapps.data.remote.response.DataItem
 import com.barterin.barterinapps.databinding.FragmentHomeBinding
 import com.barterin.barterinapps.ui.cart.CartActivity
@@ -163,6 +164,16 @@ class HomeFragment : Fragment() {
             this.adapter?.notifyDataSetChanged()
             this.adapter = categoryAdapter
         }
+
+        categoryAdapter.setOnItemClickCallBack(object : CatgoryAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: CategoriesResult) {
+                val moveIntent = Intent(requireContext(), SearchResultActivity::class.java).apply {
+                    putExtra("query", data.name)
+                }
+                startActivity(moveIntent)
+            }
+
+        })
 
     }
 
