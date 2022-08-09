@@ -37,8 +37,6 @@ class ChatFragment : Fragment() {
         binding.cardviewMyaccount.setOnClickListener {
             startActivity(Intent(requireContext(), ChatActivity::class.java))
         }
-
-
     }
 
     override fun onDestroyView() {

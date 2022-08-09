@@ -16,6 +16,7 @@ import com.barterin.barterinapps.ui.cart.CartViewModel
 import com.barterin.barterinapps.ui.detailitem.DetailItemViewModel
 import com.barterin.barterinapps.ui.emailverification.EmailVerificationActivity
 import com.barterin.barterinapps.ui.emailverification.EmailVerificationViewModel
+import com.barterin.barterinapps.ui.itemmanagement.ItemManagementViewModel
 import com.barterin.barterinapps.ui.login.LoginViewModel
 import com.barterin.barterinapps.ui.myitems.MyItemsViewModel
 import com.barterin.barterinapps.ui.register.RegisterViewModel
@@ -79,6 +80,9 @@ class ViewModelFactory private constructor(private val barterinRepository: Barte
         }
         if (modelClass.isAssignableFrom(ChatViewModel::class.java)) {
             return ChatViewModel(barterinRepository) as T
+        }
+        if (modelClass.isAssignableFrom(ItemManagementViewModel::class.java)) {
+            return ItemManagementViewModel(barterinRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
