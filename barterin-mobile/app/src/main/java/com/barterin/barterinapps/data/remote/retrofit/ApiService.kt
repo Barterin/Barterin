@@ -185,4 +185,10 @@ interface ApiService {
         @Header("Authorization") token: String,
     ) : GetOfferResponse
 
+    @DELETE("member/items/delete/{id}")
+    suspend fun deleteItem(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ) : DeleteAddressResponse
+
 }

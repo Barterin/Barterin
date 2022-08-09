@@ -617,6 +617,29 @@ class BarterinRepository private constructor(
 
 
 
+    fun deleteItem(token: String, id: String): LiveData<Result<DeleteAddressResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.deleteItem(
+                "Bearer $token",
+                id
+            )
+
+            if (response.statusCode == 200) {
+                Log.d("error response", "true: Berhasil ")
+                emit(Result.Success(response))
+            } else {
+                Log.d("error response", "false: Gagal")
+                emit(Result.Error(response.message))
+            }
+
+        } catch (e: Exception) {
+            Log.d("BarterinRepository", "error: ${e.message.toString()} ")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+
     companion object {
         @Volatile
         private var instance: BarterinRepository? = null

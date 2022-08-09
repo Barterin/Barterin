@@ -30,6 +30,7 @@ import java.io.File
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
 import com.barterin.barterinapps.ui.emailverification.EmailVerificationActivity
+import com.barterin.barterinapps.ui.itemmanagement.ItemManagementActivity
 import com.bumptech.glide.Glide
 
 class UpdateProfileActivity : AppCompatActivity() {
@@ -81,6 +82,10 @@ class UpdateProfileActivity : AppCompatActivity() {
 
         binding.btnChooseImage.setOnClickListener {
             registerForContextMenu(binding.btnChooseImage)
+        }
+
+        binding.btnMyitems.setOnClickListener {
+            startActivity(Intent(this@UpdateProfileActivity, ItemManagementActivity::class.java))
         }
 
         getData()

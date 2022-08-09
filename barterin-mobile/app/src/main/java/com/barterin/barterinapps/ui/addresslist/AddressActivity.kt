@@ -36,7 +36,6 @@ class AddressActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
-
     }
 
     private fun getList() {
