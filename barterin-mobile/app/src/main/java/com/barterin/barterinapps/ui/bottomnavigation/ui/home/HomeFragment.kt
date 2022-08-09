@@ -17,6 +17,7 @@ import com.barterin.barterinapps.data.remote.response.DataItem
 import com.barterin.barterinapps.databinding.FragmentHomeBinding
 import com.barterin.barterinapps.ui.cart.CartActivity
 import com.barterin.barterinapps.ui.detailitem.DetailItemActivity
+import com.barterin.barterinapps.ui.searchresult.SearchResultActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 import java.io.Serializable
 
@@ -38,13 +39,26 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         if (activity != null) {
             getCategoryList()
             getBarterList()
         } else {
             Toast.makeText(requireContext(), "yahaha", Toast.LENGTH_SHORT).show()
         }
+
+        binding.searchviewItems.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                val moveIntent = Intent(requireContext(), SearchResultActivity::class.java).apply {
+                    putExtra("query", query)
+                }
+                startActivity(moveIntent)
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
 
         binding.navCart.setOnClickListener {
             startActivity(Intent(requireContext(), CartActivity::class.java))
@@ -53,7 +67,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun getBarterList() {
-        Toast.makeText(requireContext(), "barter loading", Toast.LENGTH_SHORT).show()
         val factory = ViewModelFactory.getInstance(requireActivity())
         val viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
         sharedpref = SharedPreferenceClass(requireContext())

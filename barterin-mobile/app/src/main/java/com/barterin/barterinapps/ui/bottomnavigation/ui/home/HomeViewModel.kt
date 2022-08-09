@@ -11,4 +11,6 @@ class HomeViewModel(private val barterinRepository: BarterinRepository) : ViewMo
 
     fun getAllBarterItems() = barterinRepository.getBarterItem()
 
+    fun searchBarterItem(query: String) = barterinRepository.searchBarterItem(query)
+
 }

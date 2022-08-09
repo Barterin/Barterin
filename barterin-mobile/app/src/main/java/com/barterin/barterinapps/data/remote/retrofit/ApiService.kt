@@ -81,14 +81,14 @@ interface ApiService {
     ): AddAddressResponse
 
     @Multipart
-    @POST("user/upload-photo")
+    @POST("member/user/upload-photo")
     suspend fun uploadProfilePhoto(
         @Header("Authorization") token: String,
         @Part file: MultipartBody.Part
     ): UploadPhotoResponse
 
     @FormUrlEncoded
-    @POST("user/update")
+    @POST("member/user/update")
     suspend fun updateProfile(
         @Header("Authorization") token: String,
         @Field("fullname") fullname: String,
@@ -125,6 +125,11 @@ interface ApiService {
 
     @GET("public/items/barter")
     suspend fun getAllBarterItems(): BarterDataResponse
+
+    @GET("public/items/barter")
+    suspend fun searchBarterItem(
+        @Query("search") search: String,
+    ): BarterDataResponse
 
     @POST("auth/logout")
     suspend fun logoutUser(
