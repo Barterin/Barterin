@@ -39,6 +39,18 @@ class SearchResultActivity : AppCompatActivity() {
 
         getList(query.toString())
 
+        binding.searchviewItems.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                getList(query.toString())
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
+
     }
 
     private fun getList(query: String) {

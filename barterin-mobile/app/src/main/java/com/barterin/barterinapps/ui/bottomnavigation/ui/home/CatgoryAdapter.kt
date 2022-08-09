@@ -21,6 +21,11 @@ import com.bumptech.glide.Glide
 class CatgoryAdapter : RecyclerView.Adapter<CatgoryAdapter.ViewHolder>() {
 
     private val dataList = ArrayList<CategoriesResult>()
+    var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallBack(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -54,11 +59,20 @@ class CatgoryAdapter : RecyclerView.Adapter<CatgoryAdapter.ViewHolder>() {
             } else if (user.slug == "fashion-muslim") {
                 contraint.setBackgroundResource(R.drawable.ic_fashion)
             }
+
+            itemView.setOnClickListener {
+                onItemClickCallback?.onItemClicked(user)
+            }
+
         }
     }
 
 
     override fun getItemCount(): Int = dataList.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: CategoriesResult)
+    }
 
 
 }
