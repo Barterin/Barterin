@@ -42,19 +42,19 @@ class CatgoryAdapter : RecyclerView.Adapter<CatgoryAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val categoryName: TextView = itemView.findViewById(R.id.txt_title_category)
+        private val totalItems: TextView = itemView.findViewById(R.id.txt_total_items)
         private val contraint: ConstraintLayout = itemView.findViewById(R.id.contraint_category)
 
         fun bind(user: CategoriesResult) {
             categoryName.text = user.name
+            totalItems.text = "${user.count} Item"
 
             if (user.slug == "elektronik") {
                 contraint.setBackgroundResource(R.drawable.ic_computer)
             } else if (user.slug == "fashion-muslim") {
                 contraint.setBackgroundResource(R.drawable.ic_fashion)
             }
-
         }
-
     }
 
 

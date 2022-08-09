@@ -148,6 +148,13 @@ data class CategoriesResult(
 
     @field:SerializedName("slug")
     val slug: String,
+
+    @field:SerializedName("count")
+    var count: String,
+
+    @field:SerializedName("image")
+    var image: String
+
 ) : Parcelable
 
 data class Type(
