@@ -24,6 +24,7 @@ import com.barterin.barterinapps.ui.searchresult.SearchResultActivity
 import com.barterin.barterinapps.ui.searchresult.SearchResultViewModel
 import com.barterin.barterinapps.ui.showbidder.ShowBidderViewModel
 import com.barterin.barterinapps.ui.updateaddress.UpdateAddressViewModel
+import com.barterin.barterinapps.ui.updateitem.UpdateItemViewModel
 import com.barterin.barterinapps.ui.updateprofile.UpdateProfileViewModel
 
 class ViewModelFactory private constructor(private val barterinRepository: BarterinRepository) :
@@ -83,6 +84,9 @@ class ViewModelFactory private constructor(private val barterinRepository: Barte
         }
         if (modelClass.isAssignableFrom(ItemManagementViewModel::class.java)) {
             return ItemManagementViewModel(barterinRepository) as T
+        }
+        if (modelClass.isAssignableFrom(UpdateItemViewModel::class.java)) {
+            return UpdateItemViewModel(barterinRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

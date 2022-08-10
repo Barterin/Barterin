@@ -41,7 +41,7 @@ class AddItemViewModel(private val barterinRepository: BarterinRepository) : Vie
         file
     )
 
-    fun getTypeList(id: String, token: String) = barterinRepository.getType(id, token)
+    fun getTypeList(id: String) = barterinRepository.getType(id)
 
     fun getDataAddress(token: String) = barterinRepository.getAddressList(token)
 

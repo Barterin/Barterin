@@ -130,7 +130,6 @@ class HomeFragment : Fragment() {
                 }
             }
         })
-
     }
 
     private fun getCategoryList() {
