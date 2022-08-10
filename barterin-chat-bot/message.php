@@ -49,7 +49,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mulai transaksi barter</p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/HomeBarter'>disini</a> untuk mulai transaksi barter</p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -69,7 +69,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mulai mengupload barang</p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/uploadBarangBarter'>disini</a> untuk mulai mengupload barang</p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -89,7 +89,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mengetahui beberapa contoh barang yang sudah di posting sebelumnya</p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/HomeBarter'>disini</a> untuk mengetahui beberapa contoh barang yang sudah di posting sebelumnya</p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -109,7 +109,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk memulai transaksi barter </p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/HomeBarter'>disini</a> untuk memulai transaksi barter </p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -142,7 +142,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mulai mendonasikan barang mu</p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/uploadBarangDonasi'>disini</a> untuk mulai mendonasikan barang mu</p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -161,7 +161,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mulai mendonasikan barang mu </p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/UploadBarangDonasi'>disini</a> untuk mulai mendonasikan barang mu </p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -181,7 +181,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mencari barang kebutuhan mu </p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/HomeDonasi'>disini</a> untuk mencari barang kebutuhan mu </p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -201,7 +201,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mengetahui riwayat transaksimu</p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/RiwayatTransaksi'>disini</a> untuk mengetahui riwayat transaksimu</p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -221,7 +221,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mengetahui berapa ongkos kirim yang harus dibayar</p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/HomeDonasi'>disini</a> untuk mencari barang yang kamu butuhkan</p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -256,7 +256,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mendaftar di Barterin </p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/signUp'>disini</a> untuk mendaftar di Barterin </p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
@@ -276,13 +276,14 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk masuk kedalam aplikasi Barterin</p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/login'>disini</a> untuk masuk kedalam aplikasi Barterin</p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
     <p class='mb-0'>31. Bagaimana cara daftar atau Register di aplikasi Barterin ?</p>
     <p class='mb-0'>33. Bagaimana cara mengganti nomor handphone</p>
     <p class='mb-0'>34. Bagaimana cara menghindari Penipuan</p>
+    <p class='mb-0'>35. Tidak Mendapatkan kode OTP</p>
     </div>
     </div>
           ";
@@ -296,13 +297,14 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk mengganti data dirimu</p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/Profil'>disini</a> untuk mengganti data dirimu</p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
     <p class='mb-0'>31. Bagaimana cara daftar atau Register di aplikasi Barterin ?</p>
     <p class='mb-0'>32. Bagaimana cara login di aplikasi Barterin ?</p>
     <p class='mb-0'>34. Bagaimana cara menghindari Penipuan</p>
+    <p class='mb-0'>35. Tidak Mendapatkan kode OTP</p>
     </div>
     </div>
           ";
@@ -316,7 +318,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
         <div class='card-header'>
-        <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk melaporkan penipuan</p>
+        <p class='mb-0'>Klik <a href='https://barterin.co.id/formPenipuan'>disini</a> untuk melaporkan penipuan</p>
         <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
         </div>
         <div class='card-body'>
@@ -336,7 +338,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
         <div class='card-header'>
-        <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk kirim ulang OTP</p>
+        <p class='mb-0'>Klik <a href='https://barterin.co.id/inputOTP'>disini</a> untuk kirim ulang OTP</p>
         <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
         </div>
         <div class='card-body'>
@@ -356,7 +358,7 @@ if ($run_query->num_rows > 0) {
     echo "
     <div class='card'>
     <div class='card-header'>
-    <p class='mb-0'>Klik <a href='https://barterin.co.id/'>disini</a> untuk keluar dari aplikasi Barterin</p>
+    <p class='mb-0'>Klik <a href='https://barterin.co.id/logout'>disini</a> untuk keluar dari aplikasi Barterin</p>
     <p class='mb-0'>atau pilih pertanyaan yang mungkin ingin ditanyakan lagi</p>
     </div>
     <div class='card-body'>
