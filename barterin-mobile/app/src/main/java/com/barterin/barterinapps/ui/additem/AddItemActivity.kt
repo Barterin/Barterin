@@ -18,7 +18,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
+import com.barterin.barterinapps.data.remote.response.AddressResult
 import com.barterin.barterinapps.data.remote.response.CategoriesResult
+import com.barterin.barterinapps.data.remote.response.DataTypes
 import com.barterin.barterinapps.databinding.ActivityAddItemBinding
 import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
 import com.barterin.barterinapps.ui.bottomnavigation.ui.home.HomeViewModel
@@ -84,6 +86,16 @@ class AddItemActivity : AppCompatActivity() {
             this?.adapter?.notifyDataSetChanged()
             this?.adapter = chooseAddressAdapter
         }
+
+        chooseAddressAdapter.setOnItemClickCallBack(object : ChooseAddressAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: AddressResult) {
+                val sharedPreference =  getSharedPreferences("id_preference",Context.MODE_PRIVATE)
+                val editor = sharedPreference.edit()
+                editor.putString("address_id",data.id)
+                editor.commit()
+            }
+
+        })
 
     }
 
@@ -171,13 +183,23 @@ class AddItemActivity : AppCompatActivity() {
             this?.adapter?.notifyDataSetChanged()
             this?.adapter = typeAdapter
         }
+
+        typeAdapter.setOnItemClickCallBack(object : ChooseTypeAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: DataTypes) {
+                val sharedPreference =  getSharedPreferences("id_preference",Context.MODE_PRIVATE)
+                val editor = sharedPreference.edit()
+                editor.putString("id_type",data.id)
+                editor.commit()
+            }
+        })
     }
 
 
     private fun moveWithData() {
+        val sharedPreference =  getSharedPreferences("id_preference",Context.MODE_PRIVATE)
         val intent = Intent(this, AddPhotoActivity::class.java)
-//        intent.putExtra("type", binding?.itemTypeEditText?.text.toString())
-//        intent.putExtra("address", binding?.adressNameEditText?.text.toString())
+        intent.putExtra("type", sharedPreference.getString("id_type", "kosong"))
+        intent.putExtra("address", sharedPreference.getString("address_id", "kosong"))
         intent.putExtra("itemName", binding?.itemNameEditText?.text.toString())
         intent.putExtra("itemDescription", binding?.itemDescriptionEditText?.text.toString())
         intent.putExtra("usedTime", binding?.usedTimeEditText?.text.toString())
