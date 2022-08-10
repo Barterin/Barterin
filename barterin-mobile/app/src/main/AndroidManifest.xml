@@ -37,6 +37,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BarterinApps">
         <activity
+            android:name=".ui.itemmanagement.ItemManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.chat.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.chat.ChatBotActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.searchresult.SearchResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.showbidder.ShowBidderActivity"
             android:exported="false" />
         <activity

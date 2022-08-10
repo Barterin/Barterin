@@ -21,6 +21,11 @@ import com.bumptech.glide.Glide
 class CatgoryAdapter : RecyclerView.Adapter<CatgoryAdapter.ViewHolder>() {
 
     private val dataList = ArrayList<CategoriesResult>()
+    var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallBack(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -42,10 +47,12 @@ class CatgoryAdapter : RecyclerView.Adapter<CatgoryAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val categoryName: TextView = itemView.findViewById(R.id.txt_title_category)
+        private val totalItems: TextView = itemView.findViewById(R.id.txt_total_items)
         private val contraint: ConstraintLayout = itemView.findViewById(R.id.contraint_category)
 
         fun bind(user: CategoriesResult) {
             categoryName.text = user.name
+            totalItems.text = "${user.count} Item"
 
             if (user.slug == "elektronik") {
                 contraint.setBackgroundResource(R.drawable.ic_computer)
@@ -53,12 +60,19 @@ class CatgoryAdapter : RecyclerView.Adapter<CatgoryAdapter.ViewHolder>() {
                 contraint.setBackgroundResource(R.drawable.ic_fashion)
             }
 
-        }
+            itemView.setOnClickListener {
+                onItemClickCallback?.onItemClicked(user)
+            }
 
+        }
     }
 
 
     override fun getItemCount(): Int = dataList.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: CategoriesResult)
+    }
 
 
 }
