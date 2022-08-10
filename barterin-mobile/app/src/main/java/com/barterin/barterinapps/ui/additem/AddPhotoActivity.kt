@@ -1,6 +1,7 @@
 package com.barterin.barterinapps.ui.additem
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
@@ -106,6 +107,10 @@ class AddPhotoActivity : AppCompatActivity() {
 
     private fun uploadData() {
 
+        val sharedPreference =  getSharedPreferences("id_preference", Context.MODE_PRIVATE)
+        val editor = sharedPreference.edit()
+        editor.clear().commit()
+
         val type = intent.getStringExtra("type")
         val address = intent.getStringExtra("address")
         val itemName = intent.getStringExtra("itemName")
@@ -138,7 +143,6 @@ class AddPhotoActivity : AppCompatActivity() {
             val priceRangeRequest = priceRange?.toRequestBody("text/plain".toMediaType())
             val itemForRequest = "0".toRequestBody("text/plain".toMediaType())
 
-
             val requestImageFile1 = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultiPart1: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo[]",
@@ -161,8 +165,6 @@ class AddPhotoActivity : AppCompatActivity() {
             )
 
             val listOfImages = arrayOf(imageMultiPart1, imageMultiPart2, imageMultiPart3)
-
-
 
             viewModel.uploadItem(
                 sharedpref.getToken(),
@@ -288,7 +290,6 @@ class AddPhotoActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val CAMERA_X_RESULT = 200
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
     }

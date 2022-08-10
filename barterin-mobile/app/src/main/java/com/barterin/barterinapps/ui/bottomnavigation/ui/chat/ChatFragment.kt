@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.barterin.barterinapps.databinding.FragmentChatBinding
 import com.barterin.barterinapps.ui.chat.ChatActivity
 import com.barterin.barterinapps.ui.chat.ChatBotActivity
+import com.barterin.barterinapps.ui.report.ReportActivity
 
 
 class ChatFragment : Fragment() {
@@ -32,6 +33,10 @@ class ChatFragment : Fragment() {
 
         binding.cardviewChatbot.setOnClickListener {
             startActivity(Intent(requireContext(), ChatBotActivity::class.java))
+        }
+
+        binding.btnReportProblem.setOnClickListener {
+            startActivity(Intent(requireContext(), ReportActivity::class.java))
         }
 
         binding.cardviewMyaccount.setOnClickListener {
