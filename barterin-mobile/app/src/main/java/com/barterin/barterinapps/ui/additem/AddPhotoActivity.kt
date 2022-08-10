@@ -79,7 +79,7 @@ class AddPhotoActivity : AppCompatActivity() {
             )
         }
 
-        val category = intent.getStringExtra("category")
+        val category = intent.getStringExtra("type")
 
         Toast.makeText(this@AddPhotoActivity, category, Toast.LENGTH_SHORT).show()
 
