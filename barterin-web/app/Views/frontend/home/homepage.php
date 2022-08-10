@@ -59,6 +59,12 @@
 
     </div>
 </div>
+
+<div class="floating-button">
+    <a href="https://bot.barterin.tech" class="float">
+        <i class="bi bi-chat-right-fill my-float"></i>
+    </a>
+</div>
 </body>
 
 <loadjs-homepage></loadjs-homepage>
