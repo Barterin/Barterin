@@ -276,11 +276,11 @@ class BarterinRepository private constructor(
     }
 
 
-    fun getType(id: String, token: String): LiveData<Result<List<DataTypes>>> = liveData {
+    fun getType(id: String): LiveData<Result<List<DataTypes>>> = liveData {
         emit(Result.Loading)
 
         try {
-            val response = apiService.getTypeList(id,"Bearer $token")
+            val response = apiService.getTypeList(id)
 
             if (response.statusCode == 200) {
                 Log.d("error response", "true: Berhasil ")
@@ -295,27 +295,28 @@ class BarterinRepository private constructor(
     }
 
 
-    fun deleteAddress(token: String, id: String): LiveData<Result<DeleteAddressResponse>> = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiService.deleteAddress(
-                "Bearer $token",
-                id
-            )
+    fun deleteAddress(token: String, id: String): LiveData<Result<DeleteAddressResponse>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiService.deleteAddress(
+                    "Bearer $token",
+                    id
+                )
 
-            if (response.statusCode == 200) {
-                Log.d("error response", "true: Berhasil ")
-                emit(Result.Success(response))
-            } else {
-                Log.d("error response", "false: Gagal")
-                emit(Result.Error(response.message))
+                if (response.statusCode == 200) {
+                    Log.d("error response", "true: Berhasil ")
+                    emit(Result.Success(response))
+                } else {
+                    Log.d("error response", "false: Gagal")
+                    emit(Result.Error(response.message))
+                }
+
+            } catch (e: Exception) {
+                Log.d("BarterinRepository", "error: ${e.message.toString()} ")
+                emit(Result.Error(e.message.toString()))
             }
-
-        } catch (e: Exception) {
-            Log.d("BarterinRepository", "error: ${e.message.toString()} ")
-            emit(Result.Error(e.message.toString()))
         }
-    }
 
     fun editProfile(
         token: String,
@@ -513,7 +514,11 @@ class BarterinRepository private constructor(
         }
     }
 
-    fun offerBarter(token: String, id: String, withId: String): LiveData<Result<DeleteAddressResponse>> = liveData {
+    fun offerBarter(
+        token: String,
+        id: String,
+        withId: String
+    ): LiveData<Result<DeleteAddressResponse>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.barterOffer(
@@ -577,7 +582,7 @@ class BarterinRepository private constructor(
         }
     }
 
-    fun acceptBarter(token: String, id: String ): LiveData<Result<AcceptOfferResponse>> = liveData {
+    fun acceptBarter(token: String, id: String): LiveData<Result<AcceptOfferResponse>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.acceptOffer(
@@ -616,13 +621,53 @@ class BarterinRepository private constructor(
     }
 
 
-
     fun deleteItem(token: String, id: String): LiveData<Result<DeleteAddressResponse>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.deleteItem(
                 "Bearer $token",
                 id
+            )
+
+            if (response.statusCode == 200) {
+                Log.d("error response", "true: Berhasil ")
+                emit(Result.Success(response))
+            } else {
+                Log.d("error response", "false: Gagal")
+                emit(Result.Error(response.message))
+            }
+
+        } catch (e: Exception) {
+            Log.d("BarterinRepository", "error: ${e.message.toString()} ")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun updateItem(
+        token: String,
+        id: String,
+        type_id: String,
+        address_id: String,
+        name: String,
+        description: String,
+        used_time: String,
+        date_unit: String,
+        purchase_price: String,
+        item_for: String,
+    ): LiveData<Result<UpdateAddressResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.updateItem(
+                "Bearer $token",
+                id,
+                type_id,
+                address_id,
+                name,
+                description,
+                used_time,
+                date_unit,
+                purchase_price,
+                item_for
             )
 
             if (response.statusCode == 200) {

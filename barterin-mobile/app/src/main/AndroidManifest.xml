@@ -37,6 +37,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BarterinApps">
         <activity
+            android:name=".ui.updateitem.UpdateItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.itemmanagement.ItemManagementActivity"
             android:exported="false" />
         <activity
@@ -70,7 +73,7 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".ui.additem.AddPhotoActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.additem.AddItemActivity"
             android:exported="true" />

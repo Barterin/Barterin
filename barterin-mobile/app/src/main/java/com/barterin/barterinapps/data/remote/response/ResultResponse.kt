@@ -435,6 +435,14 @@ data class DataTypes (
     val slug: String,
 )
 
+data class UpdateAddressResponse(
+    @field:SerializedName("statusCode")
+    val statusCode: Int,
+
+    @field:SerializedName("message")
+    val message: String,
+)
+
 
 
 
