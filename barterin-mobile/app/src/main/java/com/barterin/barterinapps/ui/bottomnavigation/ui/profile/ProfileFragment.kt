@@ -13,9 +13,7 @@ import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.FragmentProfileBinding
-import com.barterin.barterinapps.ui.addresslist.AddressActivity
 import com.barterin.barterinapps.ui.login.LoginActivity
-import com.barterin.barterinapps.ui.login.LoginViewModel
 import com.barterin.barterinapps.ui.settings.SettingsActivity
 import com.barterin.barterinapps.ui.updateprofile.UpdateProfileActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory

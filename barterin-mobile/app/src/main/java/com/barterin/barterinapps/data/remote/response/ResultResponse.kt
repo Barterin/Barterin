@@ -3,10 +3,6 @@ package com.barterin.barterinapps.data.remote.response
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
-import retrofit2.http.Field
-import java.io.Serializable
-
 
 data class GetDataUser(
 

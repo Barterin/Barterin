@@ -28,7 +28,6 @@ import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.create
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
@@ -57,7 +56,7 @@ class AddPhotoActivity : AppCompatActivity() {
             if (!allPermissionsGranted()) {
                 Toast.makeText(
                     this,
-                    "Tidak mendapatkan permission.",
+                    resources.getString(R.string.text_not_permission),
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
@@ -123,11 +122,11 @@ class AddPhotoActivity : AppCompatActivity() {
         sharedpref = SharedPreferenceClass(this)
 
         if (getFile1 == null) {
-            Toast.makeText(this, "Please Input Image Number One !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, resources.getString(R.string.text_image_input1), Toast.LENGTH_SHORT).show()
         } else if (getFile2 == null) {
-            Toast.makeText(this, "Please Input Image Number Two !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, resources.getString(R.string.text_image_input2), Toast.LENGTH_SHORT).show()
         } else if (getFile3 == null) {
-            Toast.makeText(this, "Please Input Image Number Three !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, resources.getString(R.string.text_image_input3), Toast.LENGTH_SHORT).show()
         } else {
 
             val file = reduceFileImage(getFile1 as File)

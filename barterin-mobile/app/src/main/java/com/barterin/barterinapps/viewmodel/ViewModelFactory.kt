@@ -14,13 +14,11 @@ import com.barterin.barterinapps.ui.bottomnavigation.ui.offer.OfferViewModel
 import com.barterin.barterinapps.ui.bottomnavigation.ui.profile.ProfileViewModel
 import com.barterin.barterinapps.ui.cart.CartViewModel
 import com.barterin.barterinapps.ui.detailitem.DetailItemViewModel
-import com.barterin.barterinapps.ui.emailverification.EmailVerificationActivity
 import com.barterin.barterinapps.ui.emailverification.EmailVerificationViewModel
 import com.barterin.barterinapps.ui.itemmanagement.ItemManagementViewModel
 import com.barterin.barterinapps.ui.login.LoginViewModel
 import com.barterin.barterinapps.ui.myitems.MyItemsViewModel
 import com.barterin.barterinapps.ui.register.RegisterViewModel
-import com.barterin.barterinapps.ui.searchresult.SearchResultActivity
 import com.barterin.barterinapps.ui.searchresult.SearchResultViewModel
 import com.barterin.barterinapps.ui.showbidder.ShowBidderViewModel
 import com.barterin.barterinapps.ui.updateaddress.UpdateAddressViewModel

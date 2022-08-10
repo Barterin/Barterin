@@ -2,7 +2,6 @@ package com.barterin.barterinapps.ui.bottomnavigation.ui.offer
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,6 @@ import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.data.remote.response.OfferData
 import com.barterin.barterinapps.databinding.FragmentWishlistBinding
-import com.barterin.barterinapps.ui.bottomnavigation.ui.home.HomeViewModel
 import com.barterin.barterinapps.ui.showbidder.ShowBidderActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 

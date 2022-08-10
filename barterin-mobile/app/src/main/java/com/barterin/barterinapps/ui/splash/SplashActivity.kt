@@ -10,10 +10,8 @@ import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
-import com.barterin.barterinapps.databinding.ActivityLoginBinding
 import com.barterin.barterinapps.databinding.ActivitySplashBinding
 import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
-import com.barterin.barterinapps.ui.emailverification.EmailVerificationActivity
 import com.barterin.barterinapps.ui.login.LoginActivity
 
 @SuppressLint("CustomSplashScreen")

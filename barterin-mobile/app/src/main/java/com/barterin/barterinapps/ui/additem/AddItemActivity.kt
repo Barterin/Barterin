@@ -2,16 +2,11 @@ package com.barterin.barterinapps.ui.additem
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.Adapter
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -23,9 +18,7 @@ import com.barterin.barterinapps.data.remote.response.CategoriesResult
 import com.barterin.barterinapps.data.remote.response.DataTypes
 import com.barterin.barterinapps.databinding.ActivityAddItemBinding
 import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
-import com.barterin.barterinapps.ui.bottomnavigation.ui.home.HomeViewModel
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
-import com.google.gson.TypeAdapter
 
 
 class AddItemActivity : AppCompatActivity() {
@@ -72,7 +65,7 @@ class AddItemActivity : AppCompatActivity() {
                     is Result.Error -> {
                         Toast.makeText(
                             this,
-                            "error nih" + result.error,
+                            result.error,
                             Toast.LENGTH_SHORT
                         ).show()
                     }

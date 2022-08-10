@@ -8,7 +8,6 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
-import com.barterin.barterinapps.databinding.ActivityLoginBinding
 import com.barterin.barterinapps.databinding.ActivityReportBinding
 
 class ReportActivity : AppCompatActivity() {

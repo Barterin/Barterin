@@ -105,30 +105,3 @@ fun reduceFileImage(file: File): File {
     return file
 }
 
-fun String?.toBitmap(context: Context): Bitmap {
-    var bitmap: Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.placeholder)
-
-    val option = RequestOptions()
-        .error(R.drawable.placeholder)
-        .diskCacheStrategy(DiskCacheStrategy.ALL)
-
-    try {
-        Glide.with(context)
-            .setDefaultRequestOptions(option)
-            .asBitmap()
-            .load(this)
-            .into(object : CustomTarget<Bitmap>() {
-                override fun onLoadCleared(placeholder: Drawable?) {}
-                override fun onResourceReady(
-                    resource: Bitmap,
-                    transition: Transition<in Bitmap>?
-                ) {
-                    bitmap = resource
-                }
-            })
-    } catch (e: Exception) {
-        e.printStackTrace()
-    }
-
-    return bitmap
-}

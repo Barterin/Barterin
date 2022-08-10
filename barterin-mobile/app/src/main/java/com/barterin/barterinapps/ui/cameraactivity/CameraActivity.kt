@@ -13,9 +13,7 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityCameraBinding
-import com.barterin.barterinapps.databinding.ActivityLoginBinding
 import com.barterin.barterinapps.ui.updateprofile.UpdateProfileActivity
 import com.barterin.barterinapps.utils.createFile
 import java.util.concurrent.ExecutorService
@@ -25,7 +23,6 @@ class CameraActivity : AppCompatActivity() {
 
     private var _binding: ActivityCameraBinding? = null
     private val binding get() = _binding!!
-    private lateinit var sharedpref: SharedPreferenceClass
 
     private lateinit var cameraExecutor: ExecutorService
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA

@@ -13,7 +13,6 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AlertDialog
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityChatBinding
-import com.barterin.barterinapps.databinding.ActivityChatBotBinding
 import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
 
 class ChatActivity : AppCompatActivity() {
@@ -21,7 +20,6 @@ class ChatActivity : AppCompatActivity() {
 
     private var _binding: ActivityChatBinding? = null
     private val binding get() = _binding!!
-    private lateinit var sharedpref: SharedPreferenceClass
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -76,20 +76,21 @@ class HomeFragment : Fragment() {
             if (result != null) {
                 when (result) {
                     is Result.Loading -> {
-                        Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                        binding.progressBar17.visibility = View.VISIBLE
                     }
                     is Result.Success -> {
                         val data = result.data
                         barteritemsAdapter.setList(data)
-                        Toast.makeText(requireContext(), "barter berhasil", Toast.LENGTH_SHORT).show()
+                        binding.progressBar17.visibility = View.GONE
                         Log.d("myresult", result.data.toString())
                     }
                     is Result.Error -> {
                         Toast.makeText(
                             requireContext(),
-                            "error nih" + result.error,
+                        result.error,
                             Toast.LENGTH_SHORT
                         ).show()
+                        binding.progressBar17.visibility = View.GONE
                     }
                 }
             }
@@ -142,17 +143,20 @@ class HomeFragment : Fragment() {
             if (result != null) {
                 when (result) {
                     is Result.Loading -> {
+                        binding.progressBar17.visibility = View.VISIBLE
                     }
                     is Result.Success -> {
+                        binding.progressBar17.visibility = View.GONE
                         val data = result.data
                         categoryAdapter.setList(data)
                     }
                     is Result.Error -> {
                         Toast.makeText(
                             requireContext(),
-                            "error nih" + result.error,
+                            result.error,
                             Toast.LENGTH_SHORT
                         ).show()
+                        binding.progressBar17.visibility = View.GONE
                     }
                 }
             }

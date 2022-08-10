@@ -65,10 +65,6 @@ class SharedPreferenceClass(context: Context) {
         return userSharedPref.getString("fullname", null).toString()
     }
 
-    fun getUsername(): String {
-        return userSharedPref.getString("username", null).toString()
-    }
-
     fun getProfilePicture(): String {
         return userSharedPref.getString("profile_picture", null).toString()
     }
@@ -83,10 +79,6 @@ class SharedPreferenceClass(context: Context) {
 
     fun getGender(): String {
         return userSharedPref.getString("gender", null).toString()
-    }
-
-    fun getIdUser(): String {
-        return userSharedPref.getString("id", null).toString()
     }
 
     fun verifyEmail(isVerified: String) {
