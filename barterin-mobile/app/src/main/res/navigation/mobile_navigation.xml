@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_add" />
 
     <fragment
-        android:id="@+id/navigation_transaction"
+        android:id="@+id/navigation_chat"
         android:name="com.barterin.barterinapps.ui.bottomnavigation.ui.chat.ChatFragment"
         android:label="@string/title_transaction"
         tools:layout="@layout/fragment_chat" />

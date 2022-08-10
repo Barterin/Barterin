@@ -29,37 +29,6 @@ class ChatBotActivity : AppCompatActivity() {
         setupView()
         binding.webView.settings.javaScriptEnabled = true
 
-        binding.webView.webViewClient = object : WebViewClient() {
-
-            override fun onReceivedError(view: WebView, errorCode: Int, description: String, failingUrl: String) {
-                try {
-                    binding.webView.stopLoading()
-                } catch (e: Exception) {
-                }
-                try {
-                    binding.webView.clearView()
-                } catch (e: Exception) {
-                }
-                if (binding.webView.canGoBack()) {
-                    binding.webView.goBack()
-                }
-                binding.webView.loadUrl("about:blank")
-                val alertDialog = AlertDialog.Builder(this@ChatBotActivity).create()
-                alertDialog.setTitle("Gagal Membuka")
-                alertDialog.setMessage("""
-                    Pastikan android anda terhubung ke internet lalu coba lagi !
-                    
-                    Info: Surat yang pernah terbuka secara online akan otomatis tersimpan dan tersedia saat offline.
-                """.trimIndent())
-                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ok", DialogInterface.OnClickListener { _: DialogInterface, _: Int ->
-                    moveBack()
-                })
-                alertDialog.show()
-                super.onReceivedError(binding.webView, errorCode, description, failingUrl)
-            }
-
-        }
-
         binding.webView.webChromeClient = WebChromeClient()
         if (savedInstanceState != null) {
             binding.webView.restoreState(savedInstanceState)
@@ -69,9 +38,6 @@ class ChatBotActivity : AppCompatActivity() {
 
     }
 
-    private fun moveBack() {
-        startActivity(Intent(this, HomeActivity::class.java))
-    }
 
     private fun setupView() {
 
