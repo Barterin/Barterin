@@ -1,6 +1,5 @@
 package com.barterin.barterinapps.ui.bottomnavigation.ui.home
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.remote.response.DataItem
-import com.barterin.barterinapps.ui.detailitem.DetailItemActivity
 import com.bumptech.glide.Glide
 
 

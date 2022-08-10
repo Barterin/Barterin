@@ -2,7 +2,6 @@ package com.barterin.barterinapps.ui.updateitem
 
 import androidx.lifecycle.ViewModel
 import com.barterin.barterinapps.data.BarterinRepository
-import okhttp3.RequestBody
 
 class UpdateItemViewModel(private val barterinRepository: BarterinRepository) : ViewModel() {
 

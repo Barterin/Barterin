@@ -3,19 +3,14 @@ package com.barterin.barterinapps.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import androidx.lifecycle.map
-//import com.barterin.barterinapps.data.local.entity.AddressEntity
-//import com.barterin.barterinapps.data.local.room.BarterinDao
 import com.barterin.barterinapps.data.remote.response.*
 import com.barterin.barterinapps.data.remote.retrofit.ApiService
-import com.barterin.barterinapps.utils.AppExecutors
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 
 class BarterinRepository private constructor(
     private val apiService: ApiService,
-//    private val barterinDao: BarterinDao
 ) {
 
     fun login(

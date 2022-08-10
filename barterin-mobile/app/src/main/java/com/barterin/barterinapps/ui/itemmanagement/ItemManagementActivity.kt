@@ -14,9 +14,6 @@ import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.data.remote.response.GetMyItems
 import com.barterin.barterinapps.databinding.ActivityItemManagementBinding
-import com.barterin.barterinapps.databinding.ActivityLoginBinding
-import com.barterin.barterinapps.ui.myitems.MyItemsAdapter
-import com.barterin.barterinapps.ui.myitems.MyItemsViewModel
 import com.barterin.barterinapps.ui.updateitem.UpdateItemActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 

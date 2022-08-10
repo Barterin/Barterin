@@ -8,9 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.barterin.barterinapps.R
-import com.barterin.barterinapps.data.remote.response.DataItem
 import com.barterin.barterinapps.data.remote.response.OfferData
-import com.barterin.barterinapps.ui.bottomnavigation.ui.home.BarterItemsAdapter
 import com.bumptech.glide.Glide
 
 class OfferAdapter : RecyclerView.Adapter<OfferAdapter.ViewHolder>()  {

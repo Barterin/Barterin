@@ -1,19 +1,13 @@
 package com.barterin.barterinapps.ui.chat
 
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import androidx.appcompat.app.AlertDialog
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityChatBotBinding
-import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
 
 class ChatBotActivity : AppCompatActivity() {
 

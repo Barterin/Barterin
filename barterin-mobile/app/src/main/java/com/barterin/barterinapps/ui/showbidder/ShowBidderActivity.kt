@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.data.remote.response.OfferData
-import com.barterin.barterinapps.databinding.ActivityLoginBinding
 import com.barterin.barterinapps.databinding.ActivityShowBidderBinding
-import com.barterin.barterinapps.ui.bottomnavigation.ui.offer.OfferViewModel
 import com.barterin.barterinapps.ui.myitems.BarterSuccesActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 

@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.remote.response.OfferData
-import com.barterin.barterinapps.ui.bottomnavigation.ui.offer.OfferAdapter
 import com.bumptech.glide.Glide
 
 class ShowBidderAdapter : RecyclerView.Adapter<ShowBidderAdapter.ViewHolder>()  {

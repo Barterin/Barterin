@@ -9,12 +9,11 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityAddAdressBinding
-import com.barterin.barterinapps.databinding.ActivityAddressBinding
 import com.barterin.barterinapps.ui.addresslist.AddressActivity
-import com.barterin.barterinapps.ui.login.LoginViewModel
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 
 class AddAdressActivity : AppCompatActivity() {
@@ -70,7 +69,7 @@ class AddAdressActivity : AppCompatActivity() {
                         binding.progressBar4.visibility = View.GONE
                         Toast.makeText(
                             this,
-                            "Address Added",
+                            resources.getString(R.string.text_add_addres_success),
                             Toast.LENGTH_SHORT
                         ).show()
                         Intent(this, AddressActivity::class.java).also {
@@ -82,7 +81,7 @@ class AddAdressActivity : AppCompatActivity() {
                         binding.progressBar4.visibility = View.GONE
                         Toast.makeText(
                             this,
-                            "getdata error" + result.error,
+                            result.error,
                             Toast.LENGTH_SHORT
                         ).show()
                     }

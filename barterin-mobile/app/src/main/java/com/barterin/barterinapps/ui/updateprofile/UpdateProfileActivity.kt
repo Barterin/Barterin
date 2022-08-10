@@ -18,9 +18,7 @@ import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityUpdateProfileBinding
 import com.barterin.barterinapps.ui.cameraactivity.CameraActivity
-import com.barterin.barterinapps.ui.login.LoginViewModel
 import com.barterin.barterinapps.utils.reduceFileImage
-import com.barterin.barterinapps.utils.rotateBitmap
 import com.barterin.barterinapps.utils.uriToFile
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -28,8 +26,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import com.barterin.barterinapps.data.Result
-import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
-import com.barterin.barterinapps.ui.emailverification.EmailVerificationActivity
 import com.barterin.barterinapps.ui.itemmanagement.ItemManagementActivity
 import com.bumptech.glide.Glide
 

@@ -63,7 +63,7 @@ class AddressActivity : AppCompatActivity() {
                         binding.progressBar5.visibility = View.GONE
                         Toast.makeText(
                             this,
-                            "error nih" + result.error,
+                           result.error,
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -108,19 +108,13 @@ class AddressActivity : AppCompatActivity() {
                         binding.progressBar5.visibility = View.GONE
                         Toast.makeText(
                             this,
-                            "error nih" + result.error,
+                            result.error,
                             Toast.LENGTH_SHORT
                         ).show()
                     }
                 }
             }
         }
-
-    }
-
-    fun updateAddress(id: String) {
-
-        Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
 
     }
 
