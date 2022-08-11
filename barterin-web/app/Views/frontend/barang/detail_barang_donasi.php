@@ -117,15 +117,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <div class="mb-3">
-            <label for="message-text" class="col-form-label">Masukkan Alasan:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit Tawaran</button>
-      </div>
+        <form id="formTawaran">
+        <input type="hidden" value="<?= $idBarang ?>" id="idBarang" name="item_id">
+            <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Masukkan Alasan:</label>
+                    <textarea class="form-control" name="reason" id="reason"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit Tawaran</button>
+            </div>
+        </form>
     </div>
   </div>
 </div>
