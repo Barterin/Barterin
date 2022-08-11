@@ -17,35 +17,28 @@ header {
 }
 
 .search-box {
-    /* This bit sets up the horizontal layout */
     display: flex;
     flex-direction: row;
 
-    /* This bit draws the box around it */
     border: none !important;
     background-color: white;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    /* I've used padding so you can see the edges of the elements. */
     padding: 5px;
 }
 
 .search-field {
-    /* Tell the input to use all the available space */
     flex-grow: 2;
     width: 400px;
-    /* And hide the input's outline, so the form looks like the outline */
     border: none !important;
     background-color: white;
 }
 
 .search-field:focus {
-    /* removing the input focus blue box. Put this on the form if you like. */
     outline: none;
 }
 
 .head-button {
-    /* Just a little styling to make it pretty */
     border: none !important;
     border-radius: 5px;
     background-color: #0034f0;
