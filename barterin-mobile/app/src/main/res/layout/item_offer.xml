@@ -77,7 +77,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="Show Bidder"
+            android:text="@string/text_show_bidder"
             app:cornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/txt_seller_location_offer"
@@ -88,10 +88,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="status barang"
             app:layout_constraintStart_toEndOf="@+id/img_cart_offer"
-            app:layout_constraintTop_toBottomOf="@+id/txt_seller_location_offer" />
-
+            app:layout_constraintTop_toBottomOf="@+id/txt_seller_location_offer"
+            tools:text="status barang" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

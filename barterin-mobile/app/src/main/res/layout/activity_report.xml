@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Report"
+        android:text="@string/text_report"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +33,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:text="barterin really cares about the security of the barter process, therefore please report your complaint to the barterin official email, if you can include a picture that supports your report, we will reply to it a maximum of 3 working days"
+        android:text="@string/text_barterin_really_cares_about_the_security_of_the_barter_process_therefore_please_report_your_complaint_to_the_barterin_official_email_if_you_can_include_a_picture_that_supports_your_report_we_will_reply_to_it_a_maximum_of_3_working_days"
         app:layout_constraintBottom_toTopOf="@+id/btn_report"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
-        android:text="Report"
+        android:text="@string/text_report"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
