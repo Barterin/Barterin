@@ -1,11 +1,9 @@
 <?php
 
-	$conn = mysqli_connect('localhost', 'root', '', 'barterin');
+	$conn = mysqli_connect('localhost', 'root', '', 'barterin_chat');
 	
 	if(mysqli_connect_error()){
 		echo 'Gagal melakukan koneksi ke Database : '.mysqli_connect_error();
 	}else{
 	
 	}
-
-?>
