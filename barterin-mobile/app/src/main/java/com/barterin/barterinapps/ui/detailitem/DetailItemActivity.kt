@@ -128,7 +128,6 @@ class DetailItemActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setupView() {
 
         @Suppress("DEPRECATION")
