@@ -217,4 +217,5 @@
     <string name="text_accept">Accept</string>
     <string name="text_offer">+Offer</string>
     <string name="text_show_bidder">Show Bidder</string>
+    <string name="text_show_recipient">show recipient</string>
 </resources>

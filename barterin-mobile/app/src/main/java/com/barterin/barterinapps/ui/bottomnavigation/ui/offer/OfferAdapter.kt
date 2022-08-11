@@ -45,6 +45,7 @@ class OfferAdapter : RecyclerView.Adapter<OfferAdapter.ViewHolder>()  {
         private val location: TextView = itemView.findViewById(R.id.txt_seller_location_offer)
         private val imgItem: ImageView = itemView.findViewById(R.id.img_cart_offer)
         private val button: Button = itemView.findViewById(R.id.button_add_offer)
+        private val buttonReceipt: Button = itemView.findViewById(R.id.button_add_offer2)
         private val statusBarang: TextView = itemView.findViewById(R.id.txt_status_barang_offer)
 
 
@@ -59,31 +60,35 @@ class OfferAdapter : RecyclerView.Adapter<OfferAdapter.ViewHolder>()  {
                 }
                 "1" -> {
                     statusBarang.text = "Already bartered"
+                    button.visibility = View.GONE
+                    buttonReceipt.visibility = View.VISIBLE
                 }
                 "2" -> {
                     statusBarang.text = "Was Removed"
+                    button.visibility = View.GONE
                 }
                 else -> {
                     statusBarang.text = "Unknown"
+                    button.visibility = View.GONE
                 }
             }
-
 
             Glide.with(itemView.context)
                 .load(user.barang.image)
                 .into(imgItem)
 
-            button.setOnClickListener {
+            buttonReceipt.setOnClickListener {
                 onItemClickCallback?.onItemClicked(user)
             }
 
+            button.setOnClickListener {
+                onItemClickCallback?.onItemClicked(user)
+            }
         }
-
     }
 
     interface OnItemClickCallback {
         fun onItemClicked(data: OfferData)
     }
-
 
 }

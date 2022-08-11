@@ -45,11 +45,33 @@ class ShowBidderAdapter : RecyclerView.Adapter<ShowBidderAdapter.ViewHolder>()  
         private val location: TextView = itemView.findViewById(R.id.txt_seller_location_bidder)
         private val imgItem: ImageView = itemView.findViewById(R.id.img_cart_bidder)
         private val button: Button = itemView.findViewById(R.id.button_add_bidder)
+        private val buttonChat: Button = itemView.findViewById(R.id.button_add_bidder3)
+        private val status: TextView = itemView.findViewById(R.id.txt_status_bidder)
 
         fun bind(user: OfferData) {
             itemName.text = user.barang.name
             penjual.text = user.barang.user
             location.text = user.barang.region
+
+            when (user.barang.status) {
+                "0" -> {
+                    status.text = "Available"
+                }
+                "1" -> {
+                    status.text = "Already bartered"
+                    button.visibility = View.GONE
+                    buttonChat.visibility = View.VISIBLE
+                }
+                "2" -> {
+                    status.text = "Was Removed"
+                    button.visibility = View.GONE
+                }
+                else -> {
+                    status.text = "Unknown"
+                    button.visibility = View.GONE
+                }
+            }
+
 
             Glide.with(itemView.context)
                 .load(user.barang.image)
