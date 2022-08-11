@@ -1,9 +1,9 @@
 <?php
 
-	define('HOST','localhost');
-	define('USER','root');
-	define('PASS','');
-	define('DB1', 'barterin_chat');
+define('HOST', 'localhost');
+define('USER', 'root');
+define('PASS', '');
+define('DB1', 'barterin');
 
-	// Buat Koneksinya
-	$db1 = new mysqli(HOST, USER, PASS, DB1);
+// Buat Koneksinya
+$db1 = new mysqli(HOST, USER, PASS, DB1);
