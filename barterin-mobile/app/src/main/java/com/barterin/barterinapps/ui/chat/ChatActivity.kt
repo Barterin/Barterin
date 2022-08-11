@@ -59,10 +59,10 @@ class ChatActivity : AppCompatActivity() {
                 )
                 alertDialog.setButton(
                     DialogInterface.BUTTON_POSITIVE,
-                    "Ok",
-                    DialogInterface.OnClickListener { _: DialogInterface, _: Int ->
-                        moveBack()
-                    })
+                    "Ok"
+                ) { _: DialogInterface, _: Int ->
+                    moveBack()
+                }
                 alertDialog.show()
                 super.onReceivedError(binding.webView, errorCode, description, failingUrl)
             }
@@ -73,7 +73,7 @@ class ChatActivity : AppCompatActivity() {
         if (savedInstanceState != null) {
             binding.webView.restoreState(savedInstanceState)
         } else {
-            binding.webView.loadUrl("https://chat.barterin.tech/ibnu/qolby")
+            binding.webView.loadUrl("http://home-server.inh.pw:5500/barterin-chat/views/template.html")
         }
 
     }
