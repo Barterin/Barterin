@@ -75,7 +75,7 @@
             </form>
         </div>
         <div class="fw-bold d-flex justify-content-center align-items-end mt-5">
-            Member already? <a href="<?php $base_url ?>/auth/login" class="internal">Sign in</a>
+            Member already? <a href="<?php $base_url ?>/auth/login" class="">Sign in</a>
         </div>
     </div>
 

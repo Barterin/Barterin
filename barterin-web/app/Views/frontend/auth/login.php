@@ -62,10 +62,10 @@
             </form>
         </div>
         <div class="fw-bold d-flex justify-content-center align-items-end mt-5">
-            Not a Member?<a href="<?php $base_url ?>/auth/register" class="internal"> Register</a>
+            Not a Member?<a href="<?php $base_url ?>/auth/register" class=""> Register</a>
         </div>
         <div class="fw-bold d-flex justify-content-center align-items-end">
-            <a class="mt-3 d-flex justify-content-end internal" href="<?php $base_url ?>/auth/forget-password">Forget Password?</a>
+            <a class="mt-3 d-flex justify-content-end" href="<?php $base_url ?>/auth/forget-password">Forget Password?</a>
         </div>
     </div>
 

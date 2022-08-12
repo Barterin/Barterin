@@ -19,21 +19,21 @@
             <div class="col-lg-3 menu">
                 <div class="row">
                     <a href="<?php $base_url ?>/profile/biodata"
-                        class="bio-menu <?= $section == "sectionBiodata" ? 'active' : '' ?> internal">
+                        class="bio-menu <?= $section == "sectionBiodata" ? 'active' : '' ?>">
                         Biodata Diri
                     </a>
                     <a href="<?php $base_url ?>/profile/alamat"
-                        class="bio-menu <?= $section == "sectionAlamat" ? 'active' : '' ?> internal">
+                        class="bio-menu <?= $section == "sectionAlamat" ? 'active' : '' ?>">
                         Daftar Alamat
                     </a>
-                    <a href="#" class="bio-menu internal">
+                    <a href="#" class="bio-menu">
                         Pembayaran
                     </a>
-                    <a href="#" class="bio-menu internal">
+                    <a href="#" class="bio-menu">
                         Rekening Bank</a>
-                    <a href="#" class="bio-menu internal">
+                    <a href="#" class="bio-menu">
                         Notifikasi</a>
-                    <a href="#" class="bio-menu internal">
+                    <a href="#" class="bio-menu">
                         Keamanan
                     </a>
                     <!-- Button trigger modal -->

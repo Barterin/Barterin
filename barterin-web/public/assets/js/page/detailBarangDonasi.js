@@ -23,7 +23,7 @@ $(document).ready(function (e) {
                 $("#description").html(`${data.item.description}`)
             }
         },
-    }).done(() => {});
+    });
 
     
 

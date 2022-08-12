@@ -3,7 +3,7 @@
         <div class="container-fluid d-flex align-item-center">
             <div class="barterin-logo d-flex align-item-center">
                 <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 937.53 204.77">
-                    <a href="<?= base_url() ?>" class="internal">
+                    <a href="<?= base_url() ?>" class="">
                         <defs>
                             <style>
                             .b {
