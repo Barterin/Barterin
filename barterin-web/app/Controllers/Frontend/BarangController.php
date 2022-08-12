@@ -35,13 +35,22 @@ class BarangController extends BaseController
         return View('frontend/barang/upload', $data);
     }
 
-    public function tawaran()
-    {
+    public function tawaranku(){
         $data = [
             'title' => 'Barterin | Daftar Tawaran',
         ];
 
-        return View('frontend/barang/tawaran', $data);
+        return View('frontend/barang/tawaranku', $data);
+    }
+
+    public function tawaran($id = "")
+    {
+        $data = [
+            'title' => 'Barterin | Daftar Tawaran',
+            'idBarang' => $id
+        ];
+
+        return View('frontend/barang/detail_tawaran', $data);
     }
 
     public function barangku()
