@@ -83,10 +83,11 @@ $(document).ready(function () {
                 enableButton();
             },
             success: function (e) {
-                e.statusCode == 200 &&
-                    msgSweetSuccess(e.message).then(() => {
+                e.statusCode == 200 && msgSweetSuccess(e.message).then(() => {
                         console.log(e.access.access_token);
                     });
+                window.location = `${baseUrl}`;
+                    
             },
             error: function (e) {
                 const response = e.responseJSON;

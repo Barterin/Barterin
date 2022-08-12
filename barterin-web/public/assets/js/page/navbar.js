@@ -20,10 +20,10 @@ $(document).ready(function () {
                         <span class="nav-full-name">Hi, ${firstName[0]}</span>
                     </div>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
-                        <li><a class="dropdown-item internal" href="${baseUrl}/profile/biodata">Profile</a></li>
-                        <li><a class="dropdown-item internal" href="${baseUrl}/barang/upload">Unggah Produk</a></li>
+                        <li><a class="dropdown-item" href="${baseUrl}/profile/biodata">Profile</a></li>
+                        <li><a class="dropdown-item" href="${baseUrl}/barang/upload">Unggah Produk</a></li>
                         <li><a class="dropdown-item" href="${baseUrl}/barang/barangku">Barangku</a></li>
-                        <li><a class="dropdown-item internal" href="${baseUrl}/barang/tawaran">Daftar Tawaran</a></li>
+                        <li><a class="dropdown-item" href="${baseUrl}/barang/tawaranku">Daftar Tawaran</a></li>
                         <li><a class="dropdown-item" href="#" id="btnLogout">Logout</a></li>
                     </ul>
                 `);

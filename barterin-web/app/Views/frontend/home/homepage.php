@@ -1,6 +1,6 @@
 <?= $this->extend('frontend/layouts/main'); ?>
 <?= $this->section('content'); ?>
-<div class="container-lg">
+<div class="container-fluid" >
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -12,13 +12,13 @@
         </div>
         <div class="carousel-inner rounded-bottom">
             <div class="carousel-item active">
-                <img src="../../assets/image/044.jpg" class="d-block w-100" alt="...">
+                <img src="../../assets/image/banner/banner.jpg" class="d-block w-100" alt="..." >
             </div>
             <div class="carousel-item">
-                <img src="../../assets/image/047.jpg" class="d-block w-100" alt="...">
+                <img src="../../assets/image/banner/banner1.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../../assets/image/050.jpg" class="d-block w-100" alt="...">
+                <img src="../../assets/image/banner/banner2.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -46,7 +46,7 @@
 
     </div>
 </div>
-<div class="container-lg mt-3">
+<div class="container-lg mt-3 mb-5">
     <div class="row">
         <h1 class="col m-auto fw-bold">Barang Donasi</h1>
         <a href="#" class="col text-decoration-none d-flex align-items-center m-auto justify-content-end">

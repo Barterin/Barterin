@@ -91,7 +91,7 @@
                     </div>
                 </form>
                 <div class="fw-bold d-flex justify-content-center align-items-end mt-5">
-                    Not a Member Yet? <a href="<?php $base_url ?>/auth/register" class="internal">Register</a>
+                    Not a Member Yet? <a href="<?php $base_url ?>/auth/register">Register</a>
                 </div>
             </div>
         </div>
