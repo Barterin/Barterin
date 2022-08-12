@@ -1,6 +1,6 @@
 <?= $this->extend('frontend/layouts/main'); ?>
 <?= $this->section('content'); ?>
-<div class="container-fluid" >
+<div class="container-fluid mt-3" >
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -10,7 +10,7 @@
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
         </div>
-        <div class="carousel-inner rounded-bottom">
+        <div class="carousel-inner rounded">
             <div class="carousel-item active">
                 <img src="../../assets/image/banner/banner.jpg" class="d-block w-100" alt="..." >
             </div>
