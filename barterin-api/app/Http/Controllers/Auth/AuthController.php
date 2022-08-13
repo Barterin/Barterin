@@ -197,4 +197,30 @@ class AuthController extends Controller
             // 'user' => auth()->user()
         ];
     }
+
+    public function setStatus(Request $request)
+    {
+        try {
+            $userData = json_decode(strval(auth()->user()));
+
+            if (!$request->has('status')) throw new \Exception('no status', 400);
+
+            User::where(['id' => $userData->id])->update(['online' => $request->input('status') == '1' ? 'online' : 'offline']);
+
+            $response = [
+                "statusCode" => 200,
+                "message" => "status updated"
+            ];
+        } catch (\Throwable | \Exception $error) {
+            $response = [
+                "statusCode" => GetStatusCode($error),
+                "message" => $error->getMessage(),
+            ];
+        } finally {
+            return response()->json(
+                $response,
+                $response['statusCode']
+            );
+        }
+    }
 }
