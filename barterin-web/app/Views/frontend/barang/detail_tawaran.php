@@ -2,7 +2,7 @@
 <?= $this->section('content'); ?>
 
 <div class="container mt-4">
-    <h3 class="fw-bold">Tawaranku</h3>
+    <!-- <h3 class="fw-bold">Tawaranku</h3>
     <div class="card mt-3 item-card" >
         <div class="row g-0">
             <div class="col-md-8">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     
     <h3 class="fw-bold mt-5">Tawaran</h3>
     <form id="detailTawaran">
