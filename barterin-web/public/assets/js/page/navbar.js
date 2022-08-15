@@ -67,7 +67,7 @@ $(document).ready(function () {
     // --------------- SEARCH --------------- //
     $("#search").click(function() {
         const search = $("#searchInput").val()
-        alert(search)
+        //alert(search)
         loadPage(`${baseUrl}/barang/search/${search}`);
     });
 });
