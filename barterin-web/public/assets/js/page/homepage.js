@@ -26,6 +26,22 @@ function initSlickDonasi() {
     });
 }
 
+function initSlickCategory() {
+    $(".category").slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        arrows: true,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        swipe: true,
+        autoplaySpeed: 2000,
+        autoplay: true,
+        responsive: true,
+        swipeToSlide: true, // You can unslick at a given breakpoint now by adding:
+    });
+}
+
 $(document).ready(function () {
     // GET Barter Item
     $.ajax({
@@ -115,5 +131,25 @@ $(document).ready(function () {
             // alert(id);
             loadPage(`${baseUrl}/barang/donasi/${id}`);
         });
+    });
+
+    // ----------------- Init Slick Category ---------------//
+    initSlickCategory();
+
+    // ----------------- CATEGORY ---------------------//
+    $("#electronic").click(function() {
+        const search = "Elektronik"
+        //alert(search)
+        loadPage(`${baseUrl}/barang/search/${search}`);
+    });
+    $("#fashion").click(function() {
+        const search = "Fashion"
+        //alert(search)
+        loadPage(`${baseUrl}/barang/search/${search}`);
+    });
+    $("#cooking").click(function() {
+        const search = "Alat Memasak"
+        //alert(search)
+        loadPage(`${baseUrl}/barang/search/${search}`);
     });
 });
