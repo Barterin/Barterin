@@ -39,8 +39,8 @@
                 </svg>
             </div>
             <div class="search-box">
-                <input type="text" class="search-field" name="search">
-                <button class="head-button"><i class="bi bi-search"></i></button>
+                <input type="text" class="search-field" name="search" id="searchInput">
+                <button class="head-button"><i class="bi bi-search" id="search"></i></button>
             </div>
             <div class="head-icon">
                 <button class="head-button"><i class="bi bi-cart-dash-fill"></i></button>

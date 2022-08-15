@@ -45,8 +45,8 @@ $(document).ready(function () {
                     const item = element.item;
                     // console.log(image);
                     html += `
-                      <div class="card barter-item-container barter-card item-card m-1 col-1" aria-hidden="true" style="width: 15rem; max-height: 20rem;" data-id="${item.id}">
-                        <img src="${image[0]}" class="card-img-top img img-fluid" alt="">
+                      <div class="card barter-item-container barter-card item-card m-1 col-1" aria-hidden="true" style="width: 15rem; height: 20rem;" data-id="${item.id}">
+                        <img src="${image[0]}" class="card-img-top img img-fluid" alt="" style="width: 160px; height: 160px">
                         <div class="card-body">
                             <h5 class="card-title placeholder-glow">
                                 <span class="placeholder col-6 bg-dark"></span>
@@ -90,8 +90,8 @@ $(document).ready(function () {
                     const image = element.item.image;
                     const item = element.item;
                     html += `
-                        <div class="card donate-item-container donate-card item-card m-1 col-1" aria-hidden="true" style="width: 15rem; max-height: 20rem;" data-id="${item.id}">
-                            <img src="${image[0]}" class="card-img-top img img-fluid" alt="">
+                        <div class="card donate-item-container donate-card item-card m-1 col-1" aria-hidden="true" style="width: 10rem; height: 20rem;" data-id="${item.id}">
+                            <img src="${image[0]}" class="card-img-top img img-fluid" alt="" style="width: 160px; height: 160px">
                             <div class="card-body">
                                 <h5 class="card-title placeholder-glow">
                                     <span class="placeholder col-6 bg-dark"></span>
