@@ -1,12 +1,13 @@
 <div class="col">
     <div class="row">
         <div class="col-1" id="profile-picture-preview">
-
+            <img src="../../assets/image/profile.png" alt="" class="rounded-circle profile-picture" id="picture" accept="image/*"/>
         </div>
-        <div class="mt-3">
+        <form class="mt-3" id="profilePic">
             <label for="formFile" class="form-label fw-bold">Upload Foto Profile</label>
-            <input type="file" class="form-control" id="formFile">
-        </div>
+            <input type="file" class="form-control" id="pictureInput" name="photo">
+            <button type="submit" class="btn btn-primary mt-2">Save Image</button>
+        </form>
     </div>
     <form id="userProfileForm" enctype="multipart/form-data">
         <!-- Nama -->

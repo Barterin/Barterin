@@ -61,6 +61,7 @@ $routes->group('/barang', ['namespace' => 'App\Controllers\Frontend'], function 
     $routes->get('barangku', 'BarangController::barangku');
     $routes->get('barter/(:any)', 'BarangController::detailBarangBarter/$1');
     $routes->get('donasi/(:any)', 'BarangController::detailBarangDonasi/$1');
+    $routes->get('search/(:any)', 'BarangController::search/$1');
 });
 $routes->group('/test', ['namespace' => 'App\Controllers\Frontend'], function ($routes) {
     $routes->get('page1', 'Page1::index');

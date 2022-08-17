@@ -61,4 +61,14 @@ class BarangController extends BaseController
 
         return View('frontend/barang/barangku', $data);
     }
+
+    public function search($search = "")
+    {
+        $data = [
+            'title' => 'Barterin | Search Result',
+            'search' => $search
+        ];
+
+        return View('frontend/barang/searchResult', $data);
+    }
 }

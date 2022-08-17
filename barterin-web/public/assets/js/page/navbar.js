@@ -63,4 +63,11 @@ $(document).ready(function () {
     }).done(function () {
         initahref();
     });
+
+    // --------------- SEARCH --------------- //
+    $("#search").click(function() {
+        const search = $("#searchInput").val()
+        //alert(search)
+        loadPage(`${baseUrl}/barang/search/${search}`);
+    });
 });

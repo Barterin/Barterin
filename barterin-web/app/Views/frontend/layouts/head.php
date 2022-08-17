@@ -13,5 +13,6 @@
     <script defer
         src="<?= base_url() ?>/assets/js/app<?= getenv('CI_ENVIRONMENT') == "development" ? '' : '.min' ?>.js?<?= time() ?>">
     </script>
+    <link rel="icon" type="image/x-icon" href="../../assets/image/favicon/barterin_2.ico">
     <title class="webTitle"><?= $title ?? "Barterin" ?></title>
 </head>

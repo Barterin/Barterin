@@ -26,6 +26,22 @@ function initSlickDonasi() {
     });
 }
 
+function initSlickCategory() {
+    $(".category").slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        arrows: true,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        swipe: true,
+        autoplaySpeed: 2000,
+        autoplay: true,
+        responsive: true,
+        swipeToSlide: true, // You can unslick at a given breakpoint now by adding:
+    });
+}
+
 $(document).ready(function () {
     // GET Barter Item
     $.ajax({
@@ -45,8 +61,8 @@ $(document).ready(function () {
                     const item = element.item;
                     // console.log(image);
                     html += `
-                      <div class="card barter-item-container barter-card item-card m-1 col-1" aria-hidden="true" style="width: 15rem; max-height: 20rem;" data-id="${item.id}">
-                        <img src="${image[0]}" class="card-img-top img img-fluid" alt="">
+                      <div class="card barter-item-container barter-card item-card m-1 col-1" aria-hidden="true" style="width: 15rem; height: 20rem;" data-id="${item.id}">
+                        <img src="${image[0]}" class="card-img-top img img-fluid" alt="" style="width: 160px; height: 160px">
                         <div class="card-body">
                             <h5 class="card-title placeholder-glow">
                                 <span class="placeholder col-6 bg-dark"></span>
@@ -90,8 +106,8 @@ $(document).ready(function () {
                     const image = element.item.image;
                     const item = element.item;
                     html += `
-                        <div class="card donate-item-container donate-card item-card m-1 col-1" aria-hidden="true" style="width: 15rem; max-height: 20rem;" data-id="${item.id}">
-                            <img src="${image[0]}" class="card-img-top img img-fluid" alt="">
+                        <div class="card donate-item-container donate-card item-card m-1 col-1" aria-hidden="true" style="width: 10rem; height: 20rem;" data-id="${item.id}">
+                            <img src="${image[0]}" class="card-img-top img img-fluid" alt="" style="width: 160px; height: 160px">
                             <div class="card-body">
                                 <h5 class="card-title placeholder-glow">
                                     <span class="placeholder col-6 bg-dark"></span>
@@ -115,5 +131,25 @@ $(document).ready(function () {
             // alert(id);
             loadPage(`${baseUrl}/barang/donasi/${id}`);
         });
+    });
+
+    // ----------------- Init Slick Category ---------------//
+    initSlickCategory();
+
+    // ----------------- CATEGORY ---------------------//
+    $("#electronic").click(function() {
+        const search = "Elektronik"
+        //alert(search)
+        loadPage(`${baseUrl}/barang/search/${search}`);
+    });
+    $("#fashion").click(function() {
+        const search = "Fashion"
+        //alert(search)
+        loadPage(`${baseUrl}/barang/search/${search}`);
+    });
+    $("#cooking").click(function() {
+        const search = "Alat Memasak"
+        //alert(search)
+        loadPage(`${baseUrl}/barang/search/${search}`);
     });
 });
