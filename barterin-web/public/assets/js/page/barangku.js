@@ -12,7 +12,8 @@ $(document).ready(function () {
                 const data = e.data;
                 let html = "";
             data.forEach((element) => {
-                if (element.item_for == 1){
+                console.log(element)
+                if (element.item_for == 1 && element.status == 0){
                     html += `
                         <div class="card mt-3 item-card" data-id="${element.id}">
                             <div class="row g-0">
