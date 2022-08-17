@@ -90,6 +90,7 @@ class OfferController extends Controller
                     bi.name items_name,
                     bi.status items_status,
                     add.kota_kecamatan items_region,
+                    u.id items_user_id,
                     u.fullname items_user,
                     (SELECT file_path FROM upload_image WHERE items_id = bi.id ORDER BY id ASC LIMIT 1) items_image
                 '))
@@ -113,6 +114,7 @@ class OfferController extends Controller
                     "id" => Encrypt($rows->items_id),
                     "name" => $rows->items_name,
                     "image" => env('APP_URL') . "/" . $rows->items_image,
+                    "user_id" => Encrypt($rows->items_user_id),
                     "user" => $rows->items_user,
                     "region" => $rows->items_region,
                     "status" => $rows->items_status,
