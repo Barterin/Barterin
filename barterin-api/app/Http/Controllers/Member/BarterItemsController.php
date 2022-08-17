@@ -213,7 +213,6 @@ class BarterItemsController extends Controller
             $data->update(array_merge(
                 $request->all(),
                 [
-                    'category_id' => Decrypt($request->input('category_id')),
                     'type_id' => Decrypt($request->input('type_id')),
                     'address_id' => Decrypt($request->input('address_id')),
                 ]
