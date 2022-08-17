@@ -14,6 +14,7 @@ class BarterItems extends Model
         "address_id",
         "name",
         "description",
+        "keywords",
         "used_time",
         "date_unit",
         "purchase_price",
