@@ -3,6 +3,7 @@ $(document).ready(function (e) {
 
     //Get Barang
     const idBarang = $("#idBarang").val();
+    console.log(idBarang)
     $.ajax({
         url: `${apiUrl}/public/items/donate`,
         method: "get",
@@ -11,8 +12,10 @@ $(document).ready(function (e) {
         },
         dataType: "JSON",
         success: function (e) {
+            let html = "";
             if (e.statusCode == 200) {
                 const data = e.data[0];
+                //console.log(data);
                 $("#productName").html(data.item.name);
                 $("#productImage").attr("src", data.item.image[0]);
                 $("#user-name").html(data.user.name);
@@ -21,8 +24,17 @@ $(document).ready(function (e) {
                 $("#category").html(`Kategori ${data.category.name}`)
                 $("#type").html(`Type: ${data.type.name}`)
                 $("#description").html(`${data.item.description}`)
+                html += `<button class="btn btn-outline-primary" id="chatbtn" data-id="${data.user.id}">Chat</button>`
+                $(`#chat`).html(html);
             }
+            
         },
+    }).done(() => {
+        $("#chatbtn").click(function(e){
+            const idUser = $(this).data("id")
+            //alert(idUser)
+            window.location = `http://localhost:6902/${__access_token}/${idUser}`
+        })
     });
 
     
@@ -64,4 +76,5 @@ $(document).ready(function (e) {
             },
         });
     });
+
 });

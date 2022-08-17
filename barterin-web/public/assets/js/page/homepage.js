@@ -44,49 +44,49 @@ function initSlickCategory() {
 
 $(document).ready(function () {
     // GET Barter Item
-    $.ajax({
-        url: `${apiUrl}/public/items/barter`,
-        method: "get",
-        data: {
-            skip: 0,
-            take: 9,
-        },
-        dataType: "JSON",
-        success: function (e) {
-            if (e.statusCode == 200) {
-                let html = "";
-                const data = e.data;
-                data.forEach((element) => {
-                    const image = element.item.image;
-                    const item = element.item;
-                    // console.log(image);
-                    html += `
-                      <div class="card barter-item-container barter-card item-card m-1 col-1" aria-hidden="true" style="width: 15rem; height: 20rem;" data-id="${item.id}">
-                        <img src="${image[0]}" class="card-img-top img img-fluid" alt="" style="width: 160px; height: 160px">
-                        <div class="card-body">
-                            <h5 class="card-title placeholder-glow">
-                                <span class="placeholder col-6 bg-dark"></span>
-                                ${item.name}
-                            </h5>
-                            <p class="card-text placeholder-glow">
-                                <i class="placeholder col-7 bi bi-geo-alt-fill"></i>
-                                <span class="placeholder col-7">${item.address_region}</span>
-                            </p>
-                        </div>
-                    </div>
-                    `;
-                });
-                $(`#barterSliderItems`).html(html);
-            }
-        },
-    }).done(() => {
-        initSlick();
-        $(".barter-card").click(function (e) {
-            const id = $(this).data("id");
-            // alert(id);
-            loadPage(`${baseUrl}/barang/barter/${id}`);
-        });
-    });
+    // $.ajax({
+    //     url: `${apiUrl}/public/items/barter`,
+    //     method: "get",
+    //     data: {
+    //         skip: 0,
+    //         take: 9,
+    //     },
+    //     dataType: "JSON",
+    //     success: function (e) {
+    //         if (e.statusCode == 200) {
+    //             let html = "";
+    //             const data = e.data;
+    //             data.forEach((element) => {
+    //                 const image = element.item.image;
+    //                 const item = element.item;
+    //                 // console.log(image);
+    //                 html += `
+    //                   <div class="card barter-item-container barter-card item-card m-1 col-1" aria-hidden="true" style="width: 15rem; height: 20rem;" data-id="${item.id}">
+    //                     <img src="${image[0]}" class="card-img-top img img-fluid" alt="" style="width: 160px; height: 160px">
+    //                     <div class="card-body">
+    //                         <h5 class="card-title placeholder-glow">
+    //                             <span class="placeholder col-6 bg-dark"></span>
+    //                             ${item.name}
+    //                         </h5>
+    //                         <p class="card-text placeholder-glow">
+    //                             <i class="placeholder col-7 bi bi-geo-alt-fill"></i>
+    //                             <span class="placeholder col-7">${item.address_region}</span>
+    //                         </p>
+    //                     </div>
+    //                 </div>
+    //                 `;
+    //             });
+    //             $(`#barterSliderItems`).html(html);
+    //         }
+    //     },
+    // }).done(() => {
+    //     initSlick();
+    //     $(".barter-card").click(function (e) {
+    //         const id = $(this).data("id");
+    //         // alert(id);
+    //         loadPage(`${baseUrl}/barang/barter/${id}`);
+    //     });
+    // });
 
     //GET Donation Item
     $.ajax({
