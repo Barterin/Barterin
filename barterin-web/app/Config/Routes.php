@@ -56,6 +56,7 @@ $routes->group('/profile', ['namespace' => 'App\Controllers\Frontend'], function
 $routes->group('/barang', ['namespace' => 'App\Controllers\Frontend'], function ($routes) {
     $routes->get('detail-produk', 'BarangController::detailProduk');
     $routes->get('upload', 'BarangController::upload');
+    $routes->get('editBarang/(:any)','BarangController::editBarang/$1');
     $routes->get('tawaranku', 'BarangController::tawaranku');
     $routes->get('tawaran/(:any)', 'BarangController::tawaran/$1');
     $routes->get('barangku', 'BarangController::barangku');

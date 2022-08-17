@@ -42,9 +42,8 @@
                 <input type="text" class="search-field" name="search" id="searchInput">
                 <button class="head-button"><i class="bi bi-search" id="search"></i></button>
             </div>
-            <div class="head-icon">
-                <button class="head-button"><i class="bi bi-cart-dash-fill"></i></button>
-                <button class="head-button"><i class="bi bi-chat-dots-fill"></i></button>
+            <div class="head-icon" id="icon-section">
+                
             </div>
             <div class="head-profile btn-group text-left" id="login-section">
             </div>

@@ -3,6 +3,7 @@
 
 <div class="body mt-5 mb-5">
     <input type="hidden" value="<?= $idBarang ?>" id="idBarang">
+    <input type="hidden" value="" id="idUser">
     <div class="container">
         <div class="row">
             <div class="foto">
@@ -59,8 +60,8 @@
                                     style="width: 40px; border-radius: 5px;" alt="">
                                 <b id="user-name"></b>
                             </div>
-                            <div class="justify-content-center col-2">
-                                <button class="btn btn-outline-primary">Chat</button><br><br>
+                            <div class="justify-content-center col-2" id="chat">
+                                
                             </div>
                         </div>
                     </div>

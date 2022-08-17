@@ -62,7 +62,7 @@ $(document).ready(function () {
                 const data = e.data;
                 let html = "";
             data.forEach((element) => {
-                console.log(element.barang)
+                console.log(element)
                 html += `
                     <div class="card mt-3 item-card" >
                         <div class="row g-0">
@@ -75,7 +75,7 @@ $(document).ready(function () {
                             </div>
                             <div class="col-md-3">
                                 <div class="card-body">
-                                    <button class="btn btn-primary" type="button">Chat Penawar</button>
+                                    <a href="http://localhost:6902/${__access_token}/${element.user.id}" class="btn btn-primary" type="button" id="chatBidder" >Chat Penawar</a>
                                     <button class="btn btn-primary mt-1 acceptOffer" type="submit">Terima Tawaran</button>
                                 </div>
                             </div>
