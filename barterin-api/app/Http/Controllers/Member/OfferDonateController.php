@@ -107,7 +107,7 @@ class OfferDonateController extends Controller
                 $row = [];
                 $row["id"] = Encrypt($rows->id);
                 $row["user"] = [
-                    "id" => Encrypt($rows->items_id),
+                    "id" => Encrypt($rows->user_id),
                     "name" => $rows->user_name,
                     "reason" => $rows->reason,
                     // "user" => $rows->items_user,
