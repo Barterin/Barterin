@@ -119,6 +119,7 @@ class OfferDonateController extends Controller
 
             $response = [
                 "statusCode" => 200,
+                "keywords" => explode(" ", $barang->keywords),
                 "data" => $addressData
             ];
         } catch (\Throwable | \Exception $error) {
