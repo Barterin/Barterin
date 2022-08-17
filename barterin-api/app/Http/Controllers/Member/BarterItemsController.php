@@ -73,6 +73,7 @@ class BarterItemsController extends Controller
                 $row['purchase_price'] = $rows->purchase_price;
                 $row['item_for'] = $rows->item_for;
                 $row['address_item'] = $address;
+                $row['status'] = $rows->status;
                 $itemsData[] = $row;
             }
 
