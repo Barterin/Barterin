@@ -9,8 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.remote.response.GetMyItems
-import com.barterin.barterinapps.ui.addresslist.AddressActivity
-import com.barterin.barterinapps.ui.myitems.MyItemsAdapter
 import com.bumptech.glide.Glide
 
 class ItemManagementAdapter : RecyclerView.Adapter<ItemManagementAdapter.ViewHolder>() {

@@ -6,15 +6,12 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
-import com.barterin.barterinapps.data.remote.response.DataItem
 import com.barterin.barterinapps.databinding.ActivityDetailItemBinding
-import com.barterin.barterinapps.ui.login.LoginViewModel
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 
@@ -96,7 +93,7 @@ class DetailItemActivity : AppCompatActivity() {
             .load(image3)
             .into(binding.imagedetail3)
 
-        Toast.makeText(this, data, Toast.LENGTH_SHORT).show()
+
 
 
     }
@@ -131,7 +128,6 @@ class DetailItemActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setupView() {
 
         @Suppress("DEPRECATION")
@@ -146,8 +142,5 @@ class DetailItemActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    companion object {
-        const val EXTRA_DATA = "extra_data"
-    }
 
 }

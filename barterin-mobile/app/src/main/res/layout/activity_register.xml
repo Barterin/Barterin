@@ -237,7 +237,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:text="This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply"
+        android:text="@string/this_site_is_protected_by_recaptcha_and_the_google_privacy_policy_and_terms_of_service_apply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

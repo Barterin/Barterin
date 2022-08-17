@@ -33,7 +33,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupView()
-        formValidation()
 
         binding.signUpText.setOnClickListener {
             Intent(this, RegisterActivity::class.java).also {
@@ -51,51 +50,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-
-    @SuppressLint("CheckResult")
-    private fun formValidation() {
-
-//        val usernameStream = binding.userNameEditText.let {
-//            RxTextView.textChanges(it)
-//                .skipInitialValue()
-//                .map { username ->
-//                    username.length !in 11 downTo 5
-//                }
-//        }
-//
-//        usernameStream?.subscribe {
-//            showUserNameAlert(it)
-//        }
-//
-//        val passwordStream = binding.passwordEditText.let {
-//            RxTextView.textChanges(it)
-//                .skipInitialValue()
-//                .map { password ->
-//                    password.length < 8
-//                }
-//        }
-//
-//        passwordStream?.subscribe {
-//            showPasswordMinimalAlert(it)
-//        }
-
-    }
-
-//    private fun showPasswordMinimalAlert(it: Boolean?) {
-//        if (it == true) {
-//            binding.txtPasswordEmpty.visibility = View.VISIBLE
-//        } else {
-//            binding.txtPasswordEmpty.visibility = View.INVISIBLE
-//        }
-//    }
-//
-//    private fun showUserNameAlert(it: Boolean?) {
-//        if (it == true) {
-//            binding.txtUsernameEmpty.visibility = View.VISIBLE
-//        } else {
-//            binding.txtUsernameEmpty.visibility = View.INVISIBLE
-//        }
-//    }
 
 
     private fun loginProcess() {
@@ -146,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.getDataUser(sharedpref.getToken()).observe(this) { result ->
             if (result != null) {
-                when(result) {
+                when (result) {
                     is Result.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
                     }
@@ -165,7 +119,19 @@ class LoginActivity : AppCompatActivity() {
                         val gender = result.data.gender
 
                         sharedpref = SharedPreferenceClass(this)
-                        sharedpref.saveDataUser(userId, username, email, fullName, verifiedEmail, verifiedAccount, phone, born, profilePicture, gender, true)
+                        sharedpref.saveDataUser(
+                            userId,
+                            username,
+                            email,
+                            fullName,
+                            verifiedEmail,
+                            verifiedAccount,
+                            phone,
+                            born,
+                            profilePicture,
+                            gender,
+                            true
+                        )
 
                         if (sharedpref.checkState() && verifiedEmail == "true") {
                             Intent(this@LoginActivity, HomeActivity::class.java).also {

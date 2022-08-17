@@ -3,8 +3,6 @@ package com.barterin.barterinapps.data.remote.retrofit
 import com.barterin.barterinapps.data.remote.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.http.*
 
 
@@ -104,8 +102,7 @@ interface ApiService {
 
     @GET("public/type")
     suspend fun getTypeList(
-        @Query("category") category: String,
-        @Header("Authorization") token: String,
+        @Query("categoryId") categoryId: String
     ): TypeResponse
 
     @Multipart
@@ -190,5 +187,20 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: String
     ) : DeleteAddressResponse
+
+    @FormUrlEncoded
+    @POST("member/items/update/{id}")
+    suspend fun updateItem(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Field("type_id") type_id: String,
+        @Field("address_id") address_id: String,
+        @Field("name") name: String,
+        @Field("description") description: String,
+        @Field("used_time") used_time: String,
+        @Field("date_unit") date_unit: String,
+        @Field("purchase_price") purchase_price: String,
+        @Field("item_for") item_for: String,
+    ) : UpdateAddressResponse
 
 }

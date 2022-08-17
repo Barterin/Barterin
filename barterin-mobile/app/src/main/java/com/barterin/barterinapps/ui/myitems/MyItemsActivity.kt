@@ -8,15 +8,12 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.annotation.UiThread
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.data.remote.response.GetMyItems
-import com.barterin.barterinapps.databinding.ActivityLoginBinding
 import com.barterin.barterinapps.databinding.ActivityMyItemsBinding
-import com.barterin.barterinapps.ui.cart.CartViewModel
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 
 class MyItemsActivity : AppCompatActivity() {

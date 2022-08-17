@@ -118,7 +118,7 @@ class EmailVerificationActivity : AppCompatActivity() {
             // Callback function, fired
             // when the time is up
             override fun onFinish() {
-                binding.textTimeHeader.text = "${resources.getString(string.text_has_expired)}"
+                binding.textTimeHeader.text = resources.getString(string.text_has_expired)
                 hasExpired = true
             }
         }.start()

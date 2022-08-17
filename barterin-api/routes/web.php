@@ -26,6 +26,7 @@ $router->group(['prefix' => 'auth'], function ($router) {
     $router->post('/user-profile', 'Auth\AuthController@userProfile');
     $router->post('/send-email', 'Auth\MailController@sendEmailVerification');
     $router->post('/verify-email', 'Auth\MailController@verifyEmail');
+    $router->post('/set-status', 'Auth\AuthController@setStatus');
 });
 
 // Admin router
@@ -83,6 +84,12 @@ $router->group(['prefix' => 'member', 'middleware' => 'auth'], function ($router
         $router->get('list/{offerId}', 'Member\OfferDonateController@listBidder');
         $router->post('store', 'Member\OfferDonateController@store');
         $router->post('accept', 'Member\OfferDonateController@acceptOffer');
+    });
+
+    $router->group(['prefix' => 'message'], function ($router) {
+        $router->get('list', 'Member\MessageController@list');
+        $router->get('get-from', 'Member\MessageController@getFrom');
+        $router->post('store', 'Member\MessageController@store');
     });
 });
 

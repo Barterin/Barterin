@@ -1,5 +1,6 @@
 package com.barterin.barterinapps.ui.itemmanagement
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,10 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
+import com.barterin.barterinapps.data.remote.response.GetMyItems
 import com.barterin.barterinapps.databinding.ActivityItemManagementBinding
-import com.barterin.barterinapps.databinding.ActivityLoginBinding
-import com.barterin.barterinapps.ui.myitems.MyItemsAdapter
-import com.barterin.barterinapps.ui.myitems.MyItemsViewModel
+import com.barterin.barterinapps.ui.updateitem.UpdateItemActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 
 class ItemManagementActivity : AppCompatActivity() {
@@ -58,7 +58,6 @@ class ItemManagementActivity : AppCompatActivity() {
                 }
             }
         }
-
         binding.rvManagement.apply {
             layoutManager = LinearLayoutManager(this@ItemManagementActivity)
             setHasFixedSize(true)
@@ -66,6 +65,14 @@ class ItemManagementActivity : AppCompatActivity() {
             adapter = itemManagementAdapter
         }
 
+        itemManagementAdapter.setOnItemClickCallBack(object : ItemManagementAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: GetMyItems) {
+                Intent(this@ItemManagementActivity, UpdateItemActivity::class.java).also {
+                    it.putExtra("id_item", data.id)
+                    startActivity(it)
+                }
+            }
+        })
     }
 
     private fun setupView() {
@@ -110,7 +117,6 @@ class ItemManagementActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
 }

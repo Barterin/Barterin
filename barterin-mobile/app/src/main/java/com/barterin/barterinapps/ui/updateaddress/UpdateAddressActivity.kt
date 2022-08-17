@@ -9,14 +9,10 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
-import com.barterin.barterinapps.data.remote.response.AddressResponse
 import com.barterin.barterinapps.data.remote.response.AddressResult
-import com.barterin.barterinapps.databinding.ActivityAddAdressBinding
 import com.barterin.barterinapps.databinding.ActivityUpdateAddressBinding
-import com.barterin.barterinapps.ui.addaddress.AddAddressViewModel
 import com.barterin.barterinapps.ui.addresslist.AddressActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 

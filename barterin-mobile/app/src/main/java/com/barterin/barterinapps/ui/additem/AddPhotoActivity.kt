@@ -1,6 +1,7 @@
 package com.barterin.barterinapps.ui.additem
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
@@ -27,7 +28,6 @@ import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.create
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
@@ -56,7 +56,7 @@ class AddPhotoActivity : AppCompatActivity() {
             if (!allPermissionsGranted()) {
                 Toast.makeText(
                     this,
-                    "Tidak mendapatkan permission.",
+                    resources.getString(R.string.text_not_permission),
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
@@ -79,7 +79,7 @@ class AddPhotoActivity : AppCompatActivity() {
             )
         }
 
-        val category = intent.getStringExtra("category")
+        val category = intent.getStringExtra("type")
 
         Toast.makeText(this@AddPhotoActivity, category, Toast.LENGTH_SHORT).show()
 
@@ -106,6 +106,10 @@ class AddPhotoActivity : AppCompatActivity() {
 
     private fun uploadData() {
 
+        val sharedPreference =  getSharedPreferences("id_preference", Context.MODE_PRIVATE)
+        val editor = sharedPreference.edit()
+        editor.clear().commit()
+
         val type = intent.getStringExtra("type")
         val address = intent.getStringExtra("address")
         val itemName = intent.getStringExtra("itemName")
@@ -118,11 +122,11 @@ class AddPhotoActivity : AppCompatActivity() {
         sharedpref = SharedPreferenceClass(this)
 
         if (getFile1 == null) {
-            Toast.makeText(this, "Please Input Image Number One !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, resources.getString(R.string.text_image_input1), Toast.LENGTH_SHORT).show()
         } else if (getFile2 == null) {
-            Toast.makeText(this, "Please Input Image Number Two !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, resources.getString(R.string.text_image_input2), Toast.LENGTH_SHORT).show()
         } else if (getFile3 == null) {
-            Toast.makeText(this, "Please Input Image Number Three !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, resources.getString(R.string.text_image_input3), Toast.LENGTH_SHORT).show()
         } else {
 
             val file = reduceFileImage(getFile1 as File)
@@ -137,7 +141,6 @@ class AddPhotoActivity : AppCompatActivity() {
             val dateUnitRequest = "3".toRequestBody("text/plain".toMediaType())
             val priceRangeRequest = priceRange?.toRequestBody("text/plain".toMediaType())
             val itemForRequest = "0".toRequestBody("text/plain".toMediaType())
-
 
             val requestImageFile1 = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultiPart1: MultipartBody.Part = MultipartBody.Part.createFormData(
@@ -161,8 +164,6 @@ class AddPhotoActivity : AppCompatActivity() {
             )
 
             val listOfImages = arrayOf(imageMultiPart1, imageMultiPart2, imageMultiPart3)
-
-
 
             viewModel.uploadItem(
                 sharedpref.getToken(),
@@ -288,7 +289,6 @@ class AddPhotoActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val CAMERA_X_RESULT = 200
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
     }

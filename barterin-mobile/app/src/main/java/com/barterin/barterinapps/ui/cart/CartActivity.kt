@@ -14,7 +14,6 @@ import com.barterin.barterinapps.data.Result
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.data.remote.response.DataCartResult
 import com.barterin.barterinapps.databinding.ActivityCartBinding
-import com.barterin.barterinapps.ui.bottomnavigation.ui.home.HomeViewModel
 import com.barterin.barterinapps.ui.myitems.MyItemsActivity
 import com.barterin.barterinapps.viewmodel.ViewModelFactory
 

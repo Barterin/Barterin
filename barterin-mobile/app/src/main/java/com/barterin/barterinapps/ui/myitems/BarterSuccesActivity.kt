@@ -6,7 +6,6 @@ import android.os.Bundle
 import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityBarterSuccesBinding
-import com.barterin.barterinapps.databinding.ActivityLoginBinding
 import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
 import com.bumptech.glide.Glide
 
@@ -14,7 +13,6 @@ class BarterSuccesActivity : AppCompatActivity() {
 
     private var _binding: ActivityBarterSuccesBinding? = null
     private val binding get() = _binding!!
-    private lateinit var sharedpref: SharedPreferenceClass
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +32,6 @@ class BarterSuccesActivity : AppCompatActivity() {
             startActivity(Intent(this@BarterSuccesActivity, HomeActivity::class.java ))
             finish()
         }
-
     }
 
     private fun setupFalse() {
@@ -52,7 +49,7 @@ class BarterSuccesActivity : AppCompatActivity() {
         Glide.with(this)
             .load(R.drawable.img_success)
             .into(binding.imgStatusBarter)
-        binding.txtPesanBarter.text = "Selamat, barang anda telah berhasil di barter, cek status nya di bagian transaksi ya..."
+        binding.txtPesanBarter.text = resources.getString(R.string.text_barter_success)
     }
 
 

@@ -9,9 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.barterin.barterinapps.R
 import com.barterin.barterinapps.data.remote.response.DataCartResult
-import com.barterin.barterinapps.data.remote.response.DataItem
-import com.barterin.barterinapps.ui.addresslist.AddressActivity
-import com.barterin.barterinapps.ui.bottomnavigation.ui.home.BarterItemsAdapter
 import com.bumptech.glide.Glide
 
 class CartAdapter : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
@@ -67,11 +64,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
                     (itemView.context as CartActivity).deleteChart(user.id)
                 }
             }
-
-
-
         }
-
     }
 
     override fun getItemCount(): Int = dataList.size

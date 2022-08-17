@@ -13,7 +13,6 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AlertDialog
 import com.barterin.barterinapps.data.local.preference.SharedPreferenceClass
 import com.barterin.barterinapps.databinding.ActivityChatBinding
-import com.barterin.barterinapps.databinding.ActivityChatBotBinding
 import com.barterin.barterinapps.ui.bottomnavigation.HomeActivity
 
 class ChatActivity : AppCompatActivity() {
@@ -21,7 +20,6 @@ class ChatActivity : AppCompatActivity() {
 
     private var _binding: ActivityChatBinding? = null
     private val binding get() = _binding!!
-    private lateinit var sharedpref: SharedPreferenceClass
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,10 +59,10 @@ class ChatActivity : AppCompatActivity() {
                 )
                 alertDialog.setButton(
                     DialogInterface.BUTTON_POSITIVE,
-                    "Ok",
-                    DialogInterface.OnClickListener { _: DialogInterface, _: Int ->
-                        moveBack()
-                    })
+                    "Ok"
+                ) { _: DialogInterface, _: Int ->
+                    moveBack()
+                }
                 alertDialog.show()
                 super.onReceivedError(binding.webView, errorCode, description, failingUrl)
             }
@@ -75,7 +73,7 @@ class ChatActivity : AppCompatActivity() {
         if (savedInstanceState != null) {
             binding.webView.restoreState(savedInstanceState)
         } else {
-            binding.webView.loadUrl("https://chat.barterin.tech/ibnu/qolby")
+            binding.webView.loadUrl("http://home-server.inh.pw:5500/barterin-chat/views/template.html")
         }
 
     }
