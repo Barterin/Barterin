@@ -77,12 +77,12 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label class="mt-2">Keyword</label>
                 <select class="form-select mt-1" style="margin-bottom: 40px ;" id="keyword" name="keyword">
                     <option selected disabled> Pilih Dari Alamat Kamu</option>
                 </select>
-            </div>
+            </div> -->
 
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary btn-sm" style="margin-bottom: 30px ;"> Tambah </button>

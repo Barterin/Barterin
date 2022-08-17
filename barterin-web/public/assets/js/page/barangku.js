@@ -12,7 +12,7 @@ $(document).ready(function () {
                 const data = e.data;
                 let html = "";
             data.forEach((element) => {
-                if (element.item_for == 1){
+                if (element.item_for == 0){
                     html += `
                         <div class="card mt-3 item-card" data-id="${element.id}">
                             <div class="row g-0">
@@ -48,7 +48,7 @@ $(document).ready(function () {
     }).done(() => {
         $(".detailBarang").click(function (e) {
             const id = $(this).data("id");
-            loadPage(`${baseUrl}/barang/donasi/${id}`);
+            loadPage(`${baseUrl}/barang/barter/${id}`);
         });
         $(".editBarang").click(function (e) {
             const id = $(this).data("id");

@@ -51,7 +51,7 @@
         </div>
     </div>
 </div>
-<!-- <div class="container-lg mt-3">
+<div class="container-lg mt-3">
     <div class="row">
         <h1 class="col m-auto fw-bold">Barang Barter</h1>
         <a href="#" class="col text-decoration-none d-flex align-items-center m-auto justify-content-end">
@@ -63,8 +63,8 @@
 
 
     </div>
-</div> -->
-<div class="container-lg mt-3 mb-5">
+</div>
+<!-- <div class="container-lg mt-3 mb-5">
     <div class="row">
         <h1 class="col m-auto fw-bold">Barang Donasi</h1>
         <a href="#" class="col text-decoration-none d-flex align-items-center m-auto justify-content-end">
@@ -76,7 +76,7 @@
 
 
     </div>
-</div>
+</div> -->
 
 <div class="floating-button">
     <a href="https://bot.barterin.tech" class="float">

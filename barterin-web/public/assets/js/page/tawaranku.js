@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //------------- GET BARANG LIST ---------------//
     $.ajax({
-        url: `${apiUrl}/member/offer-donate/list`,
+        url: `${apiUrl}/member/offer/list`,
         method: "GET",
         headers: {
             Authorization: `Bearer ${__access_token}`,
@@ -12,13 +12,13 @@ $(document).ready(function () {
                 const data = e.data;
                 let html = "";
             data.forEach((element) => {
-                // console.log(element)
+                console.log(element)
                 if (element.barang.status == 0) {
                     html += `
                         <div class="card mt-3 item-card detailTawaran" data-id="${element.barang.id}">
                             <div class="row g-0">
                                 <div class="col-md-2">
-                                    <img src="${element.barang.image[0]}" class="img-fluid rounded-start image-list" alt="...">
+                                    <img src="${element.barang.image}" class="img-fluid rounded-start image-list" alt="...">
                                 </div>
                                 <div class="col-md-7">
                                 <div class="card-body">
@@ -51,7 +51,7 @@ $(document).ready(function () {
     const idBarang = $("#idBarang").val();
     console.log(idBarang)
     $.ajax({
-        url: `${apiUrl}/member/offer-donate/list/bidder?itemId=${idBarang}`,
+        url: `${apiUrl}/member/offer/list/bidder?itemId=${idBarang}`,
         method: "get",
         dataType: "JSON",
         headers: {
@@ -64,22 +64,24 @@ $(document).ready(function () {
             data.forEach((element) => {
                 console.log(element)
                 html += `
-                    <div class="card mt-3 item-card" >
-                        <div class="row g-0">
-                            <div class="col-md-8">
-                            <input type="hidden" value="${element.id}" name="offerId">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold" name="name">${element.user.name}</h5>
-                                    <p class="card-text" name="description">${element.user.reason}</p>
+                    <div class="card mt-3 item-card detailTawaran" data-id="${element.barang.id}">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-md-2">
+                                    <img src="${element.barang.image}" class="img-fluid rounded-start image-list" alt="...">
                                 </div>
-                            </div>
-                            <div class="col-md-3">
+                                <div class="col-md-7">
+                                    <div class="card-body">
+                                        <h5 class="card-title" name="name">${element.barang.name}</h5>
+                                        <p class="card-text" name="purchase_price">${element.barang.user}</p>
+                                        <p class="card-text" name="description"><small class="text-muted">${element.barang.region}</small></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
                                 <div class="card-body">
-                                    <a href="http://localhost:6902/${__access_token}/${element.user.id}" class="btn btn-primary" type="button" id="chatBidder" >Chat Penawar</a>
+                                    <a href="http://localhost:6902/${__access_token}/${element.barang.id}" class="btn btn-primary" type="button" id="chatBidder" >Chat Penawar</a>
                                     <button class="btn btn-primary mt-1 acceptOffer" type="submit">Terima Tawaran</button>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 `;
             });
