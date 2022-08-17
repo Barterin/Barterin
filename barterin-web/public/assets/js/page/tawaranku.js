@@ -18,7 +18,7 @@ $(document).ready(function () {
                         <div class="card mt-3 item-card detailTawaran" data-id="${element.barang.id}">
                             <div class="row g-0">
                                 <div class="col-md-2">
-                                    <img src="${element.barang.image[0]}" class="img-fluid rounded-start image-list" alt="...">
+                                    <img src="${element.barang.image}" class="img-fluid rounded-start image-list" alt="...">
                                 </div>
                                 <div class="col-md-7">
                                 <div class="card-body">
@@ -69,10 +69,10 @@ $(document).ready(function () {
                         .split(" ")
                         .filter(onlyUnique);
                     reason.forEach((item) => {
-                        console.log(item);
+                        //console.log(item);
                         if (inArray(item.toLowerCase(), keywords)) found++;
                     });
-                    console.log(found);
+                    //console.log(found);
                     let matchTate = Math.floor(
                         (parseInt(found) / parseInt(keywords.length)) * 100
                     );
@@ -80,7 +80,7 @@ $(document).ready(function () {
 
                     html += `
                     <div class="card mt-3 item-card" >
-                        <div class="row g-0">
+                        <div class="row g-0 align-items-center">
                             <div class="col-md-8">
                             <input type="hidden" value="${element.id}" name="offerId">
                                 <div class="card-body">
