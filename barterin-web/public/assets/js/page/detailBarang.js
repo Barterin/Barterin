@@ -51,7 +51,7 @@ $(document).ready(function (e) {
                 let html = "";
                 data.forEach((element) => {
                     console.log(element)
-                    if (element.item_for == 0){
+                    if (element.item_for == 0 && element.status == 0){
                         html += `
                         <div class="wrapper mt-1">
                             <label class="option row align-items-center">
