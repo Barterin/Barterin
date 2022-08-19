@@ -28,7 +28,6 @@ $(document).ready(function () {
                     </ul>
                 `);
                 $("#icon-section").html(`
-                    <a href="" class="btn head-button"><i class="bi bi-cart-dash-fill"></i></a>
                     <a href="http://localhost:6902/${__access_token}" class="btn head-button"><i class="bi bi-chat-dots-fill"></i></a>
                 `)
 
