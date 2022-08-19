@@ -18,7 +18,7 @@ $(document).ready(function () {
                         <div class="card mt-3 item-card" data-id="${element.id}">
                             <div class="row g-0">
                                 <div class="col-md-2">
-                                <img src="${element.image[0]}" class="img-fluid rounded-start image-list" alt="...">
+                                    <img src="${element.image[0]}" class="img-fluid rounded-start image-list" alt="...">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-body">
