@@ -168,6 +168,8 @@ class HomeApiController extends Controller
                 $data->orWhere('barter_items.description', 'like', '%' . $request->search . '%');
                 $data->orWhere('cat.name', 'like', '%' . $request->search . '%');
                 $data->orWhere('type.name', 'like', '%' . $request->search . '%');
+                $data->orwhere('add.kota_kecamatan', 'like', '%' . $request->search . '%');
+                $data->orwhere('add.alamat_lengkap', 'like', '%' . $request->search . '%');
             }
 
             $data->skip($skip)->take($take);
