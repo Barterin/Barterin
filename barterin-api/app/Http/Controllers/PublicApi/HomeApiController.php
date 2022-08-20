@@ -174,6 +174,7 @@ class HomeApiController extends Controller
                 $data->orWhere('type.name', 'like', '%' . $request->search . '%');
                 $data->orWhere('add.kota', 'like', '%' . $request->search . '%');
                 $data->orWhere('add.kecamatan', 'like', '%' . $request->search . '%');
+                $data->orwhere('add.alamat_lengkap', 'like', '%' . $request->search . '%');
             }
 
             $data->skip($skip)->take($take);

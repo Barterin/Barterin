@@ -3,6 +3,7 @@
 
 <div class="body mt-5 mb-5">
     <input type="hidden" value="<?= $idBarang ?>" id="idBarang">
+    <input type="hidden" value="" id="idUser">
     <div class="container">
         <div class="row">
             <div class="foto">
@@ -23,20 +24,16 @@
                         </div>
                     </div>
                     <b class="text-secondary">Estimasi Harga</b>
-                    <h3>Rp299.00</h3>
+                    <h3 id="productPrice"></h3>
                     <hr style="border: 1px solid black">
                     <div class="row">
                         <div class="col text-primary"><b>Detail</b></div>
                     </div>
                     <hr style="border: 1px solid black">
-                    <p>Kondisi: Lorem Ipsum</p>
-                    <p>Berat: Lorem Ipsum</p>
-                    <p>Kategori: Lorem Ipsum</p>
-                    <p>Etalase: Lorem Ipsum</p>
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-                        duis enim velit mollitAmet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-                        Velit officia consequat duis enim velit mollit</p>
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                    <p id="usedTime"></p>
+                    <p id="category">/p>
+                    <p id="type">/p>
+                    <p id="description"></p>
                     <b class="text-primary">Lihat Selengkapnya</b>
                     <hr style="border: 1px solid black">
                     <hr style="border: 1px solid black">
@@ -63,8 +60,8 @@
                                     style="width: 40px; border-radius: 5px;" alt="">
                                 <b id="user-name"></b>
                             </div>
-                            <div class="justify-content-center col-2">
-                                <button class="btn btn-outline-primary">Chat</button><br><br>
+                            <div class="justify-content-center col-2" id="chat">
+                                
                             </div>
                         </div>
                     </div>
@@ -73,19 +70,13 @@
                 <div class="container mb-2 pb-2"
                     style="outline-style:solid; outline-color: #CDCDCD; border-radius:4px;">
                     <div class="">
-                        <button class="btn btn-primary form-control mt-3   mb-2" style="font-weight:bold;"> +
-                            Keranjang</button>
-                        <button class="btn btn-outline-primary form-control mb-2" style="font-weight:bold;"> Ikuti
-                            Diskusi</button>
+                        <button class="btn btn-primary form-control mt-3   mb-2" style="font-weight:bold;" data-bs-toggle="modal" data-bs-target="#modalTawaran">Tambah Tawaran</button>
                     </div>
                     <div class="container">
                         <div class="d-flex justify-content-center fw-bold">
                             <a href="" class="text-secondary text-decoration-none"> Share </a>
                         </div>
                     </div>
-                </div>
-                <div class="container mt-4 bg-secondary"
-                    style="outline-style:solid; outline-color: #CDCDCD; border-radius:4px; height:20%;">
                 </div>
             </div>
         </div>
@@ -118,6 +109,34 @@
     </div>
 </div>
 
+<!-- MODAL TAWARAN -->
+<div class="modal fade" id="modalTawaran" tabindex="-1" aria-labelledby="modalTawaran" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Tawaran</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formTawaranBarter">
+            <input type="hidden" value="<?= $idBarang ?>" name="item_id" id="idBarang">
+            <div class="mb-3 row align-items-center">
+                <label for="message-text" class="col-form-label">Pilih Barang Anda:</label>
+                <div id="barterItems">
+                    
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit Tawaran</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
 <loadjs-detailBarang></loadjs-detailBarang>
+<loadcss-detailBarang></loadcss-detailBarang>
 
 <?= $this->endSection(); ?>

@@ -1,0 +1,26 @@
+.option > input {
+    /* HIDE RADIO */
+    visibility: hidden;
+    display: none;
+    /* Makes input not-clickable */
+    position: absolute;
+    /* Remove input from document flow */
+  }
+  
+.option > input + img {
+    /* IMAGE STYLES */
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+.option > input:checked + img {
+    /* (RADIO CHECKED) IMAGE STYLES */
+    border: 2px solid rgb(0, 15, 99);
+    border-radius: 5px;
+  }
+  
+.option > input:checked ~ span.overlay-image {
+    display: block;
+  }
+  

@@ -3,7 +3,7 @@ $(document).ready(function () {
 const searchRes = $("#searchRes").val();
 console.log(searchRes);
 $.ajax({
-    url: `${apiUrl}/public/items/donate?search=${searchRes}`,
+    url: `${apiUrl}/public/items/barter?search=${searchRes}`,
     method: "get",
     dataType: "JSON",
     headers: {
@@ -17,7 +17,7 @@ $.ajax({
             console.log(element)
             html += `
                 <div class="col-sm-2">
-                    <div class="card donate-item-container donate-card item-card m-1 col-1" aria-hidden="true" style="width: 10rem; height: 20rem;" data-id="${element.item.id}">
+                    <div class="card barter-item-container barter-card item-card m-1 col-1" aria-hidden="true" style="width: 10rem; height: 20rem;" data-id="${element.item.id}">
                         <img src="${element.item.image[0]}" class="card-img-top img img-fluid" alt="" style="width: 160px; height: 160px">
                         <div class="card-body">
                             <h5 class="card-title placeholder-glow">

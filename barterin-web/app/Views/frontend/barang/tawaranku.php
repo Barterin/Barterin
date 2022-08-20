@@ -3,10 +3,11 @@
 
 <div class="container mt-3 mb-3">
     <div>
+        <div>
         <div class="fw-bold fs-2">
-            <span>Tawaranku</span>
-        </div>
-        <div id="listTawaran">
+                <span>Tawaranku</span>
+            </div>
+            <div id="listTawaran">
 
         </div>
     </div>

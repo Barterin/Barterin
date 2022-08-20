@@ -77,11 +77,12 @@
                     </select>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label class="mt-2">Keywords (dipisah menggunakan spasi, digunakan untuk sistem rekomendasi)</label>
-                    <textarea class="form-control mt-1 shadow-none" type="text" name="keywords"></textarea>
-                    <div id="validate_keywords"></div>
-                </div>
+            <!-- <div class="form-group">
+                <label class="mt-2">Keyword</label>
+                <select class="form-select mt-1" style="margin-bottom: 40px ;" id="keyword" name="keyword">
+                    <option selected disabled> Pilih Dari Alamat Kamu</option>
+                </select>
+            </div> -->
 
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary btn-sm" style="margin-bottom: 30px ;"> Tambah </button>

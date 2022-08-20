@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //------------- GET BARANG LIST ---------------//
     $.ajax({
-        url: `${apiUrl}/member/offer-donate/list`,
+        url: `${apiUrl}/member/offer/list`,
         method: "GET",
         headers: {
             Authorization: `Bearer ${__access_token}`,
@@ -71,7 +71,7 @@ $(document).ready(function () {
     const idBarang = $("#idBarang").val();
     console.log(idBarang);
     $.ajax({
-        url: `${apiUrl}/member/offer-donate/list/bidder?itemId=${idBarang}`,
+        url: `${apiUrl}/member/offer/list/bidder?itemId=${idBarang}`,
         method: "get",
         dataType: "JSON",
         headers: {
@@ -132,7 +132,7 @@ $(document).ready(function () {
         e.preventDefault();
         const data = new FormData($(`#detailTawaran`).get(0));
         $.ajax({
-            url: `${apiUrl}/member/offer-donate/accept`,
+            url: `${apiUrl}/member/offer/accept`,
             method: "post",
             timeout: 0,
             data: data,
