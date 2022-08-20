@@ -72,7 +72,7 @@ $(document).ready(function () {
     }).done(() => {
         $(".detailBarang").click(function (e) {
             const id = $(this).data("id");
-            loadPage(`${baseUrl}/barang/barter/${id}`);
+            loadPage(`${baseUrl}/barang/donasi/${id}`);
         });
         $(".editBarang").click(function (e) {
             const id = $(this).data("id");

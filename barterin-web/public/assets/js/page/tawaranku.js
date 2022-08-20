@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //------------- GET BARANG LIST ---------------//
     $.ajax({
-        url: `${apiUrl}/member/offer/list`,
+        url: `${apiUrl}/member/offer-donate/list`,
         method: "GET",
         headers: {
             Authorization: `Bearer ${__access_token}`,
@@ -13,7 +13,7 @@ $(document).ready(function () {
                 let html = "";
                 let history = "";
                 data.forEach((element) => {
-                    // console.log(element)
+                    console.log(element)
                     if (element.barang.status == 0) {
                         html += `
                         <div class="card mt-3 item-card detailTawaran" data-id="${element.barang.id}">
@@ -25,7 +25,7 @@ $(document).ready(function () {
                                 <div class="card-body">
                                     <h5 class="card-title" name="name">${element.barang.name}</h5>
                                     <p class="card-text" name="purchase_price">${element.barang.user}</p>
-                                    <p class="card-text" name="description"><small class="text-muted">${element.barang.region}</small></p>
+                                    <p class="card-text" name="description"><small class="text-muted">${element.barang.city}, ${element.barang.region}</small></p>
                                 </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@ $(document).ready(function () {
                                 <div class="card-body">
                                     <h5 class="card-title" name="name">${element.barang.name}</h5>
                                     <p class="card-text" name="purchase_price">${element.barang.user}</p>
-                                    <p class="card-text" name="description"><small class="text-muted">${element.barang.region}</small></p>
+                                    <p class="card-text" name="description"><small class="text-muted">${element.barang.city}, ${element.barang.region}</small></p>
                                 </div>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@ $(document).ready(function () {
     const idBarang = $("#idBarang").val();
     console.log(idBarang);
     $.ajax({
-        url: `${apiUrl}/member/offer/list/bidder?itemId=${idBarang}`,
+        url: `${apiUrl}/member/offer-donate/list/bidder?itemId=${idBarang}`,
         method: "get",
         dataType: "JSON",
         headers: {
@@ -132,7 +132,7 @@ $(document).ready(function () {
         e.preventDefault();
         const data = new FormData($(`#detailTawaran`).get(0));
         $.ajax({
-            url: `${apiUrl}/member/offer/accept`,
+            url: `${apiUrl}/member/offer-donate/accept`,
             method: "post",
             timeout: 0,
             data: data,

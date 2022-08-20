@@ -36,7 +36,8 @@ class OfferDonateController extends Controller
                     bi.id items_id,
                     bi.name items_name,
                     bi.status items_status,
-                    add.kota_kecamatan items_region,
+                    add.kota items_city,
+                    add.kecamatan items_region,
                     u.fullname items_user,
                     (SELECT file_path FROM upload_image WHERE items_id = bi.id ORDER BY id ASC LIMIT 1) items_image
                 '))
@@ -58,6 +59,7 @@ class OfferDonateController extends Controller
                     "name" => $rows->items_name,
                     "image" => env('APP_URL') . "/" . $rows->items_image,
                     "user" => $rows->items_user,
+                    "city" => $rows->items_city,
                     "region" => $rows->items_region,
                     "status" => $rows->items_status,
                 ];
