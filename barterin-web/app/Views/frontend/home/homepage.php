@@ -65,19 +65,33 @@
     </div>
 </div> -->
 <div class="container-lg mt-3 mb-5">
-    <div class="row">
-        <h1 class="col m-auto fw-bold">Barang Donasi</h1>
-        <a href="#" class="col text-decoration-none d-flex align-items-center m-auto justify-content-end">
-            See More
-            <i class="bi bi-arrow-right-short"></i>
-        </a>
+    <div>
+        <div class="row">
+            <h1 class="col m-auto fw-bold">Barang Donasi</h1>
+            <a href="#" class="col text-decoration-none d-flex align-items-center m-auto justify-content-end">
+                See More
+                <i class="bi bi-arrow-right-short"></i>
+            </a>
+        </div>
+        <div class="row mt-3 donasi-slider" id="donasiSliderItems">
+
+
+        </div>
     </div>
-    <div class="row mt-3 donasi-slider" id="donasiSliderItems">
+    <div class="mt-3">
+        <div class="row">
+            <h1 class="col m-auto fw-bold">Near You</h1>
+            <a href="#" class="col text-decoration-none d-flex align-items-center m-auto justify-content-end">
+                See More
+                <i class="bi bi-arrow-right-short"></i>
+            </a>
+        </div>
+    <div class="row mt-3 donasi-slider" id="nearYouSliderItems">
 
 
+    </div>
     </div>
 </div>
-
 <div class="floating-button">
     <a href="https://bot.barterin.tech" class="float">
         <i class="bi bi-chat-right-fill my-float"></i>

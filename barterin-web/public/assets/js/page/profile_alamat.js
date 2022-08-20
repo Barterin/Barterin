@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     // -------------- POST ALAMAT ------------- //
     $("#formAlamat").submit((e) => {
         e.preventDefault();

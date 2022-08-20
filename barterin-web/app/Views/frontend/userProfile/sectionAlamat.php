@@ -23,7 +23,7 @@
                 <form id="formAlamat">
                     <!-- Label Alamat -->
                     <label for="LabelALamat" class="form-label fw-bold mt-3"> Label Alamat </label>
-                    <input type="text" placeholder="Alamat Rumah" class="form-control" id="Alamat"
+                    <input type="text" placeholder="Label Alamat" class="form-control" id="Alamat"
                         aria-describedby="Alamat" name="label">
                     <!-- Nama Penerima -->
                     <div class="col-12">
@@ -44,21 +44,23 @@
                     <!-- Kota / Kecamatan -->
                     <div class="col-12">
                         <div class="row d-flex justify-content-between">
-                            <div class="col-9">
-                                <label for="Kota atau Kecamatan" class="form-label fw-bold mt-3"> Kota atau
-                                    Kecamatan</label>
-                                <input type="text" placeholder="Jawa Barat, Kota Bandung, Cibeunying Kidul"
-                                    class="form-control" id="Kota atau Kecamatan" aria-describedby="Kota atau Kecamatan"
-                                    name="kota_kecamatan">
+                            <div class="col-4">
+                                <label for="kota" class="form-label fw-bold mt-3">Kota/Kabupaten</label>
+                                <input type="text" placeholder="Kota" class="form-control" id="kota"
+                                    aria-describedby="Number" name="kota">
                             </div>
-                            <!-- Kode Pos -->
-                            <div class="col-3">
-                                <label for="Number" class="form-label fw-bold mt-3"> Kode Pos </label>
-                                <input type="number" placeholder="40124" class="form-control" id="Number"
+                            <div class="col-4">
+                                <label for="kecamatan" class="form-label fw-bold mt-3">Kecamatan</label>
+                                <input type="text" placeholder="Kecamatan" class="form-control" id="kecamatan"
+                                    aria-describedby="Number" name="kecamatan">
+                            </div>
+                            <div class="col-4">
+                            <label for="Number" class="form-label fw-bold mt-3"> Kode Pos </label>
+                            <input type="number" placeholder="40124" class="form-control" id="Number"
                                     aria-describedby="Number" name="kode_pos">
                             </div>
                         </div>
-                    </div>
+                    </div>                   
                     <!-- Alamat  -->
                     <label for="Alamat" class="form-label fw-bold mt-3">Alamat</label>
                     <input type="text" placeholder="Gg. Sukapada, RT 3 rw 15 193 - 139a" class="form-control"
@@ -102,22 +104,25 @@
                     </div>
                 </div>
                 <!-- Kota / Kecamatan -->
-                <div class="col-12">
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-9">
-                            <label for="Kota atau Kecamatan" class="form-label fw-bold mt-3"> Kota atau
-                                Kecamatan</label>
-                            <input type="text" placeholder="Jawa Barat, Kota Bandung, Cibeunying Kidul"
-                                class="form-control" id="Kota atau Kecamatan" aria-describedby="Kota atau Kecamatan">
+                <div class="row d-flex justify-content-between">
+                        <div class="col-4">
+                            <label for="kota" class="form-label fw-bold mt-3">Kota/Kabupaten</label>
+                            <select class="form-select" name="kota" id="kota">
+                                <option value="" selected disabled>Pilih Kota/Kabupaten</option>
+                            </select>
                         </div>
-                        <!-- Kode Pos -->
-                        <div class="col-3">
-                            <label for="Number" class="form-label fw-bold mt-3"> Kode Pos </label>
-                            <input type="number" placeholder="40124" class="form-control" id="Number"
-                                aria-describedby="Number">
+                        <div class="col-4">
+                            <label for="kecamatan" class="form-label fw-bold mt-3">Kecamatan</label>
+                            <select class="form-select" name="kecamatan" id="kecamatan">
+                                <option value="" selected disabled>Kecamatan</option>
+                            </select>
                         </div>
                     </div>
                 </div>
+                <!-- Kode Pos -->
+                <label for="Number" class="form-label fw-bold mt-3"> Kode Pos </label>
+                <input type="number" placeholder="40124" class="form-control" id="Number"
+                                aria-describedby="Number">
                 <!-- Alamat  -->
                 <label for="Alamat" class="form-label fw-bold mt-3">Alamat</label>
                 <input type="text" placeholder="Gg. Sukapada, RT 3 rw 15 193 - 139a" class="form-control" id="Alamat"
