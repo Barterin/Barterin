@@ -25,6 +25,18 @@ function initSlickDonasi() {
         swipeToSlide: true, // You can unslick at a given breakpoint now by adding:
     });
 }
+function initSlickNearYou() {
+    $(".nearYou-slider").slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        arrows: true,
+        slidesToShow: 8,
+        slidesToScroll: 1,
+        swipe: true,
+        swipeToSlide: true, // You can unslick at a given breakpoint now by adding:
+    });
+}
 
 function initSlickCategory() {
     $(".category").slick({
@@ -127,7 +139,7 @@ $(document).ready(function () {
                                 </p>
                             </div>
                         </div>
-                    `;
+                    `;           
                 });
                 $(`#donasiSliderItems`).html(html);
             }
@@ -141,7 +153,73 @@ $(document).ready(function () {
         });
     });
 
-// GET NEAR YOU
+// --------------GET NEAR YOU------------ //
+// GET KECAMATAN
+$.ajax({
+    url: `${apiUrl}/member/address/list`,
+    method: "GET",
+    headers: {
+        Authorization: `Bearer ${__access_token}`,
+    },
+    dataType: "JSON",
+    success: function (e) {
+        if (e.statusCode == 200) {
+            const data = e.data;
+            let html = "";
+            
+            var nearYou = data[0].kecamatan;
+            console.log(nearYou)
+            
+            //SEARCH BY KECAMATAN
+            $.ajax({
+                url: `${apiUrl}/public/items/barter?search=${nearYou}`,
+                method: "get",
+                dataType: "JSON",
+                headers: {
+                    Authorization: `Bearer ${__access_token}`,
+                },
+                success: function (e) {
+                    if (e.statusCode == 200) {
+                        const data = e.data;
+                        let html = "";
+                    data.forEach((element) => {
+                        // console.log(element)
+                        html += `
+                        <div class="card nearYou-item-container nearYou-card item-card m-1 col-1" aria-hidden="true" style="width: 10rem; height: 20rem;" data-id="${element.item.id}">
+                            <img src="${element.item.image[0]}" class="card-img-top img img-fluid" alt="" style="width: 160px; height: 160px">
+                            <div class="card-body">
+                                <h5 class="card-title placeholder-glow">
+                                    <span class="placeholder col-6 bg-dark"></span>
+                                    ${element.item.name}
+                                </h5>
+                                <p class="card-text placeholder-glow">
+                                    <i class="placeholder col-7 bi bi-geo-alt-fill"></i>
+                                    <span class="placeholder col-7">${element.item.address_city}, ${element.item.address_region}</span>
+                                </p>
+                            </div>
+                        </div>
+                    `; 
+                    });
+                    $(`#nearYouSliderItems`).append(html);
+                    }
+                },
+                error: function (e) {
+                    console.log(e)
+                },
+            }).done(() => {
+                initSlickNearYou();
+                $(".nearYou-card").click(function (e) {
+                    const id = $(this).data("id");
+                    // alert(id);
+                    loadPage(`${baseUrl}/barang/donasi/${id}`);
+                });
+            });
+        }
+    },
+    error: function (e) {
+        console.log(e);
+    },
+})
 
 
     // ----------------- Init Slick Category ---------------//

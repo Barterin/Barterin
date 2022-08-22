@@ -86,7 +86,7 @@
                 <i class="bi bi-arrow-right-short"></i>
             </a>
         </div>
-    <div class="row mt-3 donasi-slider" id="nearYouSliderItems">
+    <div class="row mt-3 nearYou-slider" id="nearYouSliderItems">
 
 
     </div>
