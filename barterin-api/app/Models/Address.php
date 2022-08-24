@@ -18,6 +18,7 @@ class Address extends Model
         "alamat_lengkap",
         "kode_pos",
         "longitude",
-        "latitude"
+        "latitude",
+        "main_address"
     ];
 }
