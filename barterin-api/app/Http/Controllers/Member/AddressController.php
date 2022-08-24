@@ -29,8 +29,8 @@ class AddressController extends Controller
             'label.min' => 'label setidaknya harus memiliki :min huruf',
             'label.unique' => 'label sudah digunakan',
             'penerima.min' => 'penerima setidaknya harus memiliki :min huruf',
-            'kota.min' => 'kota atau kecamatan setidaknya harus memiliki :min huruf',
-            'kecamatan.min' => 'kota atau kecamatan setidaknya harus memiliki :min huruf',
+            'kota.min' => 'kota setidaknya harus memiliki :min huruf',
+            'kecamatan.min' => 'kecamatan setidaknya harus memiliki :min huruf',
             'alamat_lengkap.min' => 'alamat setidaknya harus memiliki :min huruf',
             'kode_pos.min' => 'kode pos setidaknya harus memiliki :min huruf',
         ];
@@ -186,6 +186,39 @@ class AddressController extends Controller
             return response()->json(
                 array_merge($response),
                 $response['statusCode']
+            );
+        }
+    }
+
+    public function setMain(Request $request)
+    {
+        try {
+
+            if (!$request->has("addressId")) throw new \Exception('No address id', 400);
+
+            // reset main address
+            Address::where(["user_id" => $this->userData->id])->update(['main_address' => "0"]);
+
+            // set main address
+            $data = Address::where(["id" => Decrypt($request->addressId)]);
+
+            if (!$data->get()->first()) throw new \Exception('Data not found', 404);
+
+            $data->update(["main_address" => "1"]);
+
+            $response = [
+                "message" => "Berhasil merubah alamat utama",
+                "statusCode" => 200
+            ];
+        } catch (\Throwable | \Exception $error) {
+            $response = [
+                'statusCode' => GetStatusCode($error),
+                'message' => $error->getMessage(),
+            ];
+        } finally {
+            return response()->json(
+                $response,
+                $response['statusCode'] ?? ""
             );
         }
     }
