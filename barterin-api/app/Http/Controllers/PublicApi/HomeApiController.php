@@ -34,7 +34,8 @@ class HomeApiController extends Controller
                 u.fullname user_fullname,
                 prof.phone user_phone,
                 add.alamat_lengkap address_full,
-                add.kota_kecamatan address_region,
+                add.kota address_city,
+                add.kecamatan address_region,
                 add.longitude address_longitude,
                 add.latitude address_latitude,
                 (SELECT count(*) FROM offer WHERE item_id = barter_items.id) bidder
@@ -78,6 +79,8 @@ class HomeApiController extends Controller
                 $data->orWhere('barter_items.description', 'like', '%' . $request->search . '%');
                 $data->orWhere('cat.name', 'like', '%' . $request->search . '%');
                 $data->orWhere('type.name', 'like', '%' . $request->search . '%');
+                $data->orWhere('add.kota', 'like', '%' . $request->search . '%');
+                $data->orWhere('add.kecamatan', 'like', '%' . $request->search . '%');
             }
 
             $data->skip($skip)->take($take);
@@ -115,6 +118,7 @@ class HomeApiController extends Controller
                     "used_time" => $rows->used_time . " " . $dateUnit[$rows->date_unit],
                     "purchase_price" => $rows->purchase_price,
                     "address_item" => $rows->address_full,
+                    "address_city" => $rows->address_city,
                     "address_region" => $rows->address_region,
                     "address_longitude" => $rows->address_longitude,
                     "address_latitude" => $rows->address_latitude,
@@ -168,7 +172,8 @@ class HomeApiController extends Controller
                 $data->orWhere('barter_items.description', 'like', '%' . $request->search . '%');
                 $data->orWhere('cat.name', 'like', '%' . $request->search . '%');
                 $data->orWhere('type.name', 'like', '%' . $request->search . '%');
-                $data->orwhere('add.kota_kecamatan', 'like', '%' . $request->search . '%');
+                $data->orWhere('add.kota', 'like', '%' . $request->search . '%');
+                $data->orWhere('add.kecamatan', 'like', '%' . $request->search . '%');
                 $data->orwhere('add.alamat_lengkap', 'like', '%' . $request->search . '%');
             }
 
@@ -206,6 +211,7 @@ class HomeApiController extends Controller
                     "used_time" => $rows->used_time . " " . $dateUnit[$rows->date_unit],
                     "purchase_price" => $rows->purchase_price,
                     "address_item" => $rows->address_full,
+                    "address_city" => $rows->address_city,
                     "address_region" => $rows->address_region,
                     "address_longitude" => $rows->address_longitude,
                     "address_latitude" => $rows->address_latitude,

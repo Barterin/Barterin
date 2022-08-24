@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //------------- GET BARANG LIST ---------------//
     $.ajax({
-        url: `${apiUrl}/member/offer/list`,
+        url: `${apiUrl}/member/offer-donate/list`,
         method: "GET",
         headers: {
             Authorization: `Bearer ${__access_token}`,
@@ -12,10 +12,10 @@ $(document).ready(function () {
                 const data = e.data;
                 let html = "";
                 let history = "";
-            data.forEach((element) => {
-                // console.log(element)
-                if (element.barang.status == 0) {
-                    html += `
+                data.forEach((element) => {
+                    console.log(element)
+                    if (element.barang.status == 0) {
+                        html += `
                         <div class="card mt-3 item-card detailTawaran" data-id="${element.barang.id}">
                             <div class="row g-0">
                                 <div class="col-md-2">
@@ -25,16 +25,16 @@ $(document).ready(function () {
                                 <div class="card-body">
                                     <h5 class="card-title" name="name">${element.barang.name}</h5>
                                     <p class="card-text" name="purchase_price">${element.barang.user}</p>
-                                    <p class="card-text" name="description"><small class="text-muted">${element.barang.region}</small></p>
+                                    <p class="card-text" name="description"><small class="text-muted">${element.barang.city}, ${element.barang.region}</small></p>
                                 </div>
                                 </div>
                             </div>
                         </div>
                     `;
-                }
-                if (element.barang.status == 1) {
-                    history += `
-                        <div class="card mt-3 item-card detailTawaran" data-id="${element.barang.id}" style="background-color: #f5f5f5">
+                    }
+                    if (element.barang.status == 1) {
+                        history += `
+                        <div class="card mt-3 item-card" data-id="${element.barang.id}" style="background-color: #f5f5f5">
                             <div class="row g-0">
                                 <div class="col-md-2">
                                     <img src="${element.barang.image}" class="img-fluid rounded-start image-list" alt="...">
@@ -43,16 +43,16 @@ $(document).ready(function () {
                                 <div class="card-body">
                                     <h5 class="card-title" name="name">${element.barang.name}</h5>
                                     <p class="card-text" name="purchase_price">${element.barang.user}</p>
-                                    <p class="card-text" name="description"><small class="text-muted">${element.barang.region}</small></p>
+                                    <p class="card-text" name="description"><small class="text-muted">${element.barang.city}, ${element.barang.region}</small></p>
                                 </div>
                                 </div>
                             </div>
                         </div>
                     `;
-                }
-            });
-            $(`#listTawaran`).html(html);
-            $(`#listTawaranAcc`).html(history);
+                    }
+                });
+                $(`#listTawaran`).html(html);
+                $(`#listAccepted`).html(history);
             }
         },
         error: function (e) {
@@ -71,7 +71,7 @@ $(document).ready(function () {
     const idBarang = $("#idBarang").val();
     console.log(idBarang);
     $.ajax({
-        url: `${apiUrl}/member/offer/list/bidder?itemId=${idBarang}`,
+        url: `${apiUrl}/member/offer-donate/list/bidder?itemId=${idBarang}`,
         method: "get",
         dataType: "JSON",
         headers: {
@@ -82,30 +82,41 @@ $(document).ready(function () {
                 const data = e.data;
                 const keywords = e.keywords;
                 let html = "";
-            data.forEach((element) => {
-                console.log(element)
-                html += `
-                <div class="card mt-3 item-card detailTawaran" data-id="${element.barang.id}">
-                <input type="hidden" value="${element.id}" name="offerId">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-2">
-                            <img src="${element.barang.image}" class="img-fluid rounded-start image-list" alt="...">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title" name="name">${element.barang.name}</h5>
-                                <p class="card-text" name="purchase_price">${element.barang.user}</p>
-                                <p class="card-text" name="description"><small class="text-muted">${element.barang.region}</small></p>
+                data.forEach((element) => {
+                    // match rate
+                    let found = 0;
+                    const reason = element.user.reason
+                        .split(" ")
+                        .filter(onlyUnique);
+                    reason.forEach((item) => {
+                        //console.log(item);
+                        if (inArray(item.toLowerCase(), keywords)) found++;
+                    });
+                    //console.log(found);
+                    let matchTate = Math.floor(
+                        (parseInt(found) / parseInt(keywords.length)) * 100
+                    );
+                    // end match rate
+
+                    html += `
+                    <div class="card mt-3 item-card" >
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-8">
+                            <input type="hidden" value="${element.id}" name="offerId">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold" name="name">${element.user.name}</h5>
+                                    <p class="text-sm">Kecocokan ${matchTate} % </p>
+                                    <p class="card-text" name="description">${element.user.reason}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card-body">
-                                <a href="http://localhost:6902/${__access_token}/${element.barang.user_id}" class="btn btn-primary" type="button" id="chatBidder" >Chat Penawar</a>
-                                <button class="btn btn-primary mt-1 acceptOffer" type="submit">Terima Tawaran</button>
+                            <div class="col-md-3">
+                                <div class="card-body">
+                                    <a href="http://localhost:6902/${__access_token}/${element.user.id}" class="btn btn-primary" type="button" id="chatBidder" >Chat Penawar</a>
+                                    <button class="btn btn-primary mt-1 acceptOffer" type="submit">Terima Tawaran</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 `;
                 });
                 $(`#detailTawaran`).append(html);
@@ -121,7 +132,7 @@ $(document).ready(function () {
         e.preventDefault();
         const data = new FormData($(`#detailTawaran`).get(0));
         $.ajax({
-            url: `${apiUrl}/member/offer/accept`,
+            url: `${apiUrl}/member/offer-donate/accept`,
             method: "post",
             timeout: 0,
             data: data,

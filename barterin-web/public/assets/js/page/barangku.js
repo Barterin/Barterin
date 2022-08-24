@@ -14,12 +14,12 @@ $(document).ready(function () {
                 let sold = "";
             data.forEach((element) => {
                 console.log(element)
-                if (element.item_for == 0 && element.status == 0){
+                if (element.item_for == 1 && element.status == 0){
                     html += `
                         <div class="card mt-3 item-card" data-id="${element.id}">
                             <div class="row g-0">
                                 <div class="col-md-2">
-                                <img src="${element.image[0]}" class="img-fluid rounded-start image-list" alt="...">
+                                    <img src="${element.image[0]}" class="img-fluid rounded-start image-list" alt="...">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-body">
@@ -40,12 +40,13 @@ $(document).ready(function () {
                         </div>
                     `;
                 }
-                if (element.item_for == 0 && element.status == 1){
+                
+                if (element.item_for == 1 && element.status == 1){
                     sold += `
-                        <div class="card mt-3 item-card" data-id="${element.id}" style="background-color: #f5f5f5">
+                        <div class="card mt-3 item-card " data-id="${element.id}" style="background-color: #f5f5f5">
                             <div class="row g-0">
                                 <div class="col-md-2">
-                                <img src="${element.image[0]}" class="img-fluid rounded-start image-list" alt="...">
+                                    <img src="${element.image[0]}" class="img-fluid rounded-start image-list" alt="...">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-body">
@@ -59,6 +60,7 @@ $(document).ready(function () {
                         </div>
                     `;
                 }
+
             });
             $(`#listBarang`).html(html);
             $(`#listBarangSold`).html(sold);
@@ -70,7 +72,7 @@ $(document).ready(function () {
     }).done(() => {
         $(".detailBarang").click(function (e) {
             const id = $(this).data("id");
-            loadPage(`${baseUrl}/barang/barter/${id}`);
+            loadPage(`${baseUrl}/barang/donasi/${id}`);
         });
         $(".editBarang").click(function (e) {
             const id = $(this).data("id");

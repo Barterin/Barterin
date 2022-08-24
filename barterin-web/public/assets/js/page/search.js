@@ -1,7 +1,7 @@
 $(document).ready(function () {
 //GET TAWARAN LIST
 const searchRes = $("#searchRes").val();
-console.log(searchRes)
+console.log(searchRes);
 $.ajax({
     url: `${apiUrl}/public/items/barter?search=${searchRes}`,
     method: "get",
@@ -26,7 +26,7 @@ $.ajax({
                             </h5>
                             <p class="card-text placeholder-glow">
                                 <i class="placeholder col-7 bi bi-geo-alt-fill"></i>
-                                <span class="placeholder col-7">${element.item.address_region}</span>
+                                <span class="placeholder col-7">${element.item.address_city}, ${element.item.address_region}</span>
                             </p>
                         </div>
                     </div>

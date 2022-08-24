@@ -39,7 +39,7 @@
                 </svg>
             </div>
             <div class="search-box">
-                <input type="text" class="search-field" name="search" id="searchInput">
+                <input type="text" class="search-field" name="search" id="searchInput" placeholder="Search by name, category, location...">
                 <button class="head-button"><i class="bi bi-search" id="search"></i></button>
             </div>
             <div class="head-icon" id="icon-section">

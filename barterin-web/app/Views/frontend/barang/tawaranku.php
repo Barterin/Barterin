@@ -3,18 +3,19 @@
 
 <div class="container mt-3 mb-3">
     <div>
+        <div>
         <div class="fw-bold fs-2">
-            <span>Tawaranku</span>
-        </div>
-        <div id="listTawaran">
+                <span>Tawaranku</span>
+            </div>
+            <div id="listTawaran">
 
         </div>
     </div>
-    <div>
+    <div class="mt-3">
         <div class="fw-bold fs-2">
-            <span>Barang tawaran yang telah diterima</span>
+            <span>Accepted</span>
         </div>
-        <div id="listTawaranAcc">
+        <div id="listAccepted">
 
         </div>
     </div>

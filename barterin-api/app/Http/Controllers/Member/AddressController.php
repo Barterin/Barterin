@@ -16,7 +16,8 @@ class AddressController extends Controller
             "penerima" => "required|string|min:3",
             "nohp" => "required|min:10|max:13",
             "label" => "required|string|min:3",
-            "kota_kecamatan" => "required|string|min:3",
+            "kota" => "required|string|min:3",
+            "kecamatan" => "required|string|min:3",
             "alamat_lengkap" => "required|min:10",
             "kode_pos" => "required|min:3"
         ];
@@ -28,7 +29,8 @@ class AddressController extends Controller
             'label.min' => 'label setidaknya harus memiliki :min huruf',
             'label.unique' => 'label sudah digunakan',
             'penerima.min' => 'penerima setidaknya harus memiliki :min huruf',
-            'kota_kecamatan.min' => 'kota atau kecamatan setidaknya harus memiliki :min huruf',
+            'kota.min' => 'kota atau kecamatan setidaknya harus memiliki :min huruf',
+            'kecamatan.min' => 'kota atau kecamatan setidaknya harus memiliki :min huruf',
             'alamat_lengkap.min' => 'alamat setidaknya harus memiliki :min huruf',
             'kode_pos.min' => 'kode pos setidaknya harus memiliki :min huruf',
         ];
@@ -47,7 +49,8 @@ class AddressController extends Controller
             if ($request->search != null) {
                 $data->where('label', 'like', '%' . $request->search . '%');
                 $data->orWhere('alamat_lengkap', 'like', '%' . $request->search . '%');
-                $data->orWhere('kota_kecamatan', 'like', '%' . $request->search . '%');
+                $data->orWhere('kota', 'like', '%' . $request->search . '%');
+                $data->orWhere('kecamatan', 'like', '%' . $request->search . '%');
             }
 
             $addressData = [];
@@ -58,7 +61,8 @@ class AddressController extends Controller
                 $row["penerima"] = $rows->penerima;
                 $row["nohp"] = $rows->nohp;
                 $row["label"] = $rows->label;
-                $row["kota_kecamatan"] = $rows->kota_kecamatan;
+                $row["kota"] = $rows->kota;
+                $row["kecamatan"] = $rows->kecamatan;
                 $row["alamat_lengkap"] = $rows->alamat_lengkap;
                 $row["kode_pos"] = $rows->kode_pos;
                 $addressData[] = $row;
